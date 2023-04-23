@@ -1,0 +1,15 @@
+<view class="phone-edit">
+  <t-input
+    borderless
+    model:value="{{phoneValue}}"
+    placeholder="请输入您的手机号"
+    label="手机号"
+    clearable
+    bind:clear="clearContent"
+  />
+  <view class="phone-edit__input--desc"> </view>
+  <view class="phone-edit__wrapper">
+    <t-button block shape="round" disabled="{{!phoneValue}}" bind:tap="onSubmit">保存</t-button>
+  </view>
+</view>
+<t-toast id="t-toast" />

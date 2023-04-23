@@ -1,0 +1,18 @@
+page {
+  background-color: #f5f5f5;
+}
+page view {
+  box-sizing: border-box;
+}
+.phone-edit {
+  padding-top: 20rpx;
+}
+.phone-edit .phone-edit__input--desc {
+  font-size: 26rpx;
+  padding: 16rpx 32rpx;
+  color: #999;
+  margin-bottom: 380rpx;
+}
+.phone-edit .phone-edit__wrapper {
+  margin: 0 32rpx;
+}

@@ -1,0 +1,21 @@
+<view class="document custom-class">
+	<view class="document__right">
+					<view class="document-normal-item-container">
+						<view
+						  class="document-normal-item-container-item"
+						  wx:for="{{category}}"
+						  wx:for-index="subIndex"
+						  wx:key="subIndex"
+						  wx:for-item="subItem"
+						  bindtap="changCategory"
+						  data-item="{{subItem}}"
+						>
+							<t-image src="{{subItem.image}}" t-class="image" />
+							<view class="flex document-normal-item-container-item-title">
+								{{subItem.name}}
+							</view>
+					</view>
+		</view>
+	</view>
+</view>
+

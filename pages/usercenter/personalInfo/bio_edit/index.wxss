@@ -1,0 +1,18 @@
+page {
+  background-color: #f5f5f5;
+}
+page view {
+  box-sizing: border-box;
+}
+.bio-edit {
+  padding-top: 20rpx;
+}
+.bio-edit .bio-edit__input--desc {
+  font-size: 26rpx;
+  padding: 16rpx 32rpx;
+  color: #999;
+  margin-bottom: 380rpx;
+}
+.bio-edit .bio-edit__wrapper {
+  margin: 0 32rpx;
+}

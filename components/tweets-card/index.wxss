@@ -1,0 +1,107 @@
+.tweets-card {
+  box-sizing: border-box;
+  font-size: 24rpx;
+  border-radius: 0 0 16rpx 16rpx;
+  border-bottom: none;
+}
+
+.tweets-card__main {
+  position: relative;
+  display: flex;
+  line-height: 1;
+  padding: 0;
+  background: transparent;
+  width: 342rpx;
+  border-radius: 0 0 16rpx 16rpx;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16rpx;
+  flex-direction: column;
+}
+
+.tweets-card__thumb {
+  flex-shrink: 0;
+  position: relative;
+  width: 340rpx;
+  height: 340rpx;
+}
+
+.tweets-card__thumb:empty {
+  display: none;
+  margin: 0;
+}
+
+.tweets-card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx 16rpx 0 0;
+  overflow: hidden;
+}
+
+.tweets-card__body {
+  display: flex;
+  flex: 1 1 auto;
+  background: #fff;
+  border-radius: 0 0 16rpx 16rpx;
+  padding: 16rpx 24rpx 18rpx;
+  flex-direction: column;
+}
+
+.tweets-card__upper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1 1 auto;
+}
+
+.tweets-card__title {
+  flex-shrink: 0;
+  font-size: 34rpx;
+  color: #333;
+  font-weight: 400;
+  display: -webkit-box;
+  height: 72rpx;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-word;
+  line-height: 36rpx;
+}
+
+.tweets-card__tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 8rpx 0 0 0;
+}
+
+.card__down {
+  width: 340rpx;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: bottom;
+  line-height: 50rpx;
+  margin: 8rpx 0 0 0;
+}
+
+.thumbnum{
+  font-size: 28rpx;
+}
+
+.comment{
+  order: 3;
+  right: -190rpx;
+  position: relative;
+}
+
+.commentnum{
+  font-size: 28rpx;
+  order: 3;
+  margin: auto 0 0 auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

@@ -1,0 +1,54 @@
+.help-cards {
+  display: flex;
+}
+
+.help-cards__right {
+  height: 100%;
+  flex: auto;
+  width: 0;
+  position: relative;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  background-color: white;
+}
+
+.flex {
+  display: flex;
+}
+
+.help-cards-normal-item-container {
+  background-color: #fff;
+  border-radius: 8rpx;
+  padding-top: 28rpx;
+  margin-top: -24rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.help-cards-normal-item-container-item {
+  height: 150rpx;
+  display: flex;
+  flex-direction: column;
+  margin-top: 24rpx;
+  width: 100%;
+  border: 1rpx solid black
+}
+
+.help-cards-normal-item-container-item-title {
+  font-size: 35rpx;
+  color: #666666;
+  margin-top: 20rpx;
+}
+
+.comment-container {
+  margin-right: 0;
+}
+
+.comment {
+  margin-right: 0;
+}
+
+.commentnum {
+  margin-right: 0;
+}

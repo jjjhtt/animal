@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/usercenter/index",
+    "pages/usercenter/personalInfo/index",
+    "pages/usercenter/message/index",
+    "pages/usercenter/my_posts/index",
+    "pages/usercenter/collection/index",
+    "custom-tab-bar/index",
+    "pages/write/index",
+    "pages/animal/index",
+    "pages/help/index",
+    "pages/usercenter/personalInfo/name_edit/index",
+    "pages/usercenter/personalInfo/bio_edit/index",
+    "pages/usercenter/personalInfo/phone_edit/index",
+    "pages/usercenter/personalInfo/password_edit/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#666666",
+    "selectedColor": "#FF5F15",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/animal/index",
+        "text": "动物"
+      },
+      {
+        "pagePath": "pages/write/index"
+      },
+      {
+        "pagePath": "pages/help/index",
+        "text": "求助"
+      },
+      {
+        "pagePath": "pages/usercenter/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

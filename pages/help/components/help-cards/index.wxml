@@ -1,0 +1,31 @@
+<view class="help-cards custom-class">
+	<view class="help-cards__right">
+					<view class="help-cards-normal-item-container">
+						<view
+						  class="help-cards-normal-item-container-item"
+						  wx:for="{{data}}"
+						  wx:for-index="subIndex"
+						  wx:key="subIndex"
+						  wx:for-item="subItem"
+						  bindtap="changCategory"
+						  data-item="{{subItem}}"
+						>
+							<view class="flex help-cards-normal-item-container-item-title">
+								{{subItem.title}}
+							</view>
+              <view class="comment-container">
+                <t-icon
+                  class="comment"
+                  name="chat"
+                  size="48rpx"
+                  color="#1296db"
+                />
+                <span
+                  class="commentnum"
+                >{{subItem.comments}}</span>
+              </view>
+						</view>
+					</view>
+	</view>
+</view>
+

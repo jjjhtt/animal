@@ -1,0 +1,18 @@
+page {
+  background-color: #f5f5f5;
+}
+page view {
+  box-sizing: border-box;
+}
+.password-edit {
+  padding-top: 20rpx;
+}
+.password-edit .password-edit__input--desc {
+  font-size: 26rpx;
+  padding: 16rpx 32rpx;
+  color: #999;
+  margin-bottom: 380rpx;
+}
+.password-edit .password-edit__wrapper {
+  margin: 0 32rpx;
+}

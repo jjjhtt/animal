@@ -1,0 +1,22 @@
+<view class="password-edit">
+  <t-input
+    model:value="{{passwordValue}}"
+    placeholder="请输入新密码"
+    label="新密码"
+    clearable
+    bind:clear="clearContent"
+  />
+  <t-input
+    borderless
+    model:value="{{passwordConfirm}}"
+    placeholder="请再次输入新密码"
+    label="确认密码"
+    clearable
+    bind:clear="clearContent"
+  />
+  <view class="password-edit__input--desc"> </view>
+  <view class="password-edit__wrapper">
+    <t-button block shape="round" disabled="{{!passwordValue || !passwordConfirm}}" bind:tap="onSubmit">保存</t-button>
+  </view>
+</view>
+<t-toast id="t-toast" />

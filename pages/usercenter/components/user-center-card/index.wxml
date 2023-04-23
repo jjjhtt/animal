@@ -1,0 +1,17 @@
+<view class="user-center-card">
+  <block>
+    <view class="user-center-card__header" >
+      <t-avatar
+        t-class="avatar"
+        size="large"
+        mode="aspectFill"
+        class="user-center-card__header__avatar"
+        image="{{userInfo.avatarUrl || defaultAvatarUrl}}"
+      />
+      <view class="user-center-card__header__name">{{userInfo.nickName || '微信用户'}}</view>
+    </view>
+    <view class="user-center-card__bio">
+      {{userInfo.bio || '你还没有个性签名哦'}}
+    </view>
+  </block>
+</view>

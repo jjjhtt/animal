@@ -1,0 +1,15 @@
+<view class="name-edit">
+  <t-input
+    borderless
+    model:value="{{nameValue}}"
+    placeholder="请输入您的昵称"
+    label="昵称"
+    clearable
+    bind:clear="clearContent"
+  />
+  <view class="name-edit__input--desc"> </view>
+  <view class="name-edit__wrapper">
+    <t-button block shape="round" disabled="{{!nameValue}}" bind:tap="onSubmit">保存</t-button>
+  </view>
+</view>
+<t-toast id="t-toast" />

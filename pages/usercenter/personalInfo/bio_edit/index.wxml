@@ -1,0 +1,15 @@
+<view class="bio-edit">
+  <t-input
+    borderless
+    model:value="{{bioValue}}"
+    placeholder="请输入您的个性签名"
+    label="个性签名"
+    clearable
+    bind:clear="clearContent"
+  />
+  <view class="bio-edit__input--desc"> </view>
+  <view class="bio-edit__wrapper">
+    <t-button block shape="round" disabled="{{!bioValue}}" bind:tap="onSubmit">保存</t-button>
+  </view>
+</view>
+<t-toast id="t-toast" />

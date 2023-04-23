@@ -1,0 +1,30 @@
+<view class="animal-page-header">
+  <view class="search" >
+    <t-search
+      t-class-input="t-search__input"
+      t-class-input-container="t-search__input-container"
+      placeholder="请输入关键词"
+      leftIcon=""
+      bind:submit="submitHandle"
+    >
+      <t-icon slot="left-icon"  name="search" size="40rpx" color="#bbb" />
+    </t-search>
+  </view>
+</view>
+<view class="wrap">
+  <view class="animal-page-tabs">
+    <t-tabs
+      t-class="t-tabs"
+      t-class-active="tabs-external__active"
+      t-class-item="tabs-external__item"
+      defaultValue="{{0}}"
+      space-evenly="{{false}}"
+      bind:change="tabChangeHandle"
+    >
+    </t-tabs>
+  </view>
+  <document
+    category="{{list}}"
+    bind:changeCategory="onChange"
+  />
+</view>
