@@ -14,15 +14,15 @@
 								{{subItem.title}}
 							</view>
               <view class="comment-container">
+                <view
+                  class="commentnum"
+                >{{subItem.comments}}</view>
                 <t-icon
                   class="comment"
                   name="chat"
                   size="48rpx"
                   color="#1296db"
                 />
-                <span
-                  class="commentnum"
-                >{{subItem.comments}}</span>
               </view>
 						</view>
 					</view>

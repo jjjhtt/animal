@@ -20,24 +20,26 @@
 				</view>
 			</view>
 			<view class="card__down">
-				<t-icon
-				  class="thumb"
-				  name="thumb-up"
-				  size="48rpx"
-				  color="#1296db"
-				/>
+        <view class="comment-container">
         <span
-          class="thumbnum"
-        >{{tweets.likes}}</span>
+        class="commentnum"
+        >{{tweets.comments}}</span>
         <t-icon
           class="comment"
           name="chat"
           size="48rpx"
           color="#1296db"
         />
+        </view>
         <span
-          class="commentnum"
-        >{{tweets.comments}}</span>
+          class="thumbnum"
+        >{{tweets.likes}}</span>
+				<t-icon
+				  class="thumb"
+				  name="thumb-up"
+				  size="48rpx"
+				  color="#1296db"
+				/>
 			</view>
 		</view>
 	</view>

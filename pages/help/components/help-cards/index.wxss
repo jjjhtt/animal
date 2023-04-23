@@ -17,7 +17,7 @@
 }
 
 .help-cards-normal-item-container {
-  background-color: #fff;
+  background-color: #f5f5f5;
   border-radius: 8rpx;
   padding-top: 28rpx;
   margin-top: -24rpx;
@@ -32,7 +32,8 @@
   flex-direction: column;
   margin-top: 24rpx;
   width: 100%;
-  border: 1rpx solid black
+  border: 1rpx solid black;
+  background-color: white;
 }
 
 .help-cards-normal-item-container-item-title {
@@ -42,7 +43,11 @@
 }
 
 .comment-container {
-  margin-right: 0;
+  display: flex;
+  flex-direction:row-reverse;
+  align-content: flex-start;
+  height: 25rpx;
+  padding:  10rpx 10rpx 10rpx 10rpx
 }
 
 .comment {

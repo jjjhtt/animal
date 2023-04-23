@@ -46,6 +46,7 @@
   border-radius: 0 0 16rpx 16rpx;
   padding: 16rpx 24rpx 18rpx;
   flex-direction: column;
+  width: 293rpx;
 }
 
 .tweets-card__upper {
@@ -77,10 +78,10 @@
 }
 
 .card__down {
-  width: 340rpx;
+  width: 100%;
   display: flex;
   position: relative;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: flex-start;
   align-items: bottom;
   line-height: 50rpx;
@@ -91,17 +92,14 @@
   font-size: 28rpx;
 }
 
-.comment{
-  order: 3;
-  right: -190rpx;
-  position: relative;
+.comment-container{
+  display: flex;
+  flex-direction:row-reverse;
+  align-content: flex-start;
+  right: 0;
+  padding-left: 28rpx;
 }
 
 .commentnum{
   font-size: 28rpx;
-  order: 3;
-  margin: auto 0 0 auto;
-  position: absolute;
-  bottom: 0;
-  right: 0;
 }

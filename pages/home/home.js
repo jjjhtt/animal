@@ -83,7 +83,7 @@ Page({
     let pageIndex = this.tweetListPagination.index + 1;
     if (fresh) {
       this.tweetListPagination.index = 0;
-      pageIndex = 1;
+      pageIndex = 0;
     }
 
     try {
