@@ -42,7 +42,7 @@
 
 .document-normal-item-container-item-title {
   justify-content: center;
-  font-size: 24rpx;
+  font-size: 30rpx;
   color: #666666;
   margin-top: 20rpx;
 }

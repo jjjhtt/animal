@@ -12,17 +12,6 @@
   </view>
 </view>
 <view class="wrap">
-  <view class="animal-page-tabs">
-    <t-tabs
-      t-class="t-tabs"
-      t-class-active="tabs-external__active"
-      t-class-item="tabs-external__item"
-      defaultValue="{{0}}"
-      space-evenly="{{false}}"
-      bind:change="tabChangeHandle"
-    >
-    </t-tabs>
-  </view>
   <document
     category="{{list}}"
     bind:changeCategory="onChange"

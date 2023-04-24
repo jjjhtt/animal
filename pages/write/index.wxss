@@ -1,1 +1,10 @@
-/* pages/write/index.wxss */
+.button1 {
+  margin: 30% auto;
+}
+.button2 {
+  margin: 30% auto;
+}
+
+.button3 {
+  margin: 30% auto;
+}

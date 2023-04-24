@@ -1,4 +1,4 @@
-import { fetchTweetsList } from '../../services/tweet/fetchTweets';
+import { fetchTweetsList } from '../../../services/tweet/fetchTweets';
 
 Page({
   data: {
@@ -23,10 +23,11 @@ Page({
   },
 
   onShow() {
-    this.init();
+    
   },
 
   onLoad() {
+    this.init();
   },
 
   onReachBottom() {
@@ -52,7 +53,6 @@ Page({
       pageLoading: false,
     });
     this.loadtweetsList(true);
-
   },
 
   tabChangeHandle(e) {
@@ -88,15 +88,17 @@ Page({
 
     try {
       const nextList = await fetchTweetsList(pageIndex, this.data.nowkey, this.data.match);
-      console.log(nextList);
-      if (nextList === null) {
-        this.setData({ tweetsListLoadStatus: 2 });
-      }
+      //console.log(nextList);
       this.setData({
         tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),
         tweetsListLoadStatus: 0,
       });
+
       this.tweetListPagination.index = pageIndex;
+      if (JSON.stringify(nextList) == '{}') {
+        this.setData({ tweetsListLoadStatus: 2 });
+      }
+      //console.log(this.data.tweetsList);
     } catch (err) {
       //console.log(err);
       this.setData({ tweetsListLoadStatus: 3 });

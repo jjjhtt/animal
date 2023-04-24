@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "",
+  "component": true,
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button"
+  }
 }

@@ -5,27 +5,19 @@ const menuData = [
   [
     {
       title: '个人资料修改',
-      tit: '',
-      url: '',
       type: 'info',
     },
     {
       title: '我的帖子',
-      tit: '',
-      url: '',
-      type: 'myPosts',
+      type: 'myTweets',
     },
     {
       title: '我的收藏',
-      tit: '',
-      url: '',
       type: 'myCollections',
     },
     {
-      title: '我的消息',
-      tit: '',
-      url: '',
-      type: 'myMessages',
+      title: '我的求助',
+      type: 'myHelp',
     },
   ],
   [
@@ -46,14 +38,14 @@ const getDefaultData = () => ({
     phoneNumber: '',
   },
   menuData,
-  versionNo: '',
+  versionNo: 'develop',
 });
 
 Page({
   data: getDefaultData(),
 
   onLoad() {
-    this.getVersionInfo();
+    
   },
 
   onShow() {
@@ -91,16 +83,16 @@ Page({
         wx.navigateTo({ url: '/pages/usercenter/personalInfo/index' });
         break;
       }
-      case 'myPosts': {
-        wx.navigateTo({ url: '/pages/usercenter/my_posts/index' });
+      case 'myTweets': {
+        wx.navigateTo({ url: '/pages/usercenter/my_tweets/index' });
         break;
       }
       case 'myCollections': {
-        wx.navigateTo({ url: '/pages/usercenter/collections/index' });
+        wx.navigateTo({ url: '/pages/usercenter/collection/index' });
         break;
       }
-      case 'myMessages': {
-        wx.navigateTo({ url: '/pages/usercenter/message/index' });
+      case 'myHelp': {
+        wx.navigateTo({ url: '/pages/usercenter/help/index' });
         break;
       }
 
@@ -115,13 +107,5 @@ Page({
         break;
       }
     }
-  },
-
-  getVersionInfo() {
-    const versionInfo = wx.getAccountInfoSync();
-    const { version, envVersion = __wxConfig } = versionInfo.miniProgram;
-    this.setData({
-      versionNo: envVersion === 'release' ? version : envVersion,
-    });
   },
 });

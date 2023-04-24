@@ -1,4 +1,4 @@
-// pages/usercenter/post/index.js
+// pages/usercenter/message/index.js
 Page({
 
   /**

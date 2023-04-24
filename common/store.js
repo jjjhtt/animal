@@ -23,6 +23,7 @@ export const store = observable({
     {
       "pagePath": "pages/write/index",
       "iconPath": "../image/add_blue.png",
+      "selectedIconPath": "../image/add_blue.png"
     },
     {
       "pagePath": "pages/help/index",

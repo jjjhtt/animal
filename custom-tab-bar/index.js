@@ -6,7 +6,9 @@ import {
 } from '../common/store.js'
 
 Component({
-  data: {},
+  data: {
+    show: true
+  },
   // 通过 storeBindingsBehavior 来实现自动绑定
   behaviors: [storeBindingsBehavior],
   storeBindings: {
