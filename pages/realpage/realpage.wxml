@@ -1,0 +1,65 @@
+<view>
+  <view class="dots">{{current+1}}/{{imgUrls.length}}</view>
+  <swiper bindchange="monitorCurrent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" current="{{current}}">
+	<block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item>
+          <image style="width: 100%;" mode="widthFix" src="{{item}}"/>
+        </swiper-item>
+	</block>
+  </swiper>
+  <view class="realpagetext">
+        <text user-select style="font-weight: bold;font-size: large;">{{content_title}}</text>
+        <view></view>
+        <text user-select>{{contenttext}}</text>
+        <view style="clear: both;"></view>
+        <view class="realpage_tag" wx:for="{{tags}}" wx:key="index"> #{{item}} </view>
+        <view class="realpage_data">{{data}}</view>
+  </view>
+  <view class="realpage_comment">
+    <view style="font-size:small;color: black;margin-bottom: 15px;">共 {{commentnum}} 条评论</view>
+    <view wx:for="{{commentlist}}"  wx:key="index">
+      <view style="display: flex; width: 100%; margin-bottom: 10px; ">
+        <view style="flex: 1;"><image src="../../images/li.jpg" mode="widthFix" style="width: 48rpx; border-radius: 45%;" /></view>
+        <view style="flex:10;padding-left: 5px;">
+          <view style="font-size:xx-small;color: gray;">{{item.username}}</view>
+          <view style="border-bottom: 1px solid rgba(128, 128, 128, 0.3);padding-top: 5px;padding-bottom: 10px;font-size: smaller;">{{item.content}}
+          <view style="font-size: 12px; color: rgba(0, 0, 0, 0.5);margin-top: 5px;">{{item.time}}</view>
+          </view>
+        </view>
+        <view style="flex: 1;width: 25px;" bindtap="monitorlike" data-id="{{index}}">
+          <view wx:if="!{{item.isLike}}"><t-icon name="heart" size="48rpx"/></view>
+          <view wx:if="{{item.isLike}}"><t-icon name="heart-filled" size="48rpx"/></view>
+          <view style="text-align:center;font-size: xx-small; clear: both;"> {{item.likes}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--底部-->
+  <view class="realpage_footer">
+    <view class="bottom-input" style="padding-bottom: {{inputBottom}}px;">
+    <view style="border: 2px solid gray;border-radius: 20px;height: 25px;flex: 1;padding-left: 5px;">
+        <textarea :adjust-position="false" 
+        cursor-spacing="30" 
+        v-model="inputText"
+        maxlength="140" 
+        confirm-type="send"
+        bindinput="onInputValueChange"
+        :bindconfirm="enterInput"
+        placeholder-class="input-placeholder" 
+        placeholder="说点什么呢~"
+        bindfocus="inputBindFocus" 
+        bindblur="inputBindBlur" 
+        show-confirm-bar="{{false}}"
+        style="width: 250px;height: 100%;"
+        /></view>
+    </view>
+    <view class="njx_button" wx:if="{{inputnow}}" style="margin-right: 10px;flex:0.15">发送</view>
+    <view wx:if="{{!inputnow}}" style="flex: 1; text-align: center;padding-right: 10px;">
+        <view style="display: flex; justify-content: center;">
+            <view style="flex: 1;"><image src="../../images/heart.png" mode="widthFix" style="width: 48rpx;" /><view style="text-align: center;float: right;">{{likecount}}</view></view>
+            <view style="flex: 1;"><image src="../../images/star.png" mode="widthFix" style="width: 48rpx;" /><view style="text-align: center;float: right;">{{collectcount}}</view></view>
+        </view>
+    </view>
+  </view>
+</view>
+<t-toast id="t-toast" />

@@ -1,0 +1,45 @@
+<view
+  class="tweets-card"
+  bind:tap="clickHandle"
+  data-tweets="{{ tweets }}"
+>
+	<view class="tweets-card__main">
+		<view class="tweets-card__thumb" bind:tap="clickThumbHandle">
+			<t-image
+			  wx:if="{{ !!tweets.image }}"
+			  t-class="tweets-card__img"
+			  src="{{ tweets.image }}"
+			  mode="aspectFill"
+			  lazy-load
+			/>
+		</view>
+		<view class="tweets-card__body">
+			<view class="tweets-card__upper">
+				<view wx:if="{{ tweets.title }}" class="tweets-card__title">
+					{{ tweets.title }}
+				</view>
+			</view>
+			<view class="card__down">
+				<t-icon
+				  class="thumb"
+				  name="thumb-up"
+				  size="48rpx"
+				  color="#1296db"
+				/>
+        <span
+          class="thumbnum"
+        >{{tweets.likes}}</span>
+        <t-icon
+          class="comment"
+          name="chat"
+          size="48rpx"
+          color="#1296db"
+        />
+        <span
+          class="commentnum"
+        >{{tweets.comments}}</span>
+			</view>
+		</view>
+	</view>
+</view>
+

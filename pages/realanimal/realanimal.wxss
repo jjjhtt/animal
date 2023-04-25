@@ -1,0 +1,26 @@
+/* pages/realnimal/realanimal.wxss */
+@import '../realpage/realpage.wxss';
+.account-btn {
+  width: 192rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  background-color: #fa4126;
+  font-size: 28rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  color: #ffffff;
+  text-align: center;
+  flex: 1;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.hover-btn {
+  opacity: 0.5;
+}
+.buttonBox {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+  border-bottom: 2px solid gray;
+}

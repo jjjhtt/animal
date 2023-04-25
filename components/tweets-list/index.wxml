@@ -1,0 +1,13 @@
+<view class="tweets-list-wrap wr-class" id="{{independentID}}">
+	<block wx:for="{{tweetsList}}" wx:for-item="item" wx:key="index">
+		<tweets-card
+		  data="{{item}}"
+		  thresholds="{{thresholds}}"
+		  class="tweets-card-inside"
+		  data-index="{{index}}"
+		  bind:thumb="onClicktweetsThumb"
+		  bind:click="onClicktweets"
+		/>
+	</block>
+</view>
+

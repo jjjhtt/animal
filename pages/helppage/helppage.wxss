@@ -1,0 +1,86 @@
+/* pages/helppage/helppage.wxss */
+@import '../realpage/realpage.wxss';
+.helpHeader {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+}
+.helpHeaderPhoto  {
+  flex: 1;
+  display: box;
+  padding-top: 6px;
+  text-align: center;
+}
+.helpHeaderState {
+  padding-top: 8px;
+  border: 2px solid blue;
+  text-align: center;
+  flex: 1;
+}
+.helpHeaderDetail {
+  flex:3;
+  padding-top: 6px;
+}
+.qcontent {
+  margin: 10px;
+  line-height: 25px;
+  padding-bottom: 5px;
+  /*border-bottom: 1px solid rgba(128, 128, 128, 0.8);*/
+}
+.bestAnsBox {
+  margin: 10px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.8);
+}
+.bsetAnsBox1 {
+  background-color: yellow;
+  width: 20%;
+  padding:3px;
+  border-radius: 20px;
+  text-align: center;
+}
+.commentBoxTop {
+  display: flex;
+  margin: 10px;
+}
+.commentImgBox {
+  padding-top: 6px;
+  flex:1;
+}
+.commentDetailBox {
+  flex:9;
+  display: block;
+  padding-left: 10px;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+.commentText {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  line-height: 20px;
+  overflow-wrap: break-word;
+}
+.commentData {
+  font-size: 12px;
+  float: left;
+  color: rgba(0, 0, 0, 0.5);
+}
+.likef {
+  float: right;
+  height: 25px;
+}
+.commentline {
+  margin-top: 10px;
+  overflow: hidden;
+  clear: both;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+}
+.replyBox {
+  margin: 10px;
+  padding-bottom: 20px;
+}
+.allReplyBox {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: small;
+}

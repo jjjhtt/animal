@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "tweets-card": "/components/tweets-card/index"
+    }
+}

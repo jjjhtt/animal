@@ -1,0 +1,33 @@
+.login_title {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.login_inputbox {
+    padding-top: 20px;
+    width: 80%;
+    margin-left: 10%;
+    flex-direction: row;
+    display: flex;
+    padding-bottom: 8px;
+    border-bottom: 2px solid gray;
+}
+.login_einput {
+    padding-left: 5%;
+    width: 90%;
+}
+.login_re {
+  float: right;
+  margin: 5px;
+  color:blue;
+  font-weight: 500;
+}
+.login_button {
+  margin-top: 35px;
+}
+.login_button1 {
+  width: 180px;
+  height: 40px;
+  background-color: #00BFFF;
+  color: white;
+}
