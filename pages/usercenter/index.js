@@ -38,7 +38,7 @@ const getDefaultData = () => ({
     phoneNumber: '',
   },
   menuData,
-  versionNo: 'develop',
+  versionNo: 'alpha',
 });
 
 Page({
@@ -95,15 +95,16 @@ Page({
         wx.navigateTo({ url: '/pages/usercenter/help/index' });
         break;
       }
+      case 'exit': {
+        wx.clearStorageSync();
+        setTimeout(() => {
+          wx.reLaunch({
+            url: '/pages/login/login',
+          })
+        }, 500)
+      }
 
       default: {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: '未知跳转',
-          icon: '',
-          duration: 1000,
-        });
         break;
       }
     }
