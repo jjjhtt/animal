@@ -1,7 +1,8 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "新建",
   "component": true,
   "usingComponents": {
-    "t-button": "tdesign-miniprogram/button/button"
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-toast": "tdesign-miniprogram/toast/toast"
   }
 }

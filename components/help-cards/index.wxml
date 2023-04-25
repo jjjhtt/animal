@@ -7,7 +7,7 @@
 						  wx:for-index="subIndex"
 						  wx:key="subIndex"
 						  wx:for-item="subItem"
-						  bindtap="changCategory"
+						  bindtap="onClick"
 						  data-item="{{subItem}}"
 						>
 							<view class="flex help-cards-normal-item-container-item-title">

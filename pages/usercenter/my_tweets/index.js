@@ -1,19 +1,10 @@
-import { fetchTweetsList } from '../../../services/tweet/fetchTweets';
+import { fetchTweetsList } from '../../../services/usercenter/fetchMyTweets';
 
 Page({
   data: {
-    tabList: [{
-      text: '热度排序',
-      key: '热度',
-    },
-    {
-      text: '时间排序',
-      key: '时间',
-    }],
     tweetsList: [],
     tweetsListLoadStatus: 0,
     pageLoading: false,
-    nowkey: '热度',
     match: '',
   },
 
@@ -23,11 +14,11 @@ Page({
   },
 
   onShow() {
-    
+    this.init();
   },
 
   onLoad() {
-    this.init();
+
   },
 
   onReachBottom() {
@@ -41,8 +32,6 @@ Page({
   },
 
   init() {
-    wx.setStorageSync('userId', 3);
-    wx.setStorageSync('token', 'Animal-eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIzIiwic3ViIjoidXNlciIsImlhdCI6MTY4MjI0OTU3MywiaXNzIjoiYW5pbWFsbWFuYWdlbWVudCIsImF1dGhvcml0aWVzIjoiW3tcImF1dGhvcml0eVwiOlwiUk9MRV9VU0VSXCJ9XSIsImV4cCI6MTY4MjMzNTk3M30.GR7Wodsm2IEKN4KOZIL91Fb0w4ZtiMBWkhUGg1dFDg5r_KDJFcXtMwDq8Cuuf4n-kDg-zyqUsA9XYZsngklmpw');
     this.loadHomePage();
   },
 

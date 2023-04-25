@@ -1,66 +1,103 @@
-// pages/usercenter/collection/index.js
+import { fetchTweetsList } from '../../../services/usercenter/fetchStarTweets';
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    tabList: [{
+      text: '普通帖',
+      key: 0,
+    },
+    {
+      text: '求助帖',
+      key: 1,
+    }],
+    tweetsList: [],
+    tweetsListLoadStatus: 0,
+    pageLoading: false,
+    nowkey: 0,
+    match: '',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  tweetListPagination: {
+    index: 0,
+    num: 8,
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
-
+    this.init();
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  onLoad() {
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom() {
+    if (this.data.tweetsListLoadStatus === 0) {
+      this.loadtweetsList();
+    }
+  },
+
+  onPullDownRefresh() {
+    this.init();
+  },
+
+  init() {
+    this.loadHomePage();
+  },
+
+  loadHomePage() {
+    wx.stopPullDownRefresh();
+
+    this.setData({
+      pageLoading: false,
+    });
+    this.loadtweetsList(true);
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
+  tabChangeHandle(e) {
+    this.setData({
+      nowkey: e.detail.value
+    });
+    this.loadtweetsList(true);
+  },
 
-  }
-})
+  submitHandle(e) {
+    this.setData({
+      match: e.detail.value
+    });
+    this.loadtweetsList(true);
+  },
+
+  onReTry() {
+    this.loadtweetsList();
+  },
+
+  async loadtweetsList(fresh = false) {
+    if (fresh) {
+      wx.pageScrollTo({
+        scrollTop: 0,
+      });
+    }
+    this.setData({ tweetsListLoadStatus: 1 });
+    let pageIndex = this.tweetListPagination.index + 1;
+    if (fresh) {
+      this.tweetListPagination.index = 0;
+      pageIndex = 0;
+    }
+
+    try {
+      const nextList = await fetchTweetsList(pageIndex, this.data.nowkey, this.data.match);
+      //console.log(nextList);
+      if (nextList === null) {
+        this.setData({ tweetsListLoadStatus: 2 });
+      }
+      this.setData({
+        tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),
+        tweetsListLoadStatus: 0,
+      });
+      this.tweetListPagination.index = pageIndex;
+    } catch (err) {
+      //console.log(err);
+      this.setData({ tweetsListLoadStatus: 3 });
+    }
+  },
+});

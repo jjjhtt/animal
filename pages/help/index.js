@@ -23,11 +23,11 @@ Page({
   },
 
   onShow() {
-    
+    this.init();
   },
 
   onLoad() {
-    this.init();
+    
   },
 
   onReachBottom() {
@@ -60,13 +60,6 @@ Page({
     this.loadtweetsList(true);
   },
 
-  blurHandle(e) {
-    this.setData({
-      match: e.detail.value
-    });
-    this.loadtweetsList(true);
-  },
-
   submitHandle(e) {
     this.setData({
       match: e.detail.value
@@ -87,11 +80,11 @@ Page({
     this.setData({ tweetsListLoadStatus: 1 });
     let pageIndex = this.tweetListPagination.index + 1;
     if (fresh) {
-      pageIndex = 1;
+      pageIndex = 0;
     }
 
     try {
-      const nextList = await fetchTweetsList(pageIndex, this.data.nowkey, this.data.match);
+      const nextList = await fetchTweetsList(pageIndex, this.data.match, this.data.nowkey);
       //console.log(nextList);
       this.setData({
         tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),

@@ -12,11 +12,14 @@ Page({
     },
   },
   onLoad() {
+    
+  },
+
+  onShow() {
     this.init();
   },
+
   init() {
-    /*wx.setStorageSync('userId', 3);
-    wx.setStorageSync('token', 'Animal-eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIzIiwic3ViIjoidXNlciIsImlhdCI6MTY4MTcyMTc1NywiaXNzIjoiYW5pbWFsbWFuYWdlbWVudCIsImF1dGhvcml0aWVzIjoiW3tcImF1dGhvcml0eVwiOlwiUk9MRV9VU0VSXCJ9XSIsImV4cCI6MTY4MTgwODE1N30.6diO2rOPrJHj9NtWelE5jzAevjn9QEZN2kUG2bdE3ChX_icJ-b_wdT1fegJb7kEjpkjkZjPlU2ybqW8X2Gj2Tw');*/
     this.fetchData();
   },
   fetchData() {

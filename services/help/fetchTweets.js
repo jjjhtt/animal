@@ -1,16 +1,16 @@
-export function fetchTweetsList(pageIndex = 1, key = 0, match = '') {
-  /*if (true) {
-    return mockFetchtweetsList(pageIndex, pageSize);
-  }*/
+import Toast from 'tdesign-miniprogram/toast/index';
+import {config} from '../../config/index'
+
+export function fetchTweetsList(pageIndex = 0, match = '', key) {
   return new Promise((resolve) => {
     wx.request({
-      url: 'https://www.fastmock.site/mock/0e2693d40ac080d7e0bcd1f4533b4046/animal/help/get',
+      url: config.domain + '/user/help/get',
       method: 'POST',
       data: {
-        "userId": wx.getStorageSync('userId'),
-        "page": pageIndex,
-        "type": key,
-        "match": match
+        "pageNum": 10,
+        "page": 0,
+        "context": match,
+        "type": key
       },
       header: {
         'content-type': 'application/json', // 默认值
@@ -18,6 +18,7 @@ export function fetchTweetsList(pageIndex = 1, key = 0, match = '') {
       },
       success(res) {
         if (res.data.code === 0) {
+          console.log(res);
           resolve(res.data.body.tweets);
         } else {
           Toast({

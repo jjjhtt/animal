@@ -1,12 +1,15 @@
-export function getCategoryList(category, match = '') {
+import {config} from '../../config/index'
+import Toast from 'tdesign-miniprogram/toast/index';
+export function fetchTweetsList(pageIndex = 0, key = 0, match = '') {
   return new Promise((resolve) => {
     wx.request({
-      url: 'https://www.fastmock.site/mock/0e2693d40ac080d7e0bcd1f4533b4046/animal/category/get',
+      url: config.domain + '/user/starTweet',
       method: 'POST',
       data: {
         "userId": wx.getStorageSync('userId'),
-        "category": category,
-        "match": match
+        "page": pageIndex,
+        "type": key,
+        "context": match
       },
       header: {
         'content-type': 'application/json', // 默认值
@@ -14,8 +17,10 @@ export function getCategoryList(category, match = '') {
       },
       success(res) {
         if (res.data.code === 0) {
-          resolve(res.data.body.categories);
+          console.log(res);
+          resolve(res.data.body.tweets);
         } else {
+          console.log(res);
           Toast({
             context: this,
             selector: '#t-toast',

@@ -14,6 +14,5 @@
 <view class="wrap">
   <document
     category="{{list}}"
-    bind:changeCategory="onChange"
   />
 </view>

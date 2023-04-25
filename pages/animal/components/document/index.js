@@ -17,6 +17,11 @@ Component({
     document: {},    
   },
   methods: {
-
+    onClick(e) {
+      let id = e.currentTarget.dataset.item.id;
+      wx.navigateTo({
+        url: `/pages/realanimal/realanimal?id=${id}`,
+      });
+    }
   },
 });

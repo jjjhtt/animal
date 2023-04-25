@@ -1,0 +1,85 @@
+<!--pages/send/send.wxml-->
+<view class="content" style="margin-top:{{navH*4+40}}rpx">
+  <!--pages/writer/writer.wxml-->
+  <view class="card">
+    <view>
+      <text class="head_input">标题</text>
+      <t-textarea
+        t-class="head"
+        placeholder="设置标题"
+        maxlength="20"
+        disableDefaultPadding="{{true}}"
+        indicator
+      />
+      <text class="text-input__label">正文内容</text>
+      <t-textarea
+        t-class="text-input"
+        placeholder="请输入正文"
+        maxlength="1000"
+        disableDefaultPadding="{{true}}"
+        indicator
+        bindinput="bindContent" 
+        autosize
+      />
+    </view>
+    <view style="height: 30rpx;">
+    </view>
+    <text class="head_input">选择图片</text>
+    <!-- image list -->
+    <view class='image-list' wx:if="{{images.length >= 0}}">
+      <view class="thumb box" wx:for="{{images}}" wx:for-item="item" wx:key="item">
+        <view class='del'>
+          <t-icon name="close" bindtap='clickDelete' data-idx="{{index}}"></t-icon>
+        </view>
+        <image src="{{item}}" 
+          mode='aspectFill' 
+          data-idx="{{index}}"
+          bindtap='clickImage' 
+          >
+        </image>
+      </view>
+      <view class="add" wx:if='{{images.length < 9}}' >
+        <image bindtap='chooseImage' src="../../../image/plus.png" ></image>
+      </view>
+    </view>
+
+    <!-- 标签 -->
+
+    <view style="height: 30rpx;">
+    </view>
+
+    <view class='btn_view'>
+        <text>标签：</text>
+        <view class="card" wx:for="{{obtnArry}}" >
+          <view class='delete'>
+          <t-icon name="close" bindtap='clickDeleteLabel' data-idx="{{index}}"></t-icon>
+          </view>
+          <view class='label_view' data-value="{{item.name}}" data-index="{{index}}">
+            {{item.name}}
+          </view>
+        </view>
+        <t-popup visible="{{ show }}" bind:close="onClose" close-on-overlay-click="{{true}}" show-overlay="false"
+        placement="center">
+          <view class="input_view">
+            <text>请输入标签：</text>
+            <input class="input" placeholder="最多输入5个字" maxlength="5" bindinput="bindValue"></input>
+                <t-button style="width: 170rpx;line-height: 30rpx;margin-top: 100rpx;float: left;" catchtap="onInputValue" class="determine_button" 
+                disabled="{{!inputValue}}">确定</t-button>
+                <t-button style="width: 170rpx;line-height: 30rpx;margin-top: 100rpx;float: right;" catchtap="onCancel" class="determine_button1">取消</t-button>
+          </view>
+        </t-popup>
+        <image bindtap='addinput' class="img" src="../../../image/添加1.png" ></image>
+  </view>
+  </view>
+
+  <view style="height: 100rpx;">
+  </view>
+
+  <button style='margin-top: 28rpx; background-color: {{theme.color}};' 
+    class='btn-submit' 
+    hover-class='btn-submit-hover'
+    bindtap='writerPublish'>发帖</button>
+
+  <view style="height: 100rpx;">
+  </view>
+</view>

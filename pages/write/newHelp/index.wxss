@@ -1,0 +1,235 @@
+/* pages/send/send.wxss */
+.text-input {
+  width: 100%;
+  min-height: 400rpx;
+  max-height: 700rpx;
+  z-index: 998;
+ }
+ 
+ /* show delete button at right|top corner */
+ .box {
+   box-sizing: border-box;
+   position: relative;
+ }
+ 
+ .box .del {
+   position:absolute;
+   top: -21rpx;
+   right: -21rpx;
+   width: 42rpx;
+   height: 42rpx;
+   border-radius: 50%;
+   background: rgba(0, 0, 0, .3);
+   z-index: 1000;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+ 
+ .box .del image {
+   width: 32rpx;
+   height: 32rpx;
+ }
+ 
+ .bar {
+   display: flex;
+   align-items: center;
+ }
+ 
+ .bar .item {
+   margin: 0px 16rpx;
+   padding: 0px;
+ }
+ .bar .item:hover {
+   background: #eee
+ }
+ 
+ .bar image {
+   vertical-align: middle;
+   width: 56rpx;
+   height: 56rpx;
+   padding: 8rpx 8rpx;
+ }
+ 
+ /* button */
+ .btn-submit {
+   width: 96%;
+   color: #fff;
+ }
+ 
+ .btn-submit-hover {
+   width: 96%;
+   color: #fff;
+   opacity: .6;
+ }
+ 
+ .btn-cancel {
+   width: 96%;
+   background-color: #f8f8f8;
+   color:gray;
+ }
+ 
+ .btn-cancel-hover {
+   width: 96%;
+   background-color: lightgray;
+   color:gray;
+ }
+ 
+ /* image content */
+ .image-list {
+   display: flex;
+   flex-wrap: wrap;
+ }
+ 
+ .thumb {
+   width: 28vw;
+   height: 28vw;
+   margin: 6rpx;
+ }
+ 
+ .thumb image {
+   width: 100%;
+   height: 100%;
+ }
+ 
+ .add {
+   background: #f8f8f8;
+   width: 28vw;
+   height: 28vw;
+   margin: 6rpx;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ .add image {
+   width: 40%;
+   height: 40%;
+ }
+ 
+ /* tag */
+ .tag-title {
+   font-size: 32rpx;
+   margin: 6rpx 0;
+ }
+ 
+ .tag-list {
+   margin-left: -14rpx; 
+   display: flex;
+   flex-wrap: wrap;
+ }
+ 
+ .tag {
+   border: 1px solid lightgray;
+   border-radius: 2px;
+   font-size: 32rpx;
+   color: gray;
+   padding: 6rpx 16rpx;
+   margin: 6rpx 16rpx;
+   word-break: keep-all;
+ }
+ 
+ .arrow_right {
+   margin-left: auto;
+   width: 48rpx; 
+   height: 48rpx;
+   min-width: 48rpx;
+   max-width: 48rpx;
+ }
+
+ .head {
+  height: 150rpx;
+}
+
+.determine_button{
+  background: #1296db;
+  color: white;
+  border-radius: 10rpx;
+  height: 60rpx;
+  line-height:60rpx;
+  position: fixed;
+  bottom: 5rpx;
+  left: 8rpx;
+  width: 46%;
+}
+.determine_button1{
+  background: #1296db;
+  color: white;
+  border-radius: 10rpx;
+  height: 60rpx;
+  line-height:60rpx;
+  position: fixed;
+  bottom: 5rpx;
+  right: 8rpx;
+  width: 46%;
+}
+.label_view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rpx 10rpx;
+  width: 140rpx;
+  height: 50rpx;
+  border: 1rpx solid rgb(114, 107, 107);
+  font-size: 26rpx;
+  border-radius: 12rpx;
+  color: rgb(114, 107, 107);
+  margin-right: 5rpx;
+  margin-top: 15rpx;
+}
+.btn_view{
+  margin: 10rpx 15rpx;
+  font-size: 26rpx;
+  color: rgb(99, 95, 95);
+  width: 700rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.btn_view text{
+  display: flex;
+  align-items: center;
+}
+.active{
+  background: #ff784a;
+  border: 1rpx solid rgb(255, 253, 253);
+}
+.btn_view .img{
+  margin-top: -7rpx;
+  width: 65rpx;
+  height: 65rpx;
+}
+.input_view{
+  font-size: 28rpx;
+  width: 400rpx;
+  height: 300rpx;
+  margin: 20rpx 20rpx;
+}
+.input{
+  margin-top: 20rpx;
+  margin-left: 10rpx;
+  width: 380rpx;
+  border: 1px #aaa solid
+}
+
+.card {
+  box-sizing: border-box;
+  position: relative;
+  margin-right: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.card .delete {
+  position:absolute;
+  top: -6rpx;
+  right: -14rpx;
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

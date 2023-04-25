@@ -1,4 +1,4 @@
-import { getCategoryList } from '../../services/tweet/fetchCategoryList';
+import { getCategoryList } from '../../services/document/fetchCategoryList';
 Page({
   data: {
     /*tabList: [{
@@ -15,6 +15,7 @@ Page({
     }],*/
     list: [],
     nowkey: 0,
+    pageIndex: 0,
     match: '',
   },
   async init() {
@@ -46,9 +47,7 @@ Page({
     
   },
   onChange() {
-    wx.navigateTo({
-      url: '/pages/goods/list/index',
-    });
+    
   },
   onLoad() {
     this.init();

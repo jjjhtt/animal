@@ -3,8 +3,8 @@
   bind:tap="clickHandle"
   data-tweets="{{ tweets }}"
 >
-	<view class="tweets-card__main">
-		<view class="tweets-card__thumb" bind:tap="clickThumbHandle">
+	<view class="tweets-card__main" bindtap="clickHandle">
+		<view class="tweets-card__thumb">
 			<t-image
 			  wx:if="{{ !!tweets.image }}"
 			  t-class="tweets-card__img"
@@ -36,7 +36,7 @@
         >{{tweets.likes}}</span>
 				<t-icon
 				  class="thumb"
-				  name="thumb-up"
+				  name="heart"
 				  size="48rpx"
 				  color="#1296db"
 				/>

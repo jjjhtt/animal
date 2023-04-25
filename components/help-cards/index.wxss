@@ -39,19 +39,19 @@
 .help-cards-normal-item-container-item-title {
   font-size: 35rpx;
   color: #666666;
-  margin-top: 20rpx;
+  margin-top: 10rpx;
+  line-height: 30rpx;
 }
 
 .comment-container {
   display: flex;
   flex-direction:row-reverse;
   align-content: flex-start;
-  height: 25rpx;
-  padding:  10rpx 10rpx 10rpx 10rpx
+  padding: 50rpx 10rpx 10rpx 10rpx;
 }
 
 .comment {
-  margin-right: 0;
+  margin-right: 10rpx;
 }
 
 .commentnum {

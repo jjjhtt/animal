@@ -40,8 +40,8 @@ Page({
   },
 
   init() {
-    wx.setStorageSync('userId', 3);
-    wx.setStorageSync('token', 'Animal-eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIzIiwic3ViIjoidXNlciIsImlhdCI6MTY4MjI0OTU3MywiaXNzIjoiYW5pbWFsbWFuYWdlbWVudCIsImF1dGhvcml0aWVzIjoiW3tcImF1dGhvcml0eVwiOlwiUk9MRV9VU0VSXCJ9XSIsImV4cCI6MTY4MjMzNTk3M30.GR7Wodsm2IEKN4KOZIL91Fb0w4ZtiMBWkhUGg1dFDg5r_KDJFcXtMwDq8Cuuf4n-kDg-zyqUsA9XYZsngklmpw');
+    /*wx.setStorageSync('userId', 3);
+    wx.setStorageSync('token', 'Animal-eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIzIiwic3ViIjoidXNlciIsImlhdCI6MTY4MjQzMjc3MSwiaXNzIjoiYW5pbWFsbWFuYWdlbWVudCIsImF1dGhvcml0aWVzIjoiW3tcImF1dGhvcml0eVwiOlwiUk9MRV9VU0VSXCJ9XSIsImV4cCI6MTY4MjUxOTE3MX0.WrCRC6qh1xxFLRq9ISN9iB3U2Ud7h7GuSrOR2HnMqTyiW6ObpaURxzZNICzNkixI5lSXDUSLw-D3s4hXN95e4Q');*/
     this.loadHomePage();
   },
 

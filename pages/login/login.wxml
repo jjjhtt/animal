@@ -1,0 +1,22 @@
+<view class="toptip toptip--{{type}}  {{show ? 'toptip--show' : ''}} ">{{ errormessage }}</view>
+<t-message id="t-message" />
+<t-toast id="t-toast" />
+<view style="background-image: url(../../images/bg1.png);background-size: 100% 100%;height:502px;margin-top: 18px;">    
+    <view class="login_title">校园动物登录</view>
+    <view class="login_inputbox">
+        <image src="../../images/login1.png" mode="widthFix" style="width: 48rpx;" />
+        <input class="login_einput" placeholder="请输入用户名" bindinput="getemail" value="{{email}}" />
+    </view>
+    <view class="login_inputbox">
+        <image src="../../images/password.jpeg" mode="widthFix" style="width: 48rpx;" />
+        <input class="login_einput" placeholder="请输入密码" password="{{!dispassword}}" bindinput="getpw" value="{{pw}}" />
+        <image src="../../images/eye.png" mode="widthFix" style="width: 48rpx;padding-left: 20px;" bindtap="changepw" />
+    </view>
+    <view class="login_rebox">
+        <view class="login_re" bindtap="gopw">忘记密码</view>
+        <view class="login_re" bindtap="gore">注册</view>
+    </view>
+    <view class="login_button">
+        <button class="login_button1" bindtap="loginjudge">登录</button>
+    </view>
+</view>

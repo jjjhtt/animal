@@ -8,7 +8,7 @@
         class="user-center-card__header__avatar"
         image="{{userInfo.avatarUrl || defaultAvatarUrl}}"
       />
-      <view class="user-center-card__header__name">{{userInfo.nickName || '微信用户'}}</view>
+      <view class="user-center-card__header__name">{{userInfo.username || '微信用户'}}</view>
     </view>
     <view class="user-center-card__bio">
       {{userInfo.bio || '你还没有个性签名哦'}}

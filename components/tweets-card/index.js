@@ -30,7 +30,9 @@ Component({
 
   methods: {
     clickHandle() {
-      this.triggerEvent('click', { tweets: this.data.tweets });
+      wx.navigateTo({
+        url: `/pages/realpage/realpage?tweetId=${this.data.tweets.tweetId}`,
+      });
     },
 
     init() {

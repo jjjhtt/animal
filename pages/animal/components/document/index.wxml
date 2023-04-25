@@ -7,7 +7,7 @@
 						  wx:for-index="subIndex"
 						  wx:key="subIndex"
 						  wx:for-item="subItem"
-						  bindtap="changCategory"
+						  bindtap="onClick"
 						  data-item="{{subItem}}"
 						>
 							<t-image src="{{subItem.image}}" t-class="image" />

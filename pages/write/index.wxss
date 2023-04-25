@@ -1,10 +1,14 @@
 .button1 {
-  margin: 30% auto;
+  margin: 25% auto;
 }
 .button2 {
-  margin: 30% auto;
+  margin: 25% auto;
 }
 
 .button3 {
-  margin: 30% auto;
+  margin: 25% auto;
+}
+
+.button4 {
+  margin: 25% auto;
 }

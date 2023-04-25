@@ -1,0 +1,80 @@
+<view>
+  <!--顶部-->
+  <view class="helpHeader">
+  <view class="helpHeaderPhoto">
+  <image src="../../images/li.jpg" mode="widthFix" style="width: 80rpx;border-radius: 45%;" />
+  </view>
+  <view class="helpHeaderDetail">
+    <view>{{username}}</view>
+    <view>{{data}}</view>
+  </view>
+  <view class="helpHeaderState">
+  <view wx:if="{{!sloveState}}"><t-icon name="close-circle-filled" size="48rpx"/>未解决</view>
+  <view wx:if="{{sloveState}}"><t-icon name="check-circle-filled" size="48rpx"/>已解决</view>
+  </view>
+  </view>
+  <!--问题描述-->
+  <view class="qcontent">
+    <text user-select>{{qcontent}}</text>
+  </view>
+  <!--优质解答-->
+  <view wx:if="bestAns" class="bestAnsBox">
+    <view class="bsetAnsBox1">优质解答</view>
+    <view class="helpCommentBox">
+      <view class="commentBoxTop">
+        <view class="commentImgBox">
+          <image src="../../images/li.jpg" mode="widthFix" style="width: 58rpx;border-radius: 45%;" />
+        </view>
+        <view class="commentDetailBox">
+          <view>{{bestname}}</view>
+          <view class="commentText"> {{besttext}} </view>
+          <view class="commentData">{{bestdata}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--回复-->
+  <view class="replyBox">
+    <view class="allReplyBox"> 共{{replys}}条回复 </view>
+    <view>
+      <block wx:for="{{replylist}}" wx:key="index">
+        <view class="helpCommentBox">
+          <view class="commentBoxTop">
+            <view class="commentImgBox">
+              <image src="../../images/li.jpg" mode="widthFix" style="width: 58rpx;border-radius: 45%;" />
+            </view>
+            <view class="commentDetailBox">
+              <view>{{item.name}}</view>
+              <view class="commentText"> {{item.content}} </view>
+              <view>
+                <view class="commentData">{{item.time}}</view>
+                <view class="likef">{{item.likes}}</view>
+                <view class="likef" style="padding-top: 2px;"><t-icon name="thumb-up" size="35rpx"/></view>
+              </view>
+              <view class="commentline"></view>
+            </view>
+      </view>
+      </view>
+      </block>
+    </view>
+  </view>
+  <!--底部-->
+  <view class="realpage_footer">
+    <view class="bottom-input" style="padding-bottom: {{inputBottom}}px;">
+        <textarea :adjust-position="false" 
+        cursor-spacing="30" 
+        v-model="inputText"
+        maxlength="140" 
+        bindinput="onInputValueChange"
+        placeholder-class="input-placeholder" 
+        placeholder="说点什么呢~"
+        bindfocus="inputBindFocus" 
+        bindblur="inputBindBlur" 
+        show-confirm-bar="{{false}}" 
+        style="width: 90%;height: 100%;flex: 1;"
+        />
+    </view>
+  </view>
+  <load-more list-is-empty="{{!replylist.length}}" status="{{replylistLoadStatus}}" bind:retry="onReTry" />
+</view>
+<t-toast id="t-toast" />

@@ -1,66 +1,88 @@
-// pages/usercenter/message/index.js
+import { fetchTweetsList } from '../../../services/usercenter/fetchMyHelp';
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    tweetsList: [],
+    tweetsListLoadStatus: 0,
+    pageLoading: false,
+    match: '',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  tweetListPagination: {
+    index: 0,
+    num: 8,
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
-
+    this.init();
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  onLoad() {
+    
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom() {
-
+    if (this.data.tweetsListLoadStatus === 0) {
+      this.loadtweetsList();
+    }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
+  onPullDownRefresh() {
+    this.init();
+  },
 
-  }
-})
+  init() {
+    this.loadHelpPage();
+  },
+
+  loadHelpPage() {
+    wx.stopPullDownRefresh();
+
+    this.setData({
+      pageLoading: false,
+    });
+    this.loadtweetsList(true);
+  },
+
+  submitHandle(e) {
+    this.setData({
+      match: e.detail.value
+    });
+    this.loadtweetsList(true);
+  },
+
+  onReTry() {
+    this.loadtweetsList();
+  },
+
+  async loadtweetsList(fresh = false) {
+    if (fresh) {
+      wx.pageScrollTo({
+        scrollTop: 0,
+      });
+    }
+    this.setData({ tweetsListLoadStatus: 1 });
+    let pageIndex = this.tweetListPagination.index + 1;
+    if (fresh) {
+      pageIndex = 0;
+    }
+
+    try {
+      const nextList = await fetchTweetsList(pageIndex, this.data.match);
+      //console.log(nextList);
+      this.setData({
+        tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),
+        tweetsListLoadStatus: 0,
+      });
+
+      this.tweetListPagination.index = pageIndex;
+      if (JSON.stringify(nextList) == '{}') {
+        this.setData({ tweetsListLoadStatus: 2 });
+      }
+      //console.log(this.data.tweetsList);
+    } catch (err) {
+      console.log(err);
+      this.setData({ tweetsListLoadStatus: 3 });
+    }
+  },
+});

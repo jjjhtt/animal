@@ -1,9 +1,6 @@
 import {config} from '../../config/index'
 import Toast from 'tdesign-miniprogram/toast/index';
-export function fetchTweetsList(pageIndex = 1, key = 0, match = '') {
-  /*if (true) {
-    return mockFetchtweetsList(pageIndex, pageSize);
-  }*/
+export function fetchTweetsList(pageIndex = 0, key = 0, match = '') {
   return new Promise((resolve) => {
     wx.request({
       url: config.domain + '/tweet/get',
@@ -11,7 +8,7 @@ export function fetchTweetsList(pageIndex = 1, key = 0, match = '') {
       data: {
         "userId": wx.getStorageSync('userId'),
         "commentpage": pageIndex,
-        "type": '时间',//key,
+        "type": key,
         "match": match
       },
       header: {

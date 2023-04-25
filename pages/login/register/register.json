@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "注册",
+  "component": true,
+  "usingComponents": {
+    "t-toast": "tdesign-miniprogram/toast/toast"
+  }
+}

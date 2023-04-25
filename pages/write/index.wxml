@@ -1,11 +1,19 @@
 <view class="button1">
-  <t-button theme="default" icon= "edit" size="large" block>创作帖子</t-button>
+  <t-button theme="default" icon= "edit" size="large" block
+  bindtap="onClickTweet">创作帖子</t-button>
 </view>
 
 <view class="button2">
-  <t-button theme="danger" icon= "help-circle" size="large" block>发起求助</t-button>
+  <t-button theme="danger" icon= "help-circle" size="large" block
+  bindtap="onClickHelp">发起求助</t-button>
 </view>
 
 <view class="button3">
-  <t-button theme="primary" icon= "photo" size="large" block>动物识别</t-button>
+  <t-button theme="primary" icon= "photo" size="large" block
+  bindtap="onClickPhoto">动物识别</t-button>
+</view>
+
+<view class="button4">
+  <t-button theme="light" icon= "location" size="large" block
+  bindtap="onClickTrack">上传轨迹</t-button>
 </view>

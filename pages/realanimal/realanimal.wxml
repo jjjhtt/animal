@@ -1,0 +1,19 @@
+<view>
+  <view class="dots">{{current+1}}/{{imgUrls.length}}</view>
+  <swiper bindchange="monitorCurrent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" current="{{current}}">
+	<block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item>
+          <image style="width: 100%;" mode="widthFix" src="{{item}}"/>
+        </swiper-item>
+	</block>
+  </swiper>
+  <view class="realpagetext" style="border-bottom:0px">
+        <text user-select style="font-weight: bold;font-size: large;">{{content_title}}</text>
+        <text user-select>{{contenttext}}</text>
+  </view>
+  <view class="buttonBox">
+    <view catchtap="handleAdopt" class="account-btn" hover-class="hover-btn"> 我要领养 </view>
+    <view catchtap="goTrack" class="account-btn" hover-class="hover-btn"> 动物轨迹 </view>
+  </view>
+</view>
+<t-toast id="t-toast" />

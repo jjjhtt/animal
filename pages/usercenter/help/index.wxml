@@ -1,2 +1,26 @@
-<!--pages/usercenter/message/index.wxml-->
-<text>pages/usercenter/help/index.wxml</text>
+<view style="text-align: center; color: #b9b9b9" wx:if="{{pageLoading}}">
+  <t-loading theme="circular" size="40rpx" text="加载中..." inherit-color />
+</view>
+<view class="help-page-header">
+  <view class="search" >
+    <t-search
+      t-class-input="t-search__input"
+      t-class-input-container="t-search__input-container"
+      placeholder="请输入关键词"
+      value="{{value}}"
+      leftIcon=""
+      bind:blur="blurHandle"
+      bind:submit="submitHandle"
+    >
+      <t-icon slot="left-icon"  name="search" size="40rpx" color="#bbb" />
+    </t-search>
+  </view>
+</view>
+<view class="help-page-container">
+  <help-cards
+    wr-class="tweets-list-container"
+    data="{{tweetsList}}"
+  />
+  <load-more list-is-empty="{{!tweetsList.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
+  <t-toast id="t-toast" />
+</view>

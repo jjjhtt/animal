@@ -1,4 +1,8 @@
 Component({
+  options: {
+    addGlobalClass: true,
+  },
+
   externalClasses: ['custom-class'],
 
   properties: {
@@ -18,6 +22,11 @@ Component({
     tweets: {},    
   },
   methods: {
-    
+    onClick(e) {
+      let id = e.currentTarget.dataset.item.id;
+      wx.navigateTo({
+        url: `/pages/helppage/helppage?id=${id}`,
+      });
+    }
   },
 });

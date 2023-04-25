@@ -33,7 +33,7 @@ const menuData = [
 const getDefaultData = () => ({
   userInfo: {
     avatarUrl: '',
-    nickName: '未登录',
+    username: '未登录',
     number: 20000000,
     phoneNumber: '',
   },
@@ -63,9 +63,9 @@ Page({
   fetUseriInfoHandle() {
     fetchUserCenter().then(
       res => {
-        // eslint-disable-next-line no-unused-expressions
         menuData?.[0].forEach((v) => {
         });
+        console.log(res);
         this.setData({
           userInfo: res,
           menuData,
