@@ -5,11 +5,12 @@ import {config} from '../../../config/index'
 Page({
   data: {
     personInfo: {
+      usrename: '',
       avatarUrl: '',
-      nickName: '',
       bio: '',
-      phoneNumber: '',
+      phone: '',
     },
+    domain: 'https://anith2.2022martu1.cn'
   },
   onLoad() {
     
@@ -24,23 +25,21 @@ Page({
   },
   fetchData() {
     fetchUserCenter().then(res => {
-      console.log(res);
       this.setData({
         personInfo: res,
-        'personInfo.phoneNumber': res.phoneNumber.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'),
       });
     });
   },
   onClickCell({ currentTarget }) {
     const { dataset } = currentTarget;
-    const { nickName } = this.data.personInfo;
+    const { username } = this.data.personInfo;
     const { bio } = this.data.personInfo;
-    const { phoneNumber } = this.data.personInfo;
+    const { phone } = this.data.personInfo;
 
     switch (dataset.type) {
       case 'name':
         wx.navigateTo({
-          url: `/pages/usercenter/personalInfo/name_edit/index?name=${nickName}`,
+          url: `/pages/usercenter/personalInfo/name_edit/index?name=${username}`,
         });
         break;
       case 'bio':
@@ -50,7 +49,7 @@ Page({
         break;
       case 'phoneNumber':
         wx.navigateTo({
-          url: `/pages/usercenter/personalInfo/phone_edit/index?phoneNumber=${phoneNumber}`,
+          url: `/pages/usercenter/personalInfo/phone_edit/index?phoneNumber=${phone}`,
         });
         break;
       case 'password':
@@ -62,6 +61,7 @@ Page({
         this.toModifyAvatar();
         break;
       default: {
+        console.log(this.data.personInfo);
         break;
       }
     }
@@ -77,17 +77,59 @@ Page({
           sizeType: ['compressed'],
           sourceType: ['album', 'camera'],
           success: (res) => {
+            console.log(res);
             const path = res.tempFiles[0].tempFilePath;
             wx.uploadFile({
-              url: config.domain + '/upload', 
-              filePath: tempFilePaths[0],
+              url: config.domain + '/image/upload', 
+              filePath: path,
+              name: "image",
               formData: {
-                "image": res.tempFiles[0],
                 "type": "user"
               },
+              header: {
+                'content-type': 'multipart/form-data',
+                'authorization': wx.getStorageSync('token')
+              },
               success (res){
-                const data = res.data
-                resolve(path);
+                console.log(res.data);
+                let p = JSON.parse(res.data);
+                console.log(p.body.imagePath);
+                wx.request({
+                  url: config.domain + '/user/modify',
+                  data: {
+                      "userId": wx.getStorageSync('userId'),
+                      "username": "",
+                      "password": "",
+                      "passwordConfirm": "",
+                      "phone": "",
+                      "bio": "",
+                      "avatar": p.body.imagePath
+                  },
+                  method: 'POST',
+                  header: {
+                    'content-type': 'application/json', // 默认值
+                    'authorization': wx.getStorageSync('token')
+                  },
+                  success(res) {
+                    //console.log(res);
+                    if (res.data.code === 0) {
+                      Toast({
+                        context: this,
+                        selector: '#t-toast',
+                        message: "修改成功",
+                        theme: 'success',
+                      });
+                    } else {
+                      console.log(res.data.message);
+                      Toast({
+                        context: this,
+                        message: res.data.message,
+                        theme: 'error',
+                      });
+                    }
+                  },
+                });
+                resolve(res);
               },
               fail: (err) => reject(err),
             })
@@ -95,13 +137,9 @@ Page({
           fail: (err) => reject(err),
         });
       });
-      Toast({
-        context: this,
-        selector: '#t-toast',
-        message: `已选择图片-${tempFilePath}`,
-        theme: 'success',
-      });
+      this.init();
     } catch (error) {
+      console.log(error);
       Toast({
         context: this,
         selector: '#t-toast',

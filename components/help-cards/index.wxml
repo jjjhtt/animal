@@ -14,15 +14,25 @@
 								{{subItem.title}}
 							</view>
               <view class="comment-container">
-                <view
-                  class="commentnum"
-                >{{subItem.comments}}</view>
+                <view class="name">
+                  <text></text>
+                </view>
+                <view class="icons">
                 <t-icon
+                  wx:if="{{subItem.solved}}"
                   class="comment"
-                  name="chat"
-                  size="48rpx"
-                  color="#1296db"
+                  name="check-circle"
+                  size="60rpx"
+                  color="green"
                 />
+                <t-icon
+                  wx:if="{{!subItem.solved}}"
+                  class="comment"
+                  name="error-circle"
+                  size="60rpx"
+                  color="red"
+                />
+                </view>
               </view>
 						</view>
 					</view>

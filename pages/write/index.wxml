@@ -17,3 +17,5 @@
   <t-button theme="light" icon= "location" size="large" block
   bindtap="onClickTrack">上传轨迹</t-button>
 </view>
+
+<t-toast id="t-toast" />

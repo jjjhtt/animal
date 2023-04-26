@@ -8,8 +8,8 @@ export function getCategoryList(pageIndex = 0, match = '') {
       method: 'POST',
       data: {
         "pageNum": 24,
-        "page": pageIndex,
-        "match": match
+        "page": 0,
+        "context": ''
       },
       header: {
         'content-type': 'application/json', // 默认值

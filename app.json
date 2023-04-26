@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/home/home",
+    "pages/login/login",
     "pages/usercenter/index",
     "pages/usercenter/personalInfo/index",
     "pages/usercenter/help/index",
@@ -17,15 +17,14 @@
     "pages/usercenter/personalInfo/password_edit/index",
     "pages/write/newTweet/index",
     "pages/write/newHelp/index",
-
-  
     "pages/login/register/register",
     "pages/login/forgetpw/forgetpw",
     "pages/realpage/realpage",
     "pages/realanimal/realanimal",
     "pages/realanimal/track/track",
     "pages/helppage/helppage",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/write/classify/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

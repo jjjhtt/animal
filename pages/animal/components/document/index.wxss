@@ -43,13 +43,7 @@
 .document-normal-item-container-item-title {
   justify-content: center;
   width: 144rpx;
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: #666666;
   margin-top: 20rpx;
-  display: -webkit-box;
-  white-space: nowrap;
-  text-overflow: ellipsis; 
-  overflow: hidden; 
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
