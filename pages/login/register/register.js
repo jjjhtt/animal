@@ -34,8 +34,8 @@ Page({
       self = this
       console.log(this.data.email)
         wx.request({
-          //url:'http://3kcsyh.natappfree.cc/user/registerRequest',
-          url: 'https://anith2.2022martu1.cn/user/registerRequest',
+          url:'http://h7gfkf.natappfree.cc/user/registerRequest',
+          //url: 'https://anith2.2022martu1.cn/user/registerRequest',
           data: { email: this.data.email },
           method: 'POST',
           success: function(res) {
