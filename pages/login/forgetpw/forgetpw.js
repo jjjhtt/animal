@@ -1,4 +1,5 @@
 // pages/login/forgetpw/forgetpw.js
+import {config} from '../../../config/index'
 Page({
   data: {
     email:'',
@@ -64,7 +65,7 @@ Page({
   requestma: function() {
     console.log(this.data.email)
       wx.request({
-        url: 'http://w3ty9j.natappfree.cc/user/registerRequest',
+        url: config.domain + '/user/registerRequest',
         data: { email: this.data.email },
         method: 'POST',
         success: function(res) {

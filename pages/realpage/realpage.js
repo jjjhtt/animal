@@ -4,7 +4,7 @@ import {config} from '../../config/index'
 Page({
   data: {
       imgUrls: '',
-      tweetid: 1,
+      tweetid: 0,
       autoplay: true,//自动切换
       indicatorDots: false,//图片指示点
       interval: 4500,//切换间隔
@@ -30,8 +30,10 @@ Page({
     index: 0,
     num: 8,
   },
-  onLoad: function() {
+  onLoad: function(options) {
     wx.showNavigationBarLoading()
+    this.setData({tweetid: options.tweetId})
+    console.log(options)
     this.getdata()
   },
   onReachBottom() {

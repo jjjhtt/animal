@@ -8,18 +8,27 @@
     <view>{{username}}</view>
     <view>{{data}}</view>
   </view>
-  <view class="helpHeaderState">
-  <view wx:if="{{!sloveState}}"><t-icon name="close-circle-filled" size="48rpx"/>未解决</view>
-  <view wx:if="{{sloveState}}"><t-icon name="check-circle-filled" size="48rpx"/>已解决</view>
+  <view class="helpHeaderState" bindtap="changeState">
+  <view wx:if="{{!solveState}}"><t-icon name="close-circle-filled" color="red" size="48rpx"/>未解决</view>
+  <view wx:if="{{solveState}}"><t-icon name="check-circle-filled" color="green" size="48rpx"/>已解决</view>
   </view>
   </view>
+  <view class="dots" style="top: 70px;">{{current+1}}/{{imgUrls.length}}</view>
+  <swiper bindchange="monitorCurrent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" current="{{current}}">
+	<block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item>
+          <image style="width: 100%;" mode="widthFix" src="{{item}}"/>
+        </swiper-item>
+	</block>
+  </swiper>
   <!--问题描述-->
   <view class="qcontent">
+    <view style="font-size: x-large;margin-bottom: 10px;"><text user-select> {{qtitle}} </text></view>
     <text user-select>{{qcontent}}</text>
   </view>
-  <!--优质解答-->
+  <!--官方回复-->
   <view wx:if="bestAns" class="bestAnsBox">
-    <view class="bsetAnsBox1">优质解答</view>
+    <view class="bsetAnsBox1">官方回复</view>
     <view class="helpCommentBox">
       <view class="commentBoxTop">
         <view class="commentImgBox">
@@ -35,7 +44,7 @@
   </view>
   <!--回复-->
   <view class="replyBox">
-    <view class="allReplyBox"> 共{{replys}}条回复 </view>
+    <view class="allReplyBox"> 共{{commentnum}}条回复 </view>
     <view>
       <block wx:for="{{replylist}}" wx:key="index">
         <view class="helpCommentBox">
@@ -44,12 +53,13 @@
               <image src="../../images/li.jpg" mode="widthFix" style="width: 58rpx;border-radius: 45%;" />
             </view>
             <view class="commentDetailBox">
-              <view>{{item.name}}</view>
+              <view style="font-size: medium;color: gray;">{{item.username}}</view>
               <view class="commentText"> {{item.content}} </view>
               <view>
                 <view class="commentData">{{item.time}}</view>
-                <view class="likef">{{item.likes}}</view>
-                <view class="likef" style="padding-top: 2px;"><t-icon name="thumb-up" size="35rpx"/></view>
+                <view class="likef">{{item.likeNum}}</view>
+                <view class="likef" wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
+                <view class="likef" wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
               </view>
               <view class="commentline"></view>
             </view>
@@ -63,18 +73,30 @@
     <view class="bottom-input" style="padding-bottom: {{inputBottom}}px;">
         <textarea :adjust-position="false" 
         cursor-spacing="30" 
-        v-model="inputText"
-        maxlength="140" 
+        v-model="{{inputText}}"
+        value="{{inputText}}"
+        maxlength="-1" 
+        confirm-type="send"
         bindinput="onInputValueChange"
+        :bindconfirm="enterInput"
         placeholder-class="input-placeholder" 
         placeholder="说点什么呢~"
         bindfocus="inputBindFocus" 
         bindblur="inputBindBlur" 
         show-confirm-bar="{{false}}" 
-        style="width: 90%;height: 100%;flex: 1;"
+        style="width: 250px;height: 100%;"
         />
     </view>
+    <view wx:if="{{inputnow}}" style="margin-right: 10px;flex:0.15" bindtap="sendtext">发送</view>
   </view>
   <load-more list-is-empty="{{!replylist.length}}" status="{{replylistLoadStatus}}" bind:retry="onReTry" />
 </view>
 <t-toast id="t-toast" />
+<t-dialog
+  visible="{{showWarnConfirm}}"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ { content: '警示操作', variant: 'base', theme: 'danger' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+/>

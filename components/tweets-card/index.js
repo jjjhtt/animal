@@ -31,7 +31,7 @@ Component({
   methods: {
     clickHandle() {
       wx.navigateTo({
-        url: `/pages/realpage/realpage?tweetId=${this.data.tweets.tweetId}`,
+        url: `/pages/realpage/realpage?tweetId=${this.data.tweets.id}`,
       });
     },
 

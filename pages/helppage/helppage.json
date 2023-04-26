@@ -4,6 +4,7 @@
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-toast": "tdesign-miniprogram/toast/toast",
-    "t-divider": "tdesign-miniprogram/divider/divider"
+    "t-divider": "tdesign-miniprogram/divider/divider",
+    "t-dialog": "tdesign-miniprogram/dialog/dialog"
   }
 }

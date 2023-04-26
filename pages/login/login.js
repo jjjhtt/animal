@@ -1,5 +1,6 @@
 import Message from 'tdesign-miniprogram/message/index';
 import Toast from 'tdesign-miniprogram/toast/index';
+import {config} from '../../config/index'
 var toptip
 var timer
 var DEFAULT_CONFIG = {
@@ -43,7 +44,7 @@ Page({
   loginjudge: function() {
     self = this
     wx.request({
-      url: 'https://anith2.2022martu1.cn/login',
+      url: config.domain + '/login',
       data: {
         username:this.data.email,
         password: this.data.pw,
@@ -67,7 +68,7 @@ Page({
           setTimeout(() => {
             //wx.redirectTo({url:'../realpage/realpage'  })//删
             wx.reLaunch({ url: '/pages/home/home' })
-          }, 2000)
+          }, 1500)
         } else {
           if (timer) {
               clearTimeout(timer) 
