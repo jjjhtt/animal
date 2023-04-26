@@ -34,7 +34,7 @@ Page({
       self = this
       console.log(this.data.email)
         wx.request({
-          url:'http://h7gfkf.natappfree.cc/user/registerRequest',
+          url:'http://pyyyf4.natappfree.cc/user/registerRequest',
           //url: 'https://anith2.2022martu1.cn/user/registerRequest',
           data: { email: this.data.email },
           method: 'POST',
@@ -60,7 +60,7 @@ Page({
     postregister: function() {
       self = this
       wx.request({
-        url: 'https://114.116.203.97/user/registerVerify',
+        url: 'http://pyyyf4.natappfree.cc/user/registerVerify',
         data: { username: this.data.username,
           password:this.data.pw,
           passwordConfirm: this.data.pw2,
