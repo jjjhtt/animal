@@ -27,9 +27,9 @@
           </view>
         </view>
         <view style="flex: 1;width: 25px;" bindtap="monitorlike" data-id="{{index}}">
-          <view wx:if="!{{item.isLike}}"><t-icon name="heart" size="48rpx"/></view>
-          <view wx:if="{{item.isLike}}"><t-icon name="heart-filled" size="48rpx"/></view>
-          <view style="text-align:center;font-size: xx-small; clear: both;"> {{item.likes}}</view>
+          <view wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
+          <view wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
+          <view style="text-align:center;font-size: xx-small; clear: both;"> {{item.likeNum}}</view>
         </view>
       </view>
     </view>

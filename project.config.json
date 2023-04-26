@@ -1,5 +1,5 @@
 {
-  "appid": "wx7a15044666eed973",
+  "appid": "wx4fe240b8195442da",
   "compileType": "miniprogram",
   "libVersion": "2.25.3",
   "packOptions": {
@@ -8,7 +8,6 @@
   },
   "setting": {
     "ignoreDevUnusedFiles": false,
-    "ignoreUploadUnusedFiles": false,
     "coverView": true,
     "es6": true,
     "postcss": true,
@@ -21,7 +20,9 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "condition": false
+    "condition": false,
+    "packNpmManually": false,
+    "ignoreUploadUnusedFiles": false
   },
   "condition": {},
   "editorSetting": {
