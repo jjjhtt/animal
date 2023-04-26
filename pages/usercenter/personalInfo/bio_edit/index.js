@@ -41,6 +41,7 @@ Page({
             wx.navigateBack();
           }, 1000)
         } else {
+          console.log(res.data.message);
           Toast({
             context: this,
             message: res.data.message,

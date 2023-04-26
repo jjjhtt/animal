@@ -8,12 +8,12 @@
       arrow
       t-class-left="order-group__left"
     >
-      <t-image slot="note" src="{{personInfo.avatarUrl}}" t-class="avatarUrl" mode="aspectFill" />
+      <t-image slot="note" src="{{domain+personInfo.avatarUrl}}" t-class="avatarUrl" mode="aspectFill" />
     </t-cell>
     <t-cell
       title="昵称"
       arrow
-      note="{{personInfo.nickName}}"
+      note="{{personInfo.username}}"
       data-type="name"
       bind:click="onClickCell"
       t-class="t-cell-class"
@@ -31,7 +31,7 @@
     <t-cell
       title="手机号"
       arrow
-      note="{{personInfo.phoneNumber ? personInfo.phoneNumber : '绑定手机号'}}"
+      note="{{personInfo.phone ? personInfo.phone : '绑定手机号'}}"
       data-type="phoneNumber"
       bind:click="onClickCell"
       t-class="t-cell-class"

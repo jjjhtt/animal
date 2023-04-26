@@ -72,13 +72,17 @@ Page({
             const path = res.tempFiles[0].tempFilePath;
             wx.uploadFile({
               url: config.domain + '/upload', 
+              filePath: path,
+              name: "image",
               formData: {
                 "image": res.tempFiles[0],
                 "type": "user"
               },
               success (res){
                 console.log(res);
-                const data = res.data;
+                wx.navigateTo({
+                  url: './classify/index',
+                })
                 resolve(path);
               },
               fail: (err) => reject(err),
@@ -87,19 +91,14 @@ Page({
           fail: (err) => reject(err),
         });
       });
-      Toast({
-        context: this,
-        selector: '#t-toast',
-        message: `已选择图片-${tempFilePath}`,
-        theme: 'success',
-      });
     } catch (error) {
       Toast({
         context: this,
         selector: '#t-toast',
-        message: error.errMsg || error.msg || '修改头像出错了',
+        message: error.errMsg || error.msg || '上传出错了',
         theme: 'error',
       });
+      console.log(error);
     }
   },
 })
