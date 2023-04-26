@@ -85,7 +85,6 @@ Page({
       this.tweetListPagination.index = 0;
       pageIndex = 0;
     }
-
     try {
       const nextList = await fetchTweetsList(pageIndex, this.data.nowkey, this.data.match);
       console.log(nextList);

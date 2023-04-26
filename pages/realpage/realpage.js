@@ -1,4 +1,5 @@
 import Toast from 'tdesign-miniprogram/toast/index';
+import { fetchComments } from '../../services/tweet/fetchComments';
 import {config} from '../../config/index'
 Page({
   data: {
@@ -22,6 +23,8 @@ Page({
       likecount: 0,
       collectcount: 0,
       commentlistLoadStatus: 0,
+      hasLiked: false,
+      hasStarred: false
   },
   commentListPagination: {
     index: 0,
@@ -87,9 +90,11 @@ Page({
     this.setData({inputText: ''})
   },
   monitorlike: function(e) {
-    self = this
+    var self = this
     let i = e.currentTarget.dataset.id
-    console.log(this.data.commentlist[i].likeNum)
+    const changelike = `commentlist[${i}].likeNum`
+    const changeislike = "commentlist[" + i + "].isLike"
+    console.log(this.data.commentlist[i].isLike)
     wx.request({
       url: config.domain + '/comment/like',
       method: 'POST',
@@ -104,44 +109,86 @@ Page({
       success(res) {
         console.log(res)
         if (res.data.code == 0) {
-          let changelike = self.data.commentlist[i].likeNum
-          let changeislike = self.data.commentlist[i].isLike
           if (res.data.body.isLike == true) {
             let like = self.data.commentlist[i].likeNum + 1
-            console.log('like' + like)
-            self.setData({[changelike]:like, [changeislike]: !res.data.body.isLike})
+            self.setData({[changelike]:like, [changeislike]: res.data.body.isLike})
           } else {
             let like = self.data.commentlist[i].likeNum - 1
-            self.setData({[changelike]:like, [changeislike]: !res.data.body.isLike})
+            self.setData({[changelike]:like, [changeislike]: res.data.body.isLike})
           }
+        } else {
+          Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
         }
       }
     })
-    setTimeout(() => {
-      console.log(this.data.commentlist[i].likeNum)
-    }, 2000)
-      /*console.log(e.currentTarget.dataset.id)
-      let like = this.data.commentlist[e.currentTarget.dataset.id].likes + 1
-      let changelike = this.data.commentlist[e.currentTarget.dataset.id].likes
-      this.setData({[changelike]:like})
-      console.log('点赞')*/
   },
-  getdata: function() {
-    self = this
-    console.log('加载')
+  likeTweet: function(e) {
+    var self = this
     wx.request({
-      url: config.domain + '/tweet/content',
+      url: config.domain + '/tweet/like',
       method: 'POST',
       data: {
         "userId": wx.getStorageSync('userId'),
-        "tweetId": 1,
+	      "tweetId": this.data.tweetid
       },
       header: {
         'content-type': 'application/json', // 默认值
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
-        //console.log(res)
+        if (res.data.code == 0) { 
+          if (self.data.hasLiked == false) {
+            self.setData({hasLiked: true, likecount: self.data.likecount + 1})
+          } else {
+            self.setData({hasLiked: false, likecount: self.data.likecount - 1})
+          }
+        } else {
+          Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
+        }
+      }
+    })
+  },
+  starTweet: function(e) {
+    var self = this
+    wx.request({
+      url: config.domain + '/tweet/star',
+      method: 'POST',
+      data: {
+        "userId": wx.getStorageSync('userId'),
+	      "tweetId": this.data.tweetid
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'authorization': wx.getStorageSync('token')
+      },
+      success(res) {
+        if (res.data.code == 0) { 
+          if (self.data.hasStarred == false) {
+            self.setData({hasStarred: true, collectcount: self.data.collectcount + 1})
+          } else {
+            self.setData({hasStarred: false, collectcount: self.data.collectcount - 1})
+          }
+        } else {
+          Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
+        }
+      }
+    })
+  },
+  getdata: function() {
+    self = this
+    wx.request({
+      url: config.domain + '/tweet/content',
+      method: 'POST',
+      data: {
+        "userId": wx.getStorageSync('userId'),
+        "tweetId": this.data.tweetid,
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'authorization': wx.getStorageSync('token')
+      },
+      success(res) {
+        console.log(res)
         if (res.data.code == 0) {
           let sp = res.data.body
           self.setData({
@@ -152,7 +199,9 @@ Page({
             data: sp.time==null ? '未知' : sp.time,
             commentnum: sp.comments,
             likecount: sp.likes,
-            collectcount: sp.stars
+            collectcount: sp.stars,
+            hasLiked: sp.hasLiked,
+            hasStarred: sp.hasStarred
           })
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
@@ -164,7 +213,7 @@ Page({
       method: 'POST',
       data: {
         "userId": wx.getStorageSync('userId'),
-        "tweetId": 1,//this.data.tweetid
+        "tweetId": this.data.tweetid,
         "commentPage": self.commentListPagination.index
       },
       header: {
@@ -198,34 +247,18 @@ Page({
     this.setData({ commentlistLoadStatus: 1 })
     let pageIndex = this.commentListPagination.index + 1;
     if (fresh) {
-      pageIndex = 1
+      this.commentListPagination.index = 0;
+      pageIndex = 0
     }
     try {
-      let nextList = [{name:'小飞棍', id:1, content: '爱信等', time:'今天20:00', likes:999, },]
-      wx.request({
-        url: config.domain + '/tweet/getComments',
-        method: 'POST',
-        data: {
-          "userId": wx.getStorageSync('userId'),
-          "tweetId": 1,//this.data.tweetid
-          "commentPage":0
-        },
-        header: {
-          'content-type': 'application/json', // 默认值
-          'authorization': wx.getStorageSync('token')
-        },
-        success(res) {
-          //console.log(res)
-          if (res.data.code == 0) {
-  
-          } else {
-            Toast({ context: this, selector: '#t-toast', message: res.data.message, theme: 'error',
-            });
-          }
-        }
-      })
+      const nextList = await fetchComments(pageIndex, this.data.tweetid);
+      console.log(nextList)
+      if (nextList == null) {
+        this.setData({ commentlistLoadStatus: 2 });
+        return 0;
+      }
       this.setData({
-        commentlist: this.data.commentlist.concat(nextList),
+        commentlist: fresh ? nextList : this.data.commentlist.concat(nextList),
         commentlistLoadStatus: 0,
       });
       this.commentListPagination.index = pageIndex;
