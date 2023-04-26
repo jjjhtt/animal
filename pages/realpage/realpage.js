@@ -89,6 +89,7 @@ Page({
   monitorlike: function(e) {
     self = this
     let i = e.currentTarget.dataset.id
+    console.log(this.data.commentlist[i].likeNum)
     wx.request({
       url: config.domain + '/comment/like',
       method: 'POST',
@@ -103,13 +104,22 @@ Page({
       success(res) {
         console.log(res)
         if (res.data.code == 0) {
-          let like = self.data.commentlist[i].likes
-          let changelike = self.data.commentlist[i].likes
-          self.setData({[changelike]:like})
+          let changelike = self.data.commentlist[i].likeNum
+          let changeislike = self.data.commentlist[i].isLike
+          if (res.data.body.isLike == true) {
+            let like = self.data.commentlist[i].likeNum + 1
+            console.log('like' + like)
+            self.setData({[changelike]:like, [changeislike]: !res.data.body.isLike})
+          } else {
+            let like = self.data.commentlist[i].likeNum - 1
+            self.setData({[changelike]:like, [changeislike]: !res.data.body.isLike})
+          }
         }
       }
     })
-    
+    setTimeout(() => {
+      console.log(this.data.commentlist[i].likeNum)
+    }, 2000)
       /*console.log(e.currentTarget.dataset.id)
       let like = this.data.commentlist[e.currentTarget.dataset.id].likes + 1
       let changelike = this.data.commentlist[e.currentTarget.dataset.id].likes
