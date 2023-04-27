@@ -15,18 +15,12 @@ Page({
     }],*/
     list: [],
     nowkey: 0,
-    pageIndex: 0,
     match: '',
+    tweetsListLoadStatus: 0
   },
-  async init() {
-    try {
-      const result = await getCategoryList(this.data.nowkey, this.data.match);
-      this.setData({
-        list: result,
-      });
-    } catch (error) {
-      console.error('err:', error);
-    }
+
+  tweetListPagination: {
+    index: 0,
   },
 
   submitHandle(e) {
@@ -44,12 +38,54 @@ Page({
   },*/
 
   onShow() {
-    
+    this.init(true);
   },
   onChange() {
     
   },
   onLoad() {
+    //this.init();
+  },
+
+  onReTry() {
     this.init();
+  },
+
+  onReachBottom() {
+    if (this.data.tweetsListLoadStatus === 0) {
+      this.init();
+    }
+  },
+
+  onPullDownRefresh() {
+    this.init();
+  },
+
+  async init(fresh = false) {
+    if (fresh) {
+      wx.pageScrollTo({
+        scrollTop: 0,
+      });
+    }
+    this.setData({ tweetsListLoadStatus: 1 });
+    let pageIndex = this.tweetListPagination.index + 1;
+    if (fresh) {
+      this.tweetListPagination.index = 0;
+      pageIndex = 0;
+    }
+    try {
+      const result = await getCategoryList(pageIndex, this.data.match);
+      if (result === null) {
+        this.setData({ tweetsListLoadStatus: 2 });
+        return;
+      }
+      this.setData({
+        list: fresh ? result : this.data.list.concat(result),
+        tweetsListLoadStatus: 0,
+      });
+      this.tweetListPagination.index = pageIndex;
+    } catch (error) {
+      this.setData({ tweetsListLoadStatus: 3 });
+    }
   },
 });
