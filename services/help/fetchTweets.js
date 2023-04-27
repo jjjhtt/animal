@@ -8,7 +8,7 @@ export function fetchTweetsList(pageIndex = 0, match = '', key) {
       method: 'POST',
       data: {
         "pageNum": 10,
-        "page": 0,
+        "page": pageIndex,
         "context": match,
         "type": key
       },

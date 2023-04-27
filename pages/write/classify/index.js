@@ -77,6 +77,9 @@ Page({
   },
 
   onClick() {
+    if (id == '') {
+      return;
+    }
     wx.navigateTo({
       url: `/pages/realanimal/realanimal?id=${this.data.id}`,
     });

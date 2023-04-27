@@ -84,6 +84,7 @@ Page({
     }
 
     try {
+      console.log(pageIndex);
       const nextList = await fetchTweetsList(pageIndex, this.data.match, this.data.nowkey);
       if (nextList === null) {
         this.setData({ tweetsListLoadStatus: 2 });
@@ -96,9 +97,6 @@ Page({
       });
 
       this.tweetListPagination.index = pageIndex;
-      if (JSON.stringify(nextList) == '{}') {
-        this.setData({ tweetsListLoadStatus: 2 });
-      }
       //console.log(this.data.tweetsList);
     } catch (err) {
       console.log(err);

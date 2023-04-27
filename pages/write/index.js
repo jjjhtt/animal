@@ -119,6 +119,10 @@ Page({
                       url: `./classify/index`,
                     })
                     resolve(res);
+                  } if (res.data.code === 3){
+                    this.setData({
+                      name: '无匹配',
+                    })
                   } else {
                     console.log(res.data.message);
                     Toast({
