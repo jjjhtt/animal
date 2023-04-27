@@ -90,7 +90,7 @@ Page({
         if (res.data.code == 0) {
           self.data.commentlist.splice(i, 1)
           self.setData({
-            commentlist: this.data.commentlist
+            commentlist: self.data.commentlist
           })
           Toast({
             context: this,
@@ -115,7 +115,7 @@ Page({
       method: 'POST',
       data: {
         "userId":wx.getStorageSync('userId'),
-        "tweetId": 1,
+        "tweetId": this.data.tweetid,
         "comment":this.data.inputText,
       },
       header: {
