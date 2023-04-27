@@ -27,7 +27,7 @@ Page({
     this.setData({
       match: e.detail.value
     });
-    this.init();
+    this.init(true);
   },
 
   /*tabChangeHandle(e) {
