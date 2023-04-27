@@ -12,7 +12,7 @@ Component({
         }
         this.setData({tweets: data});
         let image = this.data.tweets.images.split(';')[0]
-        console.log(image);
+        //console.log(image);
         this.setData({'tweets.image': image})
         //console.log(this.data.tweets);
       },
