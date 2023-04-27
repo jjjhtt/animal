@@ -5,6 +5,8 @@ Page({
   data: {
       imgUrls: '',
       tweetid: 0,
+      uid: 0,
+      tuid: 0,
       autoplay: true,//自动切换
       indicatorDots: false,//图片指示点
       interval: 4500,//切换间隔
@@ -33,7 +35,10 @@ Page({
   },
   onLoad: function(options) {
     wx.showNavigationBarLoading()
-    this.setData({tweetid: options.tweetId})
+    this.setData({
+      tweetid: options.tweetId,
+      uid: wx.getStorageSync('userId')
+    })
     console.log(options)
     this.getdata()
   },
@@ -67,6 +72,38 @@ Page({
   },
   inputBindFocus(e) {
       this.setData({inputBottom:e.detail.height, inputnow:true})
+  },
+  deleteComment(e) {
+    let i = e.currentTarget.dataset.id
+    wx.request({
+      url: config.domain + '/comment/delete',
+      method: 'POST',
+      data: {
+        "userId":wx.getStorageSync('userId'),
+        "commentId":this.data.commentlist[i].id,
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'authorization': wx.getStorageSync('token')
+      },
+      success(res) {
+        if (res.data.code == 0) {
+          self.data.commentlist.splice(i, 1)
+          self.setData({
+            commentlist: this.data.commentlist
+          })
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: '删除成功',
+            theme: 'success',
+            direction: 'column',
+          });
+        } else {
+          Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
+        }
+      }
+    })
   },
   inputBindBlur() {
       this.setData({inputBottom:0, inputnow:false})
@@ -205,6 +242,7 @@ Page({
         if (res.data.code == 0) {
           let sp = res.data.body
           self.setData({
+            tuid:sp.userId,
             imgUrls: sp.images == null ? [] : sp.images,
             content_title: sp.title,
             contenttext: sp.content,

@@ -33,10 +33,13 @@
           <view style="font-size: 12px; color: rgba(0, 0, 0, 0.5);margin-top: 5px;">{{item.time}}</view>
           </view>
         </view>
-        <view style="flex: 1;width: 25px;" bindtap="monitorlike" data-id="{{index}}">
-          <view wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
-          <view wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
-          <view style="text-align:center;font-size: xx-small; clear: both;"> {{item.likeNum}}</view>
+        <view style="flex: 1;width: 25px;">
+          <view wx:if="{{uid == item.userId}}" bindtap="deleteComment" data-id="{{index}}"><t-icon name="close" size="48rpx"/></view>
+          <view bindtap="monitorlike" data-id="{{index}}">
+            <view wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
+            <view wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
+            <view style="text-align:center;font-size: xx-small; clear: both;"> {{item.likeNum}}</view>
+          </view>
         </view>
       </view>
     </view>

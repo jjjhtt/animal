@@ -27,6 +27,7 @@ Page({
     inputBottom: 0,
     inputText: '',
     replylistLoadStatus: 0,
+    swiperHeight: 0 //轮播图高度
   },
   replyListPagination: {
     index: 0,
@@ -44,6 +45,16 @@ Page({
     })
     this.getdata()
   },
+  computeImgHeight(e) {
+    var winWid = wx.getSystemInfoSync().windowWidth;      //获取当前屏幕的宽度
+    var imgh=e.detail.height;　　　　　　　　　　　　　　　 //图片高度
+    var imgw=e.detail.width;
+    var swiperH = winWid * imgh / imgw + "px"　           //等比设置swiper的高度。  
+    //即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度  -->  swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
+    this.setData({
+      swiperHeight: swiperH		//设置swiper高度
+    })
+  },
   changeState() {
     this.setData({solveState : !this.data.solveState})
     console.log(this.data.userid)
@@ -51,6 +62,9 @@ Page({
     /*wx.request({
       url: 'url',
     })*/
+  },
+  handleChange(e) {
+    this.setData({solveState : !this.data.solveState})
   },
   onReachBottom() {
     if (this.data.replylistLoadStatus == 0) {
@@ -169,7 +183,7 @@ Page({
         if (res.data.code == 0) {
           let sp = res.data.body
           self.setData({
-            imgUrls: ['../../images/li.jpg', '../../images/li.jpg', '../../images/li.jpg'], 
+            imgUrls: sp.images == null ? [] : sp.images, 
             qtitle: sp.title,
             qcontent: sp.content,
             time: sp.time==null ? '未知' : sp.time,
