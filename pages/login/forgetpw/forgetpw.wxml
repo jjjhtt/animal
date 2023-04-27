@@ -19,3 +19,4 @@
         <button class="login_button1" bindtap="postregister">重置密码</button>
     </view>
 </view>
+<t-toast id="t-toast" />

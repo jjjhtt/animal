@@ -24,7 +24,8 @@ Page({
       collectcount: 0,
       commentlistLoadStatus: 0,
       hasLiked: false,
-      hasStarred: false
+      hasStarred: false,
+      swiperHeight: 0 //轮播图高度
   },
   commentListPagination: {
     index: 0,
@@ -35,6 +36,16 @@ Page({
     this.setData({tweetid: options.tweetId})
     console.log(options)
     this.getdata()
+  },
+  computeImgHeight(e) {
+    var winWid = wx.getSystemInfoSync().windowWidth;      //获取当前屏幕的宽度
+    var imgh=e.detail.height;　　　　　　　　　　　　　　　 //图片高度
+    var imgw=e.detail.width;
+    var swiperH = winWid * imgh / imgw + "px"　           //等比设置swiper的高度。  
+    //即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度  -->  swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
+    this.setData({
+      swiperHeight: swiperH		//设置swiper高度
+    })
   },
   onReachBottom() {
     if (this.data.commentlistLoadStatus == 0) {
@@ -194,7 +205,7 @@ Page({
         if (res.data.code == 0) {
           let sp = res.data.body
           self.setData({
-            imgUrls: ['../../images/ani1.jpg', '../../images/ani2.jpg', '../../images/ani3.jpg'], 
+            imgUrls: sp.images,//['../../images/ani1.jpg', '../../images/ani2.jpg', '../../images/ani3.jpg'], 
             content_title: sp.title,
             contenttext: sp.content,
             tags: ['松鼠','大松鼠','高清松鼠'],

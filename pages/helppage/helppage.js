@@ -6,6 +6,8 @@ Page({
     imgUrls: [],
     current: 0,
     tweetid: 1,
+    userid: 0,
+    helpid: 0,
     autoplay: true,//自动切换
     indicatorDots: false,//图片指示点
     interval: 4500,//切换间隔
@@ -37,12 +39,15 @@ Page({
   onLoad(options) {
     this.setData({
       bestAns: true,
+      userid: wx.getStorageSync('userId'),
       tweetid: options.id
     })
     this.getdata()
   },
   changeState() {
     this.setData({solveState : !this.data.solveState})
+    console.log(this.data.userid)
+    console.log(this.data.helpid)
     /*wx.request({
       url: 'url',
     })*/
@@ -72,7 +77,7 @@ Page({
         url: 'url',
         method: 'POST',
         data: {
-          "userId": wx.getStorageSync('userid'),
+          "userId": wx.getStorageSync('userId'),
           "id": this.data.tweetid,
           "page": pageIndex
         },
@@ -170,7 +175,8 @@ Page({
             time: sp.time==null ? '未知' : sp.time,
             username: sp.username,
             commentnum: sp.comments,
-            solveState: sp.solved
+            solveState: sp.solved,
+            helpid: sp.userId
           })
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});

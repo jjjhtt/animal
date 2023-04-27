@@ -1,17 +1,30 @@
 <view>
   <!--顶部-->
   <view class="helpHeader">
-  <view class="helpHeaderPhoto">
-  <image src="../../images/li.jpg" mode="widthFix" style="width: 80rpx;border-radius: 45%;" />
-  </view>
-  <view class="helpHeaderDetail">
-    <view>{{username}}</view>
-    <view>{{data}}</view>
-  </view>
-  <view class="helpHeaderState" bindtap="changeState">
-  <view wx:if="{{!solveState}}"><t-icon name="close-circle-filled" color="red" size="48rpx"/>未解决</view>
-  <view wx:if="{{solveState}}"><t-icon name="check-circle-filled" color="green" size="48rpx"/>已解决</view>
-  </view>
+    <view class="helpHeaderPhoto">
+      <image src="../../images/li.jpg" mode="widthFix" style="width: 80rpx;border-radius: 45%;" />
+    </view>
+    <view class="helpHeaderDetail">
+      <view>{{username}}</view>
+      <view>{{data}}</view>
+    </view>
+    <!--解决状态-->
+    <view class="helpHeaderState" bindtap="changeState">
+      <view wx:if="{{!solveState}}">
+        <t-cell wx:if="{{userid == helpid}}" title="带图标开关" bordered="{{false}}" >
+          <t-switch defaultValue="{{true}}" icon="{{['check', 'close']}}" slot="note" />
+        </t-cell>
+        <t-icon wx:if="{{userid != helpid}}" name="close-circle-filled" color="red" size="48rpx"/>
+        <ciew>未解决</ciew>
+      </view>
+      <view wx:if="{{solveState}}">
+        <t-cell wx:if="{{userid == helpid}}" title="带图标开关" bordered="{{false}}">
+          <t-switch defaultValue="{{true}}" icon="{{['check', 'close']}}" slot="note" />
+        </t-cell>
+        <t-icon wx:if="{{userid != helpid}}" name="check-circle-filled" color="green" size="48rpx"/>
+        <view>已解决</view>
+      </view>
+    </view>
   </view>
   <view class="dots" style="top: 70px;">{{current+1}}/{{imgUrls.length}}</view>
   <swiper bindchange="monitorCurrent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" current="{{current}}">

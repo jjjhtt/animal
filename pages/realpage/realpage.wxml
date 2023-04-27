@@ -1,11 +1,18 @@
 <view>
   <view class="dots">{{current+1}}/{{imgUrls.length}}</view>
-  <swiper bindchange="monitorCurrent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" current="{{current}}">
-	<block wx:for="{{imgUrls}}" wx:key="index">
-        <swiper-item>
-          <image style="width: 100%;" mode="widthFix" src="{{item}}"/>
-        </swiper-item>
-	</block>
+  <swiper bindchange="monitorCurrent" 
+          indicator-dots="{{indicatorDots}}" 
+          autoplay="{{autoplay}}" 
+          interval="{{interval}}" 
+          duration="{{duration}}" 
+          circular="true" 
+          current="{{current}}"
+          style="height: {{swiperHeight}};">
+    <block wx:for="{{imgUrls}}" wx:key="index">
+          <swiper-item>
+            <image style="width: 100%;" mode="widthFix" bindload="computeImgHeight" src="https://anith2.2022martu1.cn{{item}}"/>
+          </swiper-item>
+    </block>
   </swiper>
   <view class="realpagetext">
         <text user-select style="font-weight: bold;font-size: large;">{{content_title}}</text>
