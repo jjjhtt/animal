@@ -9,12 +9,13 @@ Component({
         this.setData({
           document: category
         });
-        //console.log(this.data.tweets);
+        //console.log(category)
       },
     },
   },
   data: {
-    document: {},    
+    document: {},  
+    domain: "https://anith2.2022martu1.cn",  
   },
   methods: {
     onClick(e) {

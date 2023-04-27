@@ -1,8 +1,8 @@
 <!--pages/write/classify/index.wxml-->
 <view class="container">
   <view class="pic-container">
-  <t-image class="pic" src="https://img.jituwang.com/uploads/allimg/150907/258341-150ZG45J262.jpg" mode="heightFix" width="180" height="180"/>
+  <t-image class="pic" src="{{url}}" mode="heightFix" width="180" height="180"/>
   </view>
   <text style="margin-top: 100rpx;font-size: 40rpx;">识别结果：</text>
-  <text style="margin-top: 100rpx;font-size: 60rpx;">猫猫</text>
+  <text style="margin-top: 100rpx;font-size: 60rpx;" bindtap="onClick">{{name}}</text>
 </view>
