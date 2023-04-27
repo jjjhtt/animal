@@ -1,1 +1,8 @@
 /* pages/write/classify/index.wxss */
+.pic-container {
+  display: flex;
+}
+
+.pic {
+  margin: auto
+}

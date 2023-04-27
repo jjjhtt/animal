@@ -67,7 +67,7 @@ Page({
     }
   },
   onClose() {
-
+    
   },
   async toModifyAvatar() {
     try {
@@ -79,6 +79,14 @@ Page({
           success: (res) => {
             console.log(res);
             const path = res.tempFiles[0].tempFilePath;
+            this.setData({
+              'personInfo.avatarUrl': path,
+            })
+            var pages = getCurrentPages();
+            var prevPage = pages[pages.length - 2];
+            prevPage.setData({
+                'userInfo.avatarUrl': path,
+            })
             wx.uploadFile({
               url: config.domain + '/image/upload', 
               filePath: path,
@@ -119,6 +127,7 @@ Page({
                         message: "修改成功",
                         theme: 'success',
                       });
+                      resolve(res);
                     } else {
                       console.log(res.data.message);
                       Toast({
@@ -129,7 +138,6 @@ Page({
                     }
                   },
                 });
-                resolve(res);
               },
               fail: (err) => reject(err),
             })
@@ -137,7 +145,6 @@ Page({
           fail: (err) => reject(err),
         });
       });
-      this.init();
     } catch (error) {
       console.log(error);
       Toast({

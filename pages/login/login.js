@@ -59,7 +59,7 @@ Page({
           Toast({
             context: this,
             selector: '#t-toast',
-            message: '登陆成功',
+            message: '登录成功',
             theme: 'success',
             direction: 'column',
           });
@@ -68,7 +68,7 @@ Page({
           setTimeout(() => {
             //wx.redirectTo({url:'../realpage/realpage'  })//删
             wx.reLaunch({ url: '/pages/home/home' })
-          }, 1500)
+          }, 1000)
         } else {
           if (timer) {
               clearTimeout(timer) 

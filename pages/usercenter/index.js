@@ -52,6 +52,10 @@ Page({
     this.init();
   },
 
+  onReady() {
+    this.init();
+  },
+
   onPullDownRefresh() {
     this.init();
   },

@@ -4,6 +4,7 @@
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-textarea": "tdesign-miniprogram/textarea/textarea",
     "t-popup": "tdesign-miniprogram/popup/popup",
-    "t-button": "tdesign-miniprogram/button/button"
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-toast": "tdesign-miniprogram/toast/toast"
   }
 }

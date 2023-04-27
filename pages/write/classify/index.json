@@ -1,4 +1,6 @@
 {
+  "navigationBarTitleText": "动物识别",
+  "component": true,
   "usingComponents": {
     "t-image": "tdesign-miniprogram/image/image"
   }

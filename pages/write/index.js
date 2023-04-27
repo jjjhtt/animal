@@ -62,6 +62,9 @@ Page({
   },
 
   async onClickPhoto() {
+    wx.navigateTo({
+      url: './classify/index',
+    })
     try {
       const tempFilePath = await new Promise((resolve, reject) => {
         wx.chooseMedia({
@@ -92,12 +95,6 @@ Page({
         });
       });
     } catch (error) {
-      Toast({
-        context: this,
-        selector: '#t-toast',
-        message: error.errMsg || error.msg || '上传出错了',
-        theme: 'error',
-      });
       console.log(error);
     }
   },
