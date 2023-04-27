@@ -85,6 +85,10 @@ Page({
 
     try {
       const nextList = await fetchTweetsList(pageIndex, this.data.match, this.data.nowkey);
+      if (nextList === null) {
+        this.setData({ tweetsListLoadStatus: 2 });
+        return;
+      }
       //console.log(nextList);
       this.setData({
         tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),

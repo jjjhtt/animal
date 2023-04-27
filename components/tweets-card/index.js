@@ -10,7 +10,10 @@ Component({
         if (!data) {
           return;
         }
-        this.setData({ tweets: data});
+        this.setData({tweets: data});
+        let image = this.data.tweets.images.split(';')[0]
+        console.log(image);
+        this.setData({'tweets.image': image})
         //console.log(this.data.tweets);
       },
     },
@@ -18,6 +21,7 @@ Component({
 
   data: {
     tweets: {},
+    domain: "https://anith2.2022martu1.cn",
   },
 
   lifetimes: {
