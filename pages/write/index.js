@@ -109,12 +109,6 @@ Page({
                       name: res.data.body.animalName,
                       id: res.data.body.animalId
                     })
-                    Toast({
-                      context: this,
-                      selector: '#t-toast',
-                      message: "成功",
-                      theme: 'success',
-                    });
                     wx.navigateTo({
                       url: `./classify/index`,
                     })
