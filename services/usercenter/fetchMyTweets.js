@@ -8,7 +8,7 @@ export function fetchTweetsList(pageIndex = 0, match = '') {
       data: {
         "userId": wx.getStorageSync('userId'),
         "page": pageIndex,
-        "context": ''
+        "context": match
       },
       header: {
         'content-type': 'application/json', // 默认值
