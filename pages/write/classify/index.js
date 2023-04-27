@@ -5,14 +5,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    url: '',
+    name: '',
+    id: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2]; //上一页
+    var info = prevPage.data.path
+    var n = prevPage.data.name
+    var aniId = prevPage.data.id
+    //console.log(info)
+    this.setData({
+      url: info,
+      name: n,
+      id: aniId
+    })
   },
 
   /**
@@ -62,5 +74,11 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  onClick() {
+    wx.navigateTo({
+      url: `/pages/realanimal/realanimal?id=${this.data.id}`,
+    });
   }
 })

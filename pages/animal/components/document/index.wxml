@@ -10,7 +10,7 @@
 						  bindtap="onClick"
 						  data-item="{{subItem}}"
 						>
-							<t-image src="{{subItem.image}}" t-class="image" />
+							<t-image src="{{domain+subItem.avatar}}" t-class="image" />
 							<view class="flex document-normal-item-container-item-title">
 								{{subItem.name}}
 							</view>
