@@ -205,10 +205,10 @@ Page({
         if (res.data.code == 0) {
           let sp = res.data.body
           self.setData({
-            imgUrls: sp.images,//['../../images/ani1.jpg', '../../images/ani2.jpg', '../../images/ani3.jpg'], 
+            imgUrls: sp.images == null ? [] : sp.images,
             content_title: sp.title,
             contenttext: sp.content,
-            tags: ['松鼠','大松鼠','高清松鼠'],
+            tags: sp.tags == null ? [] : sp.tags,
             data: sp.time==null ? '未知' : sp.time,
             commentnum: sp.comments,
             likecount: sp.likes,
