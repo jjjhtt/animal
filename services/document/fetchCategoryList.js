@@ -9,7 +9,7 @@ export function getCategoryList(pageIndex = 0, match = '') {
       data: {
         "pageNum": 24,
         "page": 0,
-        "context": ''
+        "context": match
       },
       header: {
         'content-type': 'application/json', // 默认值

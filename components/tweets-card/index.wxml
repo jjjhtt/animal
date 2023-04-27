@@ -8,7 +8,7 @@
 			<t-image
 			  wx:if="{{ !!tweets.image }}"
 			  t-class="tweets-card__img"
-			  src="{{ tweets.image }}"
+			  src="{{domain+tweets.image }}"
 			  mode="aspectFill"
 			  lazy-load
 			/>
