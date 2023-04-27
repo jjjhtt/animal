@@ -59,12 +59,35 @@ Page({
     this.setData({solveState : !this.data.solveState})
     console.log(this.data.userid)
     console.log(this.data.helpid)
-    /*wx.request({
-      url: 'url',
-    })*/
+    
   },
   handleChange(e) {
-    this.setData({solveState : !this.data.solveState})
+    var self = this
+    wx.request({
+      url: config.domain + '/help/changeStatus',
+      method: 'POST',
+      data: {
+        "userId": wx.getStorageSync('userId'),
+        "tweetId": this.data.tweetid
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'authorization': wx.getStorageSync('token')
+      },
+      success(res) {
+        console.log(res)
+        if (res.data.code == 0) {
+          self.setData({solveState : !self.data.solveState})
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: res.data.message,
+            theme: 'error',
+          });
+        }
+      }
+    })
   },
   onReachBottom() {
     if (this.data.replylistLoadStatus == 0) {
@@ -101,7 +124,7 @@ Page({
         },
         success(res) {
           if (res.data.code == 0) {
-
+            
           } else {
             Toast({
               context: this,
