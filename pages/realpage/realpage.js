@@ -115,7 +115,7 @@ Page({
       method: 'POST',
       data: {
         "userId":wx.getStorageSync('userId'),
-        "tweetId": 1,
+        "tweetId": this.data.tweetid,
         "comment":this.data.inputText,
       },
       header: {
