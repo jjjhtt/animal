@@ -1,4 +1,6 @@
 import {config} from "../../../config/index"
+import Toast from 'tdesign-miniprogram/toast/index';
+
 const ctr = require('./controller.js')
 var app = getApp()
 Page({
@@ -23,7 +25,8 @@ Page({
     showID: "",
     inputValue: "",
     label: [],
-    obtnArry: []
+    obtnArry: [],
+    imageUrls: []
   },
 
   /**
@@ -46,14 +49,16 @@ Page({
     this.setData({content: e.detail.value})
   },
   writerPublish: function() {
+    console.log(this.data.imageUrls)
+    console.log(this.data.title)
     wx.request({
-      url: config.domain + '',
+      url: config.domain + '/tweet/create',
       data: {
         "userId": wx.getStorageSync('userId'),
         "title": this.data.title,
         "content": this.data.content,
-        "image": this.data.images,
-        "label": this.data.obtnArry
+        "images": this.data.imageUrls,
+        "labels": this.data.obtnArry
       },
       method: 'POST',
       header: {
@@ -63,7 +68,10 @@ Page({
       success(res) {
         console.log(res);
         if (res.data.code === 0) {
-          
+          Toast({
+            context: this,
+            message: "成功",
+          });
         } else {
           Toast({
             context: this,

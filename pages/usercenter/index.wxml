@@ -4,7 +4,6 @@
   name-class="custom-name-class"
   phone-class="custom-phone-class"
   avatar-class="customer-avatar-class"
-  currAuthStep="{{currAuthStep}}"
 />
 
 <view class="content-wrapper">
