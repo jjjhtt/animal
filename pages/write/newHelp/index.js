@@ -49,8 +49,22 @@ Page({
     this.setData({content: e.detail.value})
   },
   writerPublish: function() {
-    console.log(this.data.imageUrls)
-    console.log(this.data.title)
+    //console.log(this.data.imageUrls)
+    //console.log(this.data.title)
+    if (this.data.title == 0) {
+      Toast({
+        context: this,
+        message: "请添加标题",
+      });
+      return;
+    }
+    if (this.data.content == 0) {
+      Toast({
+        context: this,
+        message: "请添加帖子内容",
+      });
+      return;
+    }
     wx.request({
       url: config.domain + '/help/create',
       data: {
