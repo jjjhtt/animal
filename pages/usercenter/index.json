@@ -7,7 +7,8 @@
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-user-center-card": "./components/user-center-card/index",
-    "t-toast": "tdesign-miniprogram/toast/toast"
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-badge": "tdesign-miniprogram/badge/badge"
   },
   "enablePullDownRefresh": true
 }
