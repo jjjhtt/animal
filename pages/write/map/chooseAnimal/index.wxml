@@ -13,7 +13,7 @@
 </view>
 <view style="height: 100rpx;">
   <button style='margin-top: 28rpx; background-color: rgb(178, 233, 203);' 
-    bindtap='onClick'>点此识别</button>
+    bindtap='onClick'>可点此识别</button>
 </view>
 <view class="wrap">
   <document

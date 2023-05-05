@@ -57,6 +57,97 @@ Page({
       iconPath: './imgs/Marker3_Activated@3x.png',
       width: '34px',
       height: '34px',
+    }, {
+      callout: {
+        content: '图书馆',
+        padding: 10,
+        borderRadius: 2,
+        display: 'ALWAYS'
+      },
+      id: 4,
+      latitude: 39.9837,
+      longitude: 116.3488,
+      iconPath: './imgs/Marker3_Activated@3x.png',
+      width: '34px',
+      height: '34px',
+    }, {
+      callout: {
+        content: '求是广场',
+        padding: 10,
+        borderRadius: 2,
+        display: 'ALWAYS'
+      },
+      id: 5,
+      latitude: 39.9825,
+      longitude: 116.3488,
+      iconPath: './imgs/Marker3_Activated@3x.png',
+      width: '34px',
+      height: '34px',
+    }, {
+      callout: {
+        content: '南区公寓',
+        padding: 10,
+        borderRadius: 2,
+        display: 'ALWAYS'
+      },
+      id: 6,
+      latitude: 39.9823,
+      longitude: 116.3461,
+      iconPath: './imgs/Marker3_Activated@3x.png',
+      width: '34px',
+      height: '34px',
+    }, {
+      callout: {
+        content: '操场',
+        padding: 10,
+        borderRadius: 2,
+        display: 'ALWAYS'
+      },
+      id: 7,
+      latitude: 39.9801,
+      longitude: 116.346,
+      iconPath: './imgs/Marker3_Activated@3x.png',
+      width: '34px',
+      height: '34px',
+    }, {
+      callout: {
+        content: '球场',
+        padding: 10,
+        borderRadius: 2,
+        display: 'ALWAYS'
+      },
+      id: 8,
+      latitude: 39.9801,
+      longitude: 116.3473,
+      iconPath: './imgs/Marker3_Activated@3x.png',
+      width: '34px',
+      height: '34px',
+    }, {
+      callout: {
+        content: '海棠园',
+        padding: 10,
+        borderRadius: 2,
+        display: 'ALWAYS'
+      },
+      id: 9,
+      latitude: 39.9823,
+      longitude: 116.34988,
+      iconPath: './imgs/Marker3_Activated@3x.png',
+      width: '34px',
+      height: '34px',
+    }, {
+      callout: {
+        content: '唯实园',
+        padding: 10,
+        borderRadius: 2,
+        display: 'ALWAYS'
+      },
+      id: 10,
+      latitude: 39.9785,
+      longitude: 116.3511,
+      iconPath: './imgs/Marker3_Activated@3x.png',
+      width: '34px',
+      height: '34px',
     }],
 		tabIndex: 0,
 		scale: 16,
