@@ -25,7 +25,8 @@
     "pages/helppage/helppage",
     "pages/logs/logs",
     "pages/write/classify/index",
-    "pages/usercenter/message/message"
+    "pages/usercenter/messages/messages",
+    "pages/usercenter/messages/message/message"
   ],
   "window": {
     "backgroundTextStyle": "light",

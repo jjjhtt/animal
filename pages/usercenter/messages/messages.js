@@ -10,15 +10,19 @@ Page({
     msgList: [
       {
         id: 2,
-        content: '小于12小于12',
-        info: '小于12小于12',
-        read: true
+        content: '您于2023-05-02发布的帖子“测试”未通过审核，点击查看详情',
+        info: '您于2023-05-02发布的帖子“测试”未通过审核，点击查看详情',
+        read: false,
+        time: '2023-05-02',
+        index: 0,
       },
       {
         id: 2,
-        content: '大于12大于12大于12大于12',
-        info: '大于12大于12大于12...',
-        read: false
+        content: '您于2023-05-01发布的帖子“hhh”已通过审核，现在可以在主页上查看了',
+        info: '您于2023-05-01发布的帖子“hhh”已通过审核，现在可以在主页上查看了',
+        read: true,
+        time: '2023-05-01',
+        index: 1,
       }
     ]
   },
@@ -64,53 +68,15 @@ Page({
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-    
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  onClickMessage({currentTarget}) {
+    var {index} = currentTarget.dataset
+    console.log(currentTarget)
+    var content = this.data.msgList[index].content
+    var time = this.data.msgList[index].time
+    wx.navigateTo({
+      url: '/pages/usercenter/messages/message/message?content='
+      + content + '&time=' + time,
+    })
   }
+
 })

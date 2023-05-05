@@ -45,7 +45,7 @@ const getDefaultData = () => ({
   },
   menuData,
   versionNo: 'alpha',
-  MessageNum: 2,
+  MessageNum: 1,
 });
 
 Page({
@@ -82,9 +82,6 @@ Page({
       success: (res)=> {
         if (res.data.code === 0) {
           console.log(res);
-          this.setData({
-            MessageNum: res.data.body
-          })
         } else {
           console.log(res);
           Toast({
@@ -119,7 +116,6 @@ Page({
   },
   onClickCell({ currentTarget }) {
     const { type } = currentTarget.dataset;
-
     switch (type) {
       case 'info': {
         wx.navigateTo({ url: '/pages/usercenter/personalInfo/index' });
@@ -138,7 +134,7 @@ Page({
         break;
       }
       case 'myMessage': {
-        wx.navigateTo({ url: '/pages/usercenter/message/message' });
+        wx.navigateTo({ url: '/pages/usercenter/messages/messages' });
         break;
       }
       case 'exit': {

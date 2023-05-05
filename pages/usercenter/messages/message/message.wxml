@@ -1,0 +1,5 @@
+<!--pages/usercenter/messages/message/message.wxml-->
+<view style="font-size: large; font-weight: 800; padding: 10pt;">{{title}}</view>
+<view style="font-size:medium; padding-left: 10pt;">时间：{{time}}</view>
+<t-divider /> 
+<view style="font-size:medium; padding: 10pt;">{{content}}</view>
