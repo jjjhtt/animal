@@ -1,5 +1,5 @@
 <!--pages/send/send.wxml-->
-<view class="content" style="margin-top:{{navH*4+40}}rpx">
+<view class="content" style="margin-top:40rpx">
   <!--pages/writer/writer.wxml-->
   <view class="card">
     <view>

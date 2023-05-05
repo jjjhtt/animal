@@ -15,4 +15,5 @@
   <document
     category="{{list}}"
   />
+  <load-more list-is-empty="{{!list.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
 </view>

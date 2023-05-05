@@ -8,7 +8,7 @@ export function getCategoryList(pageIndex = 0, match = '') {
       method: 'POST',
       data: {
         "pageNum": 24,
-        "page": 0,
+        "page": pageIndex,
         "context": match
       },
       header: {

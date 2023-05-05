@@ -77,7 +77,7 @@ Page({
   },
 
   onClick() {
-    if (id == '') {
+    if (this.data.id === null) {
       return;
     }
     wx.navigateTo({

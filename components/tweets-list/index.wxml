@@ -5,8 +5,6 @@
 		  thresholds="{{thresholds}}"
 		  class="tweets-card-inside"
 		  data-index="{{index}}"
-		  bind:thumb="onClicktweetsThumb"
-		  bind:click="onClicktweets"
 		/>
 	</block>
 </view>

@@ -49,8 +49,27 @@ Page({
     this.setData({content: e.detail.value})
   },
   writerPublish: function() {
-    console.log(this.data.imageUrls)
-    console.log(this.data.title)
+    if (this.data.title == 0) {
+      Toast({
+        context: this,
+        message: "请添加标题",
+      });
+      return;
+    }
+    if (this.data.content == 0) {
+      Toast({
+        context: this,
+        message: "请添加帖子内容",
+      });
+      return;
+    }
+    if (this.data.imageUrls == 0) {
+      Toast({
+        context: this,
+        message: "请至少添加一张图片",
+      });
+      return;
+    }
     wx.request({
       url: config.domain + '/tweet/create',
       data: {
@@ -70,7 +89,7 @@ Page({
         if (res.data.code === 0) {
           Toast({
             context: this,
-            message: "成功",
+            message: "发帖成功",
           });
           setTimeout(() => {
             //wx.redirectTo({url:'../realpage/realpage'  })//删

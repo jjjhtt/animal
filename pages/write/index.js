@@ -104,22 +104,16 @@ Page({
                 success: (res) =>{
                   //console.log(res);
                   if (res.data.code === 0) {
-                    //console.log(res);
+                    console.log(res);
                     this.setData({
                       name: res.data.body.animalName,
                       id: res.data.body.animalId
                     })
-                    Toast({
-                      context: this,
-                      selector: '#t-toast',
-                      message: "成功",
-                      theme: 'success',
-                    });
                     wx.navigateTo({
                       url: `./classify/index`,
                     })
                     resolve(res);
-                  } if (res.data.code === 3){
+                  } else if (res.data.code === 3){
                     this.setData({
                       name: '无匹配',
                     })

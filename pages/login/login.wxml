@@ -17,6 +17,6 @@
         <view class="login_re" bindtap="gore">注册</view>
     </view>
     <view class="login_button">
-        <button class="login_button1" bindtap="loginjudge">登录</button>
+        <button class="login_button1" catchtap="loginjudge">登录</button>
     </view>
 </view>
