@@ -1,0 +1,46 @@
+<!--pages/map/marker/marker.wxml-->
+<view class="show-map-container">
+  <!-- 地图展示部分 -->
+  <view class="map-container">
+    <view class="map-content {{tabIndex === 0 ? 'map-content-show' : '' }}">
+			<view class="map-panel pl20 pr20" hover-class="none" hover-stop-propagation="false">
+      	<map class="map" markers="{{markers}}" latitude="{{location.latitude}}" longitude="{{location.longitude}}" scale="{{scale}}" bindmarkertap="onTapMarker"></map>
+			</view>
+      <view class="feature-container pl20">
+      <view class="feature-content  border-bottom">
+        <text class="feature-label">动物出现位置</text>
+        <text class="feature-txt">{{markerCallbackTxt}}</text>
+      </view>
+      <view class="feature-content  border-bottom">
+        <text class="feature-label">动物出现时间</text>
+        <text class="feature-txt" bindtap="showPicker" data-mode="datetime">{{datetimeText}}</text>
+      </view>
+      <view class="feature-content  border-bottom">
+        <text class="feature-label">动物名</text>
+        <text class="feature-txt" bindtap="onChoose">{{animalName}}</text>
+      </view>
+      <view style="height: 100rpx;">
+      </view>
+        <button style='margin-top: 28rpx; background-color: rgb(158, 209, 211);' 
+    class='btn-submit' 
+    hover-class='btn-submit-hover'
+    bindtap='onClick'>上传</button>
+    <view style="height: 400rpx;">
+  </view>
+    </view>
+    </view>
+	</view>
+</view>
+
+<t-date-time-picker
+  title="选择日期和时间"
+  visible="{{datetimeVisible}}"
+  mode="minute"
+  value="{{datetime}}"
+  start="{{start}}"
+  end="{{end}}"
+  format="YYYY-MM-DD HH:mm"
+  bindchange="onConfirm"
+  bindpick="onColumnChange"
+  bindcancel="hidePicker"
+/>

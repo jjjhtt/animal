@@ -23,11 +23,11 @@ Page({
   },
 
   onShow() {
-    this.init();
+    
   },
 
   onLoad() {
-    
+    this.init();
   },
 
   onReachBottom() {

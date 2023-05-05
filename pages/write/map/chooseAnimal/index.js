@@ -1,73 +1,68 @@
-import {config} from "../../config/index"
-import Toast from 'tdesign-miniprogram/toast/index';
-
+import { getCategoryList } from '../../../../services/document/fetchCategoryList';
+import {config} from '../../../../config/index'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    path: '',
-    name: '',
-    id: ''
+    /*tabList: [{
+      text: '猫',
+      key: 0,
+    },
+    {
+      text: '狗',
+      key: 1,
+    },
+    {
+      text: '鸟',
+      key: 2,
+    }],*/
+    list: [],
+    nowkey: 0,
+    match: '',
+    tweetsListLoadStatus: 0
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  tweetListPagination: {
+    index: 0,
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  submitHandle(e) {
+    this.setData({
+      match: e.detail.value
+    });
+    this.init(true);
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
+  /*tabChangeHandle(e) {
+    this.setData({
+      nowkey: e.detail.value
+    });
+    this.init();
+  },*/
+
   onShow() {
-
+    
+  },
+  onChange() {
+    
+  },
+  onLoad() {
+    this.init(true);
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  onReTry() {
+    this.init();
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+  onReachBottom() {
+    if (this.data.tweetsListLoadStatus === 0) {
+      this.init();
+    }
   },
 
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  onPullDownRefresh() {
+    this.init();
   },
 
-  onClickHelp() {
-    wx.navigateTo({ url: '/pages/write/newHelp/index' });
-  },
-
-  onClickTweet() {
-    wx.navigateTo({ url: '/pages/write/newTweet/index' });
-  },
-
-  onClickTrack() {
-    wx.navigateTo({ url: '/pages/write/map/index' });
-  },
-
-  async onClickPhoto() {
+  async onClick() {
     const tempFilePath = new Promise((resolve, reject) => {
       wx.chooseMedia({
         count: 1,
@@ -114,7 +109,7 @@ Page({
                       id: res.data.body.animalId
                     })
                     wx.navigateTo({
-                      url: `./classify/index`,
+                      url: `/pages/write/classify/index?t=1`,
                     })
                     resolve(res);
                   } else if (res.data.code === 3){
@@ -139,4 +134,32 @@ Page({
       });
     });
   },
-})
+
+  async init(fresh = false) {
+    if (fresh) {
+      wx.pageScrollTo({
+        scrollTop: 0,
+      });
+    }
+    this.setData({ tweetsListLoadStatus: 1 });
+    let pageIndex = this.tweetListPagination.index + 1;
+    if (fresh) {
+      this.tweetListPagination.index = 0;
+      pageIndex = 0;
+    }
+    try {
+      const result = await getCategoryList(pageIndex, this.data.match);
+      if (result === null) {
+        this.setData({ tweetsListLoadStatus: 2 });
+        return;
+      }
+      this.setData({
+        list: fresh ? result : this.data.list.concat(result),
+        tweetsListLoadStatus: 0,
+      });
+      this.tweetListPagination.index = pageIndex;
+    } catch (error) {
+      this.setData({ tweetsListLoadStatus: 3 });
+    }
+  },
+});

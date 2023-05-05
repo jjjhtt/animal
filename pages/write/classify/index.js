@@ -7,13 +7,22 @@ Page({
   data: {
     url: '',
     name: '',
-    id: ''
+    id: '',
+    type: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const { t } = options;
+    this.setData({
+        type: t,
+    });
+    console.log(this.data.type);
+    if (this.data.type === 1) {
+      return;
+    }
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2]; //上一页
     var info = prevPage.data.path
@@ -31,14 +40,24 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    setTimeout(()=>{
+    if (this.data.type == 1) {
+      var pages = getCurrentPages();
+      var prevPage = pages[pages.length - 3]; //上一页
+      prevPage.setData({
+        animalName: this.data.name,
+        animalID: this.data.id,
+      })
+      wx.navigateBack({
+        delta: 2,
+      })
+    }}, 1500);
   },
 
   /**
