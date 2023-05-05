@@ -15,6 +15,36 @@ Page({
       errormessage: '',
       type: '',
       show: '',
+      SHOW: ''  //页面加载中
+  },
+  onLoad: function () {
+    const ID = wx.getStorageSync('userId')
+    const TOKEN = wx.getStorageSync('token')
+    if (ID && TOKEN) {
+      self = this
+      this.setData({ SHOW:false })
+      wx.showLoading({
+        title: '加载中',
+      })
+      wx.request({
+        url: config.domain + '/login',
+        data: {
+          username:this.data.email,
+          password: this.data.pw,
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        method: 'POST',
+        success:function(res) {
+          wx.hideLoading();
+          self.setData({ SHOW: true })
+          wx.reLaunch({ url: '/pages/home/home' })
+        }
+      })
+    } else {
+      this.setData({ SHOW: true })
+    }
   },
   onReady: function () {
     this.setData({

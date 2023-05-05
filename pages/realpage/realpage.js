@@ -303,7 +303,6 @@ Page({
     }
     try {
       const nextList = await fetchComments(pageIndex, this.data.tweetid);
-      console.log(nextList)
       if (nextList == null) {
         this.setData({ commentlistLoadStatus: 2 });
         return 0;
