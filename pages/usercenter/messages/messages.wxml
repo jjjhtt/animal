@@ -1,0 +1,10 @@
+<view wx:for="{{msgList}}" wx:for-item="item" wx:for-index="index">
+  <t-cell-group>
+    <t-cell title="系统通知" description="{{item.info}}" hover bind:click="onClickMessage" data-index="{{item.index}}" arrow>
+      <view class="avatar" slot="left-icon">
+        <image src="{{labaSrc}}" style="width: 96rpx; height: 96rpx;" />
+      </view>
+      <t-badge wx:if="{{!item.read}}" slot="note" dot />
+    </t-cell>
+  </t-cell-group>
+</view>
