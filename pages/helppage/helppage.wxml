@@ -106,6 +106,7 @@
   <!--底部-->
   <view class="realpage_footer">
     <view class="bottom-input" style="padding-bottom: {{inputBottom}}px;">
+      <view style="border: 2px solid gray;border-radius: 20px;height: 25px;flex: 1;padding-left: 5px;">
         <textarea :adjust-position="false" 
         cursor-spacing="30" 
         v-model="{{inputText}}"
@@ -121,6 +122,7 @@
         show-confirm-bar="{{false}}" 
         style="width: 250px;height: 100%;"
         />
+      </view>
     </view>
     <view wx:if="{{inputnow}}" style="margin-right: 10px;flex:0.15" bindtap="sendtext">发送</view>
     <view wx:if="{{!inputnow}}" style="flex: 1; text-align: center;padding-right: 10px;">
