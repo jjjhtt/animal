@@ -29,7 +29,7 @@
   margin: 10px;
   line-height: 25px;
   padding-bottom: 5px;
-  /*border-bottom: 1px solid rgba(128, 128, 128, 0.8);*/
+  border-bottom: 1px solid rgba(128, 128, 128, 0.8);
 }
 .bestAnsBox {
   margin: 10px;
@@ -63,14 +63,16 @@
   line-height: 20px;
   overflow-wrap: break-word;
 }
-.commentData {
+.commentDate {
   font-size: 12px;
+  padding-top: 5px;
   float: left;
   color: rgba(0, 0, 0, 0.5);
 }
 .likef {
   float: right;
   height: 25px;
+  padding-bottom: 5px;
 }
 .commentline {
   margin-top: 10px;
@@ -87,4 +89,11 @@
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: small;
+}
+.noReply {
+  width: 100%;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+  margin: 10px;
 }
