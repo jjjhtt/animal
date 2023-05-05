@@ -24,7 +24,11 @@
     "pages/realanimal/track/track",
     "pages/helppage/helppage",
     "pages/logs/logs",
-    "pages/write/classify/index"
+    "pages/write/classify/index",
+    "pages/usercenter/messages/messages",
+    "pages/usercenter/messages/message/message",
+    "pages/write/map/index",
+    "pages/write/map/chooseAnimal/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

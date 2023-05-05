@@ -1,5 +1,7 @@
 import Toast from 'tdesign-miniprogram/toast/index';
 import { fetchUserCenter } from '../../services/usercenter/fetchUsercenter';
+import {config} from '../../config/index'
+
 
 const menuData = [
   [
@@ -18,6 +20,10 @@ const menuData = [
     {
       title: '我的求助',
       type: 'myHelp',
+    },
+    {
+      title: '我的消息',
+      type: 'myMessage',
     },
   ],
   [
@@ -39,11 +45,12 @@ const getDefaultData = () => ({
   },
   menuData,
   versionNo: 'alpha',
+  MessageNum: 1,
 });
 
 Page({
   data: getDefaultData(),
-
+  
   onLoad() {
     
   },
@@ -62,6 +69,34 @@ Page({
 
   init() {
     this.fetUseriInfoHandle();
+    wx.request({
+      url: config.domain + '/user/message/unreadNum',
+      method: 'POST',
+      data: {
+        "userId": wx.getStorageSync('userId'),
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'authorization': wx.getStorageSync('token')
+      },
+      success: (res)=> {
+        if (res.data.code === 0) {
+          console.log(res);
+        } else {
+          console.log(res);
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: res.message,
+            theme: 'error',
+          });
+        }
+      },
+      fail: (res)=> {
+        console.log(res)
+      }
+    })
+    
   },
 
   fetUseriInfoHandle() {
@@ -77,11 +112,10 @@ Page({
         wx.stopPullDownRefresh();
       },
     );
+    
   },
-
   onClickCell({ currentTarget }) {
     const { type } = currentTarget.dataset;
-
     switch (type) {
       case 'info': {
         wx.navigateTo({ url: '/pages/usercenter/personalInfo/index' });
@@ -99,8 +133,12 @@ Page({
         wx.navigateTo({ url: '/pages/usercenter/help/index' });
         break;
       }
+      case 'myMessage': {
+        wx.navigateTo({ url: '/pages/usercenter/messages/messages' });
+        break;
+      }
       case 'exit': {
-        wx.clearStorageSync();
+        wx.clearStorageSync();  //清除缓存
         setTimeout(() => {
           wx.reLaunch({
             url: '/pages/login/login',

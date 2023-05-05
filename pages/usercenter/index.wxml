@@ -7,7 +7,7 @@
 />
 
 <view class="content-wrapper">
-  <view wx:for="{{menuData}}" wx:key="item" class="cell-box">
+  <view wx:for="{{menuData}}" wx:for-index="outIndex" wx:key="item" class="cell-box">
     <t-cell-group>
       <t-cell
         wx:for="{{item}}"
@@ -22,6 +22,11 @@
         bind:click="onClickCell"
         t-class="t-cell-padding"
       >
+        <t-badge 
+        count="{{MessageNum}}" 
+        slot="note" 
+        wx:if="{{xitem.type == 'myMessage'}}"
+        />
       </t-cell>
     </t-cell-group>
   </view>

@@ -1,0 +1,23 @@
+<view class="animal-page-header">
+  <view class="search" >
+    <t-search
+      t-class-input="t-search__input"
+      t-class-input-container="t-search__input-container"
+      placeholder="请输入关键词"
+      leftIcon=""
+      bind:submit="submitHandle"
+    >
+      <t-icon slot="left-icon"  name="search" size="40rpx" color="#bbb" />
+    </t-search>
+  </view>
+</view>
+<view style="height: 100rpx;">
+  <button style='margin-top: 28rpx; background-color: rgb(178, 233, 203);' 
+    bindtap='onClick'>可点此识别</button>
+</view>
+<view class="wrap">
+  <document
+    category="{{list}}"
+  />
+  <load-more list-is-empty="{{!list.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
+</view>

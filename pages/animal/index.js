@@ -38,13 +38,13 @@ Page({
   },*/
 
   onShow() {
-    this.init(true);
+    
   },
   onChange() {
     
   },
   onLoad() {
-    //this.init();
+    this.init(true);
   },
 
   onReTry() {
