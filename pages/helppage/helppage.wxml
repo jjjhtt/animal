@@ -41,24 +41,38 @@
     <text user-select>{{qcontent}}</text>
   </view>
   <!--官方回复-->
-  <view wx:if="bestAns" class="bestAnsBox">
+  <view wx:if="{{officialReplyList.length != 0}}" class="bestAnsBox">
     <view class="bsetAnsBox1">官方回复</view>
-    <view class="helpCommentBox">
-      <view class="commentBoxTop">
-        <view class="commentImgBox">
-          <image src="../../images/li.jpg" mode="widthFix" style="width: 58rpx;border-radius: 45%;" />
-        </view>
-        <view class="commentDetailBox">
-          <view>{{bestname}}</view>
-          <view class="commentText"> {{besttext}} </view>
-          <view class="commentData">{{bestdata}}</view>
-        </view>
+    <view>
+      <block wx:for="{{officialReplyList}}" wx:key="index">
+        <view class="helpCommentBox">
+          <view class="commentBoxTop">
+            <view class="commentImgBox">
+              <image src="../../images/li.jpg" mode="widthFix" style="width: 58rpx;border-radius: 45%;" />
+            </view>
+            <view class="commentDetailBox">
+              <view style="font-size: medium;color: gray;"> 
+                {{item.username}} 
+                <view wx:if="{{helpid == item.userId}}" bindtap="deleteComment" data-id="{{index}}" style="float: right;"><t-icon name="close" size="48rpx"/></view>
+              </view>
+              <view class="commentText"> {{item.content}} </view>
+              <view>
+                <view class="commentDate">{{item.time}}</view>
+                <view class="likef">{{item.likeNum}}</view>
+                <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
+                <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
+              </view>
+              <view class="commentline"></view>
+            </view>
       </view>
+      </view>
+      </block>
     </view>
   </view>
   <!--回复-->
   <view class="replyBox">
     <view class="allReplyBox"> 共{{commentnum}}条回复 </view>
+    <view class="noReply" wx:if="{{replylist.length == 0}}"> 还没有回复哦！ </view>
     <view>
       <block wx:for="{{replylist}}" wx:key="index">
         <view class="helpCommentBox">
@@ -67,13 +81,16 @@
               <image src="../../images/li.jpg" mode="widthFix" style="width: 58rpx;border-radius: 45%;" />
             </view>
             <view class="commentDetailBox">
-              <view style="font-size: medium;color: gray;">{{item.username}}</view>
+              <view style="font-size: medium;color: gray;"> 
+                {{item.username}} 
+                <view wx:if="{{helpid == item.userId}}" bindtap="deleteComment" data-id="{{index}}" style="float: right;"><t-icon name="close" size="48rpx"/></view>
+              </view>
               <view class="commentText"> {{item.content}} </view>
               <view>
-                <view class="commentData">{{item.time}}</view>
+                <view class="commentDate">{{item.time}}</view>
                 <view class="likef">{{item.likeNum}}</view>
-                <view class="likef" wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
-                <view class="likef" wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
+                <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
+                <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
               </view>
               <view class="commentline"></view>
             </view>
@@ -102,6 +119,20 @@
         />
     </view>
     <view wx:if="{{inputnow}}" style="margin-right: 10px;flex:0.15" bindtap="sendtext">发送</view>
+    <view wx:if="{{!inputnow}}" style="flex: 1; text-align: center;padding-right: 10px;">
+        <view style="display: flex; justify-content: center;">
+            <view style="flex: 1;" bindtap="likeTweet">
+              <view wx:if="{{!hasLiked}}" style="float: left;"><t-icon name="heart"  size="48rpx"/></view>
+              <view wx:if="{{hasLiked}}" style="float: left;"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
+              <view class="realPageIcon">{{likecount}}</view>
+            </view>
+            <view style="flex: 1;" bindtap="starTweet">
+              <view wx:if="{{!hasStarred}}" style="float: left;"><t-icon name="star"  size="48rpx"/></view>
+              <view wx:if="{{hasStarred}}" style="float: left;"><t-icon name="star-filled" color="yellow" size="48rpx"/></view>
+              <view class="realPageIcon">{{collectcount}}</view>
+            </view>
+        </view>
+    </view>
   </view>
   <load-more list-is-empty="{{!replylist.length}}" status="{{replylistLoadStatus}}" bind:retry="onReTry" />
 </view>
