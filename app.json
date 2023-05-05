@@ -25,11 +25,8 @@
     "pages/helppage/helppage",
     "pages/logs/logs",
     "pages/write/classify/index",
-<<<<<<< HEAD
     "pages/write/map/index",
     "pages/write/map/chooseAnimal/index",
-=======
->>>>>>> master
     "pages/usercenter/messages/messages",
     "pages/usercenter/messages/message/message"
   ],
