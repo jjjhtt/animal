@@ -89,6 +89,7 @@ Page({
       //console.log(nextList);
       if (nextList === null) {
         this.setData({ tweetsListLoadStatus: 2 });
+        return;
       }
       this.setData({
         tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),

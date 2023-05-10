@@ -14,12 +14,16 @@ const menuData = [
       type: 'myTweets',
     },
     {
+      title: '我的求助',
+      type: 'myHelp',
+    },
+    {
       title: '我的收藏',
       type: 'myCollections',
     },
     {
-      title: '我的求助',
-      type: 'myHelp',
+      title: '我的领养',
+      type: 'myAdoption',
     },
     {
       title: '我的消息',
