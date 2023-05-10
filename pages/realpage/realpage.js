@@ -3,6 +3,10 @@ import { fetchComments } from '../../services/tweet/fetchComments';
 import {config} from '../../config/index'
 Page({
   data: {
+      defaultData: {
+        img: '', // 头像
+        name: '' // 名字
+      },
       imgUrls: '',
       tweetid: 0,
       uid: 0,
@@ -238,7 +242,6 @@ Page({
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
-        console.log(res)
         if (res.data.code == 0) {
           let sp = res.data.body
           self.setData({
@@ -252,7 +255,8 @@ Page({
             likecount: sp.likes,
             collectcount: sp.stars,
             hasLiked: sp.hasLiked,
-            hasStarred: sp.hasStarred
+            hasStarred: sp.hasStarred,
+            defaultData: {img:sp.avatar, name:sp.username}
           })
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
@@ -272,7 +276,6 @@ Page({
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
-        console.log(res)
         if (res.data.code == 0) {
           self.setData({commentlist: res.data.body.comments})
         } else {

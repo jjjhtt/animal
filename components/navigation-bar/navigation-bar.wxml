@@ -1,0 +1,14 @@
+<view class="nav-bar" style="height:{{navBarHeight}}px;">
+    <view style="margin-top:3px;">
+      <t-icon name="chevron-left" size="33" bind:click="onIconTap"  />
+    </view>
+    <view>
+      <t-image wx:if="{{img}}" src="https://anith2.2022martu1.cn{{img}}" error="slot" mode="heightFix" height="42" width="42" shape="circle" lazy-load />
+    </view>
+    <view style="margin-top: 9px; margin-left: 12px;font-weight: 500;">
+      {{name}}
+    </view>
+</view>
+
+<!-- 占位，高度与顶部栏一样 -->
+<view style="height:{{navBarHeight}}px;"></view>

@@ -1,8 +1,9 @@
 {
   "component": true,
-  "navigationBarTitleText": "北航动物",
+  "navigationStyle": "custom",
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon",
-    "t-toast": "tdesign-miniprogram/toast/toast"
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
   }
 }
