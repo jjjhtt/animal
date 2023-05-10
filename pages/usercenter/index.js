@@ -82,6 +82,9 @@ Page({
       success: (res)=> {
         if (res.data.code === 0) {
           console.log(res);
+          this.setData({
+            MessageNum: res.data.body.num
+          })
         } else {
           console.log(res);
           Toast({

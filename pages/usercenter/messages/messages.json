@@ -6,6 +6,8 @@
     "t-message": "tdesign-miniprogram/message/message",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-cell": "tdesign-miniprogram/cell/cell",
-    "t-badge": "tdesign-miniprogram/badge/badge"
+    "t-badge": "tdesign-miniprogram/badge/badge",
+    "popover": "/components/popover",
+    "popover-item": "/components/popover-item"
   }
 }

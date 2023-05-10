@@ -1,6 +1,8 @@
 <view wx:for="{{msgList}}" wx:for-item="item" wx:for-index="index">
   <t-cell-group>
-    <t-cell title="系统通知" description="{{item.info}}" hover bind:click="onClickMessage" data-index="{{item.index}}" arrow>
+    <t-cell title="系统通知" description="{{item.info}}" hover bind:click="onClickMessage" data-index="{{item.index}}" arrow
+    bindlongpress="onLongPressMessage"
+    id='cell{{item.index}}'>
       <view class="avatar" slot="left-icon">
         <image src="{{labaSrc}}" style="width: 96rpx; height: 96rpx;" />
       </view>
@@ -8,3 +10,7 @@
     </t-cell>
   </t-cell-group>
 </view>
+<popover id='popover'>
+  <popover-item bindtap='delete' hasline>删除</popover-item>
+  <popover-item bindtap='cancel' hasline>取消</popover-item>
+</popover>
