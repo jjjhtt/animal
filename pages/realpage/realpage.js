@@ -43,7 +43,6 @@ Page({
       tweetid: options.tweetId,
       uid: wx.getStorageSync('userId')
     })
-    console.log(options)
     this.getdata()
   },
   computeImgHeight(e) {
@@ -113,7 +112,6 @@ Page({
       this.setData({inputBottom:0, inputnow:false})
   },
   sendtext: function() {
-    console.log(wx.getStorageSync('userId'))
     wx.request({
       url: config.domain + '/tweet/addComment',
       method: 'POST',
@@ -127,7 +125,6 @@ Page({
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
-        console.log(res)
         if (res.data.code == 0) {
           Toast({
             context: this,
@@ -148,7 +145,6 @@ Page({
     let i = e.currentTarget.dataset.id
     const changelike = `commentlist[${i}].likeNum`
     const changeislike = "commentlist[" + i + "].isLike"
-    console.log(this.data.commentlist[i].isLike)
     wx.request({
       url: config.domain + '/comment/like',
       method: 'POST',
@@ -161,7 +157,6 @@ Page({
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
-        console.log(res)
         if (res.data.code == 0) {
           if (res.data.body.isLike == true) {
             let like = self.data.commentlist[i].likeNum + 1
