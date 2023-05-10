@@ -88,9 +88,6 @@ Page({
       });
 
       this.tweetListPagination.index = pageIndex;
-      if (JSON.stringify(nextList) == '{}') {
-        this.setData({ tweetsListLoadStatus: 2 });
-      }
       //console.log(this.data.tweetsList);
     } catch (err) {
       //console.log(err);

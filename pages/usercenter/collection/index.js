@@ -57,6 +57,9 @@ Page({
     this.setData({
       nowkey: e.detail.value
     });
+    this.setData({
+      tweetsList: [],
+    })
     this.loadtweetsList(true);
   },
 
@@ -86,10 +89,12 @@ Page({
 
     try {
       const nextList = await fetchTweetsList(pageIndex, this.data.nowkey, this.data.match);
-      //console.log(nextList);
+      console.log(nextList);
       if (nextList === null) {
         this.setData({ tweetsListLoadStatus: 2 });
+        return;
       }
+      console.log(nextList);
       this.setData({
         tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),
         tweetsListLoadStatus: 0,

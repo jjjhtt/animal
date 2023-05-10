@@ -7,7 +7,7 @@ Page({
 		markers: [{
       callout: {
         content: '绿园东',
-        padding: 10,
+        padding: 8,
         borderRadius: 2,
         display: 'ALWAYS'
       },
@@ -21,7 +21,7 @@ Page({
     {
       callout: {
         content: '绿园西',
-        padding: 10,
+        padding: 8,
         borderRadius: 2,
         display: 'ALWAYS'
       },
@@ -34,7 +34,7 @@ Page({
     }, {
       callout: {
         content: '晨读园',
-        padding: 10,
+        padding: 8,
         borderRadius: 2,
         display: 'ALWAYS'
       },
@@ -47,7 +47,7 @@ Page({
     }, {
       callout: {
         content: '静园',
-        padding: 10,
+        padding: 8,
         borderRadius: 2,
         display: 'ALWAYS'
       },
@@ -60,7 +60,7 @@ Page({
     }, {
       callout: {
         content: '图书馆',
-        padding: 10,
+        padding: 8,
         borderRadius: 2,
         display: 'ALWAYS'
       },
@@ -73,7 +73,7 @@ Page({
     }, {
       callout: {
         content: '求是广场',
-        padding: 10,
+        padding: 8,
         borderRadius: 2,
         display: 'ALWAYS'
       },
@@ -86,7 +86,7 @@ Page({
     }, {
       callout: {
         content: '南区公寓',
-        padding: 10,
+        padding: 8,
         borderRadius: 2,
         display: 'ALWAYS'
       },
@@ -99,7 +99,7 @@ Page({
     }, {
       callout: {
         content: '操场',
-        padding: 10,
+        padding: 8,
         borderRadius: 2,
         display: 'ALWAYS'
       },
@@ -112,7 +112,7 @@ Page({
     }, {
       callout: {
         content: '球场',
-        padding: 10,
+        padding: 8,
         borderRadius: 2,
         display: 'ALWAYS'
       },
@@ -125,7 +125,7 @@ Page({
     }, {
       callout: {
         content: '海棠园',
-        padding: 10,
+        padding: 8,
         borderRadius: 2,
         display: 'ALWAYS'
       },
@@ -138,13 +138,52 @@ Page({
     }, {
       callout: {
         content: '唯实园',
-        padding: 10,
+        padding: 8,
         borderRadius: 2,
         display: 'ALWAYS'
       },
       id: 10,
       latitude: 39.9785,
       longitude: 116.3511,
+      iconPath: './imgs/Marker3_Activated@3x.png',
+      width: '34px',
+      height: '34px',
+    }, {
+      callout: {
+        content: '新主楼',
+        padding: 8,
+        borderRadius: 2,
+        display: 'ALWAYS'
+      },
+      id: 11,
+      latitude: 39.9802,
+      longitude: 116.3518,
+      iconPath: './imgs/Marker3_Activated@3x.png',
+      width: '34px',
+      height: '34px',
+    }, {
+      callout: {
+        content: '北区公寓',
+        padding: 8,
+        borderRadius: 2,
+        display: 'ALWAYS'
+      },
+      id: 12,
+      latitude: 39.9853,
+      longitude: 116.3460,
+      iconPath: './imgs/Marker3_Activated@3x.png',
+      width: '34px',
+      height: '34px',
+    }, {
+      callout: {
+        content: '主楼',
+        padding: 8,
+        borderRadius: 2,
+        display: 'ALWAYS'
+      },
+      id: 13,
+      latitude: 39.984,
+      longitude: 116.3509,
       iconPath: './imgs/Marker3_Activated@3x.png',
       width: '34px',
       height: '34px',
