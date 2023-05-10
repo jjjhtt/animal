@@ -6,6 +6,7 @@
     "t-toast": "tdesign-miniprogram/toast/toast",
     "t-divider": "tdesign-miniprogram/divider/divider",
     "t-dialog": "tdesign-miniprogram/dialog/dialog",
-    "t-switch": "tdesign-miniprogram/switch/switch"
+    "t-switch": "tdesign-miniprogram/switch/switch",
+    "t-image": "tdesign-miniprogram/image/image"
   }
 }

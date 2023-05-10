@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker"
+  },
+  "navigationBarTitleText": "上传轨迹"
+}

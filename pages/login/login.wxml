@@ -1,7 +1,7 @@
 <view class="toptip toptip--{{type}}  {{show ? 'toptip--show' : ''}} ">{{ errormessage }}</view>
 <t-message id="t-message" />
 <t-toast id="t-toast" />
-<view style="background-image: url(../../images/bg1.png);background-size: 100% 100%;height:502px;margin-top: 18px;">    
+<view wx:if="{{SHOW}}" style="background-image: url(../../images/bg1.png);background-size: 100% 100%;height:502px;margin-top: 18px;">    
     <view class="login_title">校园动物登录</view>
     <view class="login_inputbox">
         <image src="../../images/login1.png" mode="widthFix" style="width: 48rpx;" />

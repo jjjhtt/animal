@@ -83,7 +83,7 @@
 }
 .replyBox {
   margin: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 }
 .allReplyBox {
   margin-top: 10px;
@@ -96,4 +96,8 @@
   font-size: large;
   font-weight: bold;
   margin: 10px;
+}
+.error-text {
+  font-size: 25rpx;
+  font-weight: 400;
 }

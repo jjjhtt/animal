@@ -1,9 +1,12 @@
 // pages/helppage/helppage.js
 import Toast from 'tdesign-miniprogram/toast/index';
-import {config} from '../../config/index'
+import {config} from '../../config/index';
+import { getContent } from '../../services/help/getContent';
+import { getComments } from '../../services/help/getComments';
 Page({
   data: {
     imgUrls: [],
+    imgUrl: '',
     current: 0,
     tweetid: 1,
     userid: 0,
@@ -33,6 +36,8 @@ Page({
     hasStarred: false,
     likecount: 0,
     collectcount: 0,
+    show: false, //页面展示控制
+    showWarnConfirm: false,
   },
   replyListPagination: {
     index: 0,
@@ -46,7 +51,8 @@ Page({
     this.setData({
       bestAns: true,
       userid: wx.getStorageSync('userId'),
-      tweetid: options.id
+      tweetid: options.id,
+      show: false
     })
     this.getdata()
   },
@@ -62,37 +68,41 @@ Page({
   },
   changeState() {
     this.setData({solveState : !this.data.solveState})
-    console.log(this.data.userid)
-    console.log(this.data.helpid)
-    
   },
   handleChange(e) {
+    const { key } = e.currentTarget.dataset;
+    this.setData({ [key]: true });
+  },
+  closeDialog(e) {
     var self = this
-    wx.request({
-      url: config.domain + '/help/changeStatus',
-      method: 'POST',
-      data: {
-        "userId": wx.getStorageSync('userId'),
-        "tweetId": this.data.tweetid
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'authorization': wx.getStorageSync('token')
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 0) {
-          self.setData({solveState : !self.data.solveState})
-        } else {
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: res.data.message,
-            theme: 'error',
-          });
+    if (e.type == "confirm") {
+      wx.request({
+        url: config.domain + '/help/changeStatus',
+        method: 'POST',
+        data: {
+          "userId": wx.getStorageSync('userId'),
+          "tweetId": this.data.tweetid
+        },
+        header: {
+          'content-type': 'application/json', // 默认值
+          'authorization': wx.getStorageSync('token')
+        },
+        success(res) {
+          console.log(res)
+          if (res.data.code == 0) {
+            self.setData({solveState : !self.data.solveState})
+          } else {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: res.data.message,
+              theme: 'error',
+            });
+          }
         }
-      }
-    })
+      })
+    }
+    this.setData({ showWarnConfirm : false})
   },
   onReachBottom() {
     if (this.data.replylistLoadStatus == 0) {
@@ -114,34 +124,13 @@ Page({
       pageIndex = 1
     }
     try {
-      let nextList = [{name:'小飞棍', id:1, content: '爱信等', time:'今天20:00', likes:999, },]
-      wx.request({
-        url: 'url',
-        method: 'POST',
-        data: {
-          "userId": wx.getStorageSync('userId'),
-          "id": this.data.tweetid,
-          "page": pageIndex
-        },
-        header: {
-          'content-type': 'application/json', // 默认值
-          'authorization': wx.getStorageSync('token')
-        },
-        success(res) {
-          if (res.data.code == 0) {
-            
-          } else {
-            Toast({
-              context: this,
-              selector: '#t-toast',
-              message: res.data.message,
-              theme: 'error',
-            });
-          }
-        }
-      })
+      const nextList = await getComments(pageIndex, this.data.tweetid);
+      if (nextList == null) {
+        this.setData({ replylistLoadStatus: 2 });
+        return 0;
+      }
       this.setData({
-        //replylist: this.data.replylist.concat(nextList),
+        replylist: fresh ? nextList : this.data.replylist.concat(nextList),
         replylistLoadStatus: 0,
       });
       this.replyListPagination.index = pageIndex;
@@ -152,7 +141,6 @@ Page({
       console.log(err);
       this.setData({ replylistLoadStatus: 3 });
     }
-    
   },
   onInputValueChange(e) {
       this.setData({inputText:e.detail.value})
@@ -168,8 +156,6 @@ Page({
     let i = e.currentTarget.dataset.id
     const changelike = `replylist[${i}].likeNum`
     const changeislike = "replylist[" + i + "].isLike"
-    console.log(i)
-    console.log(this.data.replylist[i].isLike)
     wx.request({
       url: config.domain + '/comment/like',
       method: 'POST',
@@ -216,13 +202,7 @@ Page({
           self.setData({
             replylist: self.data.replylist
           })
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: '删除成功',
-            theme: 'success',
-            direction: 'column',
-          });
+          Toast({context:this,selector:'#t-toast',message:'删除成功',theme:'success',direction:'column',});
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
         }
@@ -311,42 +291,28 @@ Page({
       }
     })
   },
-  getdata: function() {
+  async getdata() {
     self = this
-    wx.request({
-      url: config.domain + '/tweet/content',
-      method: 'POST',
-      data: {
-        "userId": wx.getStorageSync('userId'),
-        "tweetId": this.data.tweetid,
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'authorization': wx.getStorageSync('token')
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.code == 0) {
-          let sp = res.data.body
-          self.setData({
-            imgUrls: sp.images == null ? [] : sp.images, 
-            qtitle: sp.title,
-            qcontent: sp.content,
-            time: sp.time==null ? '未知' : sp.time,
-            username: sp.username,
-            commentnum: sp.comments,
-            solveState: sp.solved,
-            helpid: sp.userId,
-            likecount: sp.likes,
-            collectcount: sp.stars,
-            hasLiked: sp.hasLiked,
-            hasStarred: sp.hasStarred
-          })
-        } else {
-          Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
-        }
-      }
-    })
+    try {
+      const sp = await getContent(this.data.tweetid);
+      this.setData({
+        imgUrls: sp.images == null ? [] : sp.images, 
+        imgUrl: sp.avatar == null ? [] : 'https://anith2.2022martu1.cn' + sp.avatar,
+        qtitle: sp.title,
+        qcontent: sp.content,
+        time: sp.time == null ? '发布时间未知' : sp.time,
+        username: sp.username,
+        commentnum: sp.comments,
+        solveState: sp.solved,
+        helpid: sp.userId,
+        likecount: sp.likes,
+        collectcount: sp.stars,
+        hasLiked: sp.hasLiked,
+        hasStarred: sp.hasStarred,
+        show: true
+      })
+    } catch (err) {
+    }
     wx.request({
       url: config.domain + '/tweet/getComments',
       method: 'POST',
@@ -360,8 +326,7 @@ Page({
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
-        console.log(res)
-        if (res.data.code == 0) {
+        if (res.data.code == 0 && res.data.body.comments != null) {
           for (let i = 0; i < res.data.body.comments.length; i++) {
             if (res.data.body.comments[i].isAdmin == false) {
               self.setData({ officialReplyList: res.data.body.comments.splice(0,i) })
@@ -369,7 +334,7 @@ Page({
               break;
             }
           }
-        } else {
+        } else if(res.data.code != 0) {
           Toast({
             context: this,
             selector: '#t-toast',
