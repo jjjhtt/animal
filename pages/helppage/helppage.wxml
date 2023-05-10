@@ -82,12 +82,12 @@
         <view class="helpCommentBox">
           <view class="commentBoxTop">
             <view class="commentImgBox">
-              <image src="../../images/li.jpg" mode="widthFix" style="width: 58rpx;border-radius: 45%;" />
+              <image src="https://anith2.2022martu1.cn{{item.avatar}}" mode="widthFix" style="width: 100%;border-radius: 45%;" />
             </view>
             <view class="commentDetailBox">
               <view style="font-size: medium;color: gray;"> 
                 {{item.username}} 
-                <view wx:if="{{helpid == item.userId}}" bindtap="deleteComment" data-id="{{index}}" style="float: right;"><t-icon name="close" size="48rpx"/></view>
+                <view wx:if="{{userid == item.userId}}" bindtap="deleteComment" data-id="{{index}}" style="float: right;"><t-icon name="close" size="48rpx"/></view>
               </view>
               <view class="commentText"> {{item.content}} </view>
               <view>

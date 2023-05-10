@@ -1,9 +1,9 @@
 <view>
-  <view class="dots">{{current+1}}/{{imgUrls.length}}</view>
-  <swiper bindchange="monitorCurrent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" current="{{current}}">
+  <view wx:if="{{imgUrls.length != 0}}" class="dots">{{current+1}}/{{imgUrls.length}}</view>
+  <swiper bindchange="monitorCurrent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" current="{{current}}" style="height: {{swiperHeight}};">
 	<block wx:for="{{imgUrls}}" wx:key="index">
         <swiper-item>
-          <image style="width: 100%;" mode="widthFix" src="{{item}}"/>
+          <image style="width: 100%;" mode="widthFix" bindload="computeImgHeight" src="https://anith2.2022martu1.cn{{item}}"/>
         </swiper-item>
 	</block>
   </swiper>
@@ -12,8 +12,29 @@
         <text user-select>{{contenttext}}</text>
   </view>
   <view class="buttonBox">
-    <view catchtap="handleAdopt" class="account-btn" hover-class="hover-btn"> 我要领养 </view>
+    <view wx:if="{{!adopted}}" catchtap="handleAdopt" class="account-btn" hover-class="hover-btn"> 我要领养 </view>
+    <view wx:if="{{adopted}}" class="account-btn" style="background-color:gray">已被领养</view>
     <view catchtap="goTrack" class="account-btn" hover-class="hover-btn"> 动物轨迹 </view>
   </view>
 </view>
 <t-toast id="t-toast" />
+<t-dialog
+  visible="{{showTextAndTitleWithInput}}"
+  title="领养理由"
+  content="还没想好"
+  confirm-btn="确定"
+  cancel-btn="取消"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+>
+  <t-input
+    borderless
+    class="dialog-input"
+    clearable
+    slot="content"
+    placeholder="请输入领养理由"
+    placeholder-class="placeholder"
+    bindchange="onReasonInput"
+    value="{{adoptReason}}"
+  />
+</t-dialog>

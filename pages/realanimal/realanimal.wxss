@@ -24,3 +24,30 @@
   padding-bottom: 10px;
   border-bottom: 2px solid gray;
 }
+.wrapper {
+  margin-bottom: 32rpx;
+}
+
+.placeholder {
+  color: rgba(0, 0, 0, 0.26);
+  line-height: 96rpx;
+  height: 96rpx !important;
+  margin-top: -12px;
+  display: flex;
+  align-items: center;
+}
+
+.dialog-input {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  margin-top: 32rpx;
+  border-radius: 8rpx;
+  background-color: #f3f3f3;
+  box-sizing: border-box;
+}
+
+.placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  line-height: 96rpx;
+}

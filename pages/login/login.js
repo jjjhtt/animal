@@ -18,8 +18,8 @@ Page({
       SHOW: ''  //页面加载中
   },
   onLoad: function () {
-    const ID = wx.getStorageSync('userId')
-    const TOKEN = wx.getStorageSync('token')
+    let ID = wx.getStorageSync('userId')
+    let TOKEN = wx.getStorageSync('token')
     if (ID && TOKEN) {
       self = this
       this.setData({ SHOW:false })
@@ -27,19 +27,20 @@ Page({
         title: '加载中',
       })
       wx.request({
-        url: config.domain + '/login',
+        url: config.domain + '/hello',
         data: {
-          username:this.data.email,
-          password: this.data.pw,
         },
         header: {
-          'content-type': 'application/x-www-form-urlencoded'
+          'content-type': 'application/json', // 默认值
+          'authorization': wx.getStorageSync('token')
         },
         method: 'POST',
         success:function(res) {
           wx.hideLoading();
           self.setData({ SHOW: true })
-          wx.reLaunch({ url: '/pages/home/home' })
+          if (res.data.code == 0) {
+            wx.reLaunch({ url: '/pages/home/home' })
+          }
         }
       })
     } else {
@@ -84,7 +85,6 @@ Page({
       },
       method: 'POST',
       success:function(res) {
-        console.log(res)
         if (res.data.code == 0) {
           Toast({
             context: this,

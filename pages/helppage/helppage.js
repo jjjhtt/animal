@@ -88,7 +88,6 @@ Page({
           'authorization': wx.getStorageSync('token')
         },
         success(res) {
-          console.log(res)
           if (res.data.code == 0) {
             self.setData({solveState : !self.data.solveState})
           } else {
@@ -168,7 +167,6 @@ Page({
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
-        console.log(res)
         if (res.data.code == 0) {
           if (res.data.body.isLike == true) {
             let like = self.data.replylist[i].likeNum + 1
@@ -223,7 +221,6 @@ Page({
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
-        console.log(res)
         if (res.data.code == 0) {
           Toast({
             context: this,
@@ -295,6 +292,7 @@ Page({
     self = this
     try {
       const sp = await getContent(this.data.tweetid);
+      console.log(sp)
       this.setData({
         imgUrls: sp.images == null ? [] : sp.images, 
         imgUrl: sp.avatar == null ? [] : 'https://anith2.2022martu1.cn' + sp.avatar,
