@@ -17,9 +17,12 @@ export function getCategoryList(pageIndex = 0, match = '') {
       },
       success(res) {
         if (res.data.code === 0) {
+          console.log('aaa')
           console.log(res);
           resolve(res.data.body.animals);
         } else {
+          console.log('bbb')
+          console.log(res);
           Toast({
             context: this,
             selector: '#t-toast',
