@@ -1,0 +1,62 @@
+.help-cards-censor {
+  display: flex;
+}
+
+.help-cards-censor__right {
+  height: 100%;
+  flex: auto;
+  width: 0;
+  position: relative;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  background-color: white;
+}
+
+.flex {
+  display: flex;
+}
+
+.help-cards-censor-normal-item-container {
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding-top: 28rpx;
+  margin-top: -24rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.help-cards-censor-normal-item-container-item {
+  height: 150rpx;
+  display: flex;
+  flex-direction: column;
+  margin-top: 24rpx;
+  width: 100%;
+  border: 1rpx solid black;
+  background-color: white;
+}
+
+.help-cards-censor-normal-item-container-item-title {
+  font-size: 40rpx;
+  color: #666666;
+  margin-top: 10rpx;
+  line-height: 30rpx;
+  padding-left: 10rpx;
+  padding-top: 10rpx;
+}
+
+
+.name {
+  float: left;
+  padding-top: 50rpx;
+  padding-left: 20rpx;
+}
+
+.icons {
+  display: flex;
+  flex-direction:row-reverse;
+  align-content: flex-start;
+  padding: 30rpx 20rpx 10rpx 10rpx;
+  float: right;
+}
+

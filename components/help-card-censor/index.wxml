@@ -1,0 +1,71 @@
+<view class="help-cards-censor custom-class">
+	<view class="help-cards-censor__right">
+					<view class="help-cards-censor-normal-item-container">
+						<view
+						  class="help-cards-censor-normal-item-container-item"
+						  wx:for="{{data}}"
+						  wx:for-index="subIndex"
+						  wx:key="subIndex"
+						  wx:for-item="subItem"
+						  bindtap="onClick"
+						  data-item="{{subItem}}"
+						>
+							<view class="flex help-cards-censor-normal-item-container-item-title">
+								{{subItem.title}}
+							</view>
+              <view class="comment-container">
+                <view class="name">
+                  <text></text>
+                </view>
+                <view class="icons">
+                  <t-icon
+                  wx:if="{{subItem.censored == 0}}"
+                  class="comment"
+                  name="help-circle"
+                  size="60rpx"
+                  color="burlywood"
+                />
+                <span
+                  wx:if="{{subItem.censored == 0}}" 
+                  style="margin-top: 10rpx"
+                  >审核中</span>
+                <t-icon
+                  wx:if="{{(subItem.censored == 1) && subItem.solved}}"
+                  class="comment"
+                  name="check-circle"
+                  size="60rpx"
+                  color="green"
+                />
+                <span
+                  wx:if="{{(subItem.censored == 1) && subItem.solved}}"
+                  style="margin-top: 10rpx"
+                  >已解决</span>
+                <t-icon
+                  wx:if="{{(subItem.censored == 1) && !subItem.solved}}"
+                  class="comment"
+                  name="help-circle"
+                  size="60rpx"
+                  color="burlywood"
+                />
+                <span
+                  wx:if="{{(subItem.censored == 1) && !subItem.solved}}"
+                  style="margin-top: 10rpx"
+                  >待解决</span>
+                <t-icon
+                  wx:if="{{subItem.censored == 2}}"
+                  class="comment"
+                  name="error-circle"
+                  size="60rpx"
+                  color="red"
+                />
+                <span
+                  wx:if="{{subItem.censored == 2}}"
+                  style="margin-top: 10rpx"
+                  >审核未通过</span> 
+                </view>
+              </view>
+						</view>
+					</view>
+	</view>
+</view>
+
