@@ -13,7 +13,11 @@ Component({
           return;
         }
         this.setData({ tweets: data});
-        //console.log(this.data.tweets);
+        
+        for (let i = 0;i < this.data.tweets.length; i++) {
+          console.log(this.data.tweets[i])
+        }
+        console.log(this.data.tweets);
       },
     },
   },
@@ -24,6 +28,7 @@ Component({
   methods: {
     onClick(e) {
       let id = e.currentTarget.dataset.item.id;
+
       wx.navigateTo({
         url: `/pages/helppage/helppage?id=${id}`,
       });

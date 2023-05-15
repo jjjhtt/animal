@@ -1,4 +1,39 @@
-<!--pages/realanimal/track/track.wxml-->
-<view>
-  <view></view>
+<view class="show-map-container">
+  <!-- 地图展示部分 -->
+  <view class="map-container">
+    <view class="map-content {{tabIndex === 0 ? 'map-content-show' : '' }}">
+			<view class="map-panel pl20 pr20" hover-class="none" hover-stop-propagation="false">
+      	<map class="map" 
+          markers="{{markers}}" 
+          latitude="{{location.latitude}}" 
+          longitude="{{location.longitude}}" 
+          scale="{{scale}}" 
+          bindmarkertap="onTapMarker">
+          <cover-view slot="callout">
+            <block wx:for="{{customCalloutMarkerIds}}" wx:key="*this">
+            </block>
+          </cover-view>
+        </map>
+			</view>
+      <view class="feature-container pl20">
+      <view>
+        <t-cell class="mb-16" title="选择时间" arrow hover note="{{nowTime}}" bind:click="onPicker" />
+      </view>
+    </view>
+    </view>
+	</view>
 </view>
+
+<t-picker
+  visible="{{timeVisible}}"
+  value="{{timeValue}}"
+  data-key="time"
+  title="选择时间"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindpick="onColumnChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{times}}"></t-picker-item>
+</t-picker>
