@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-image": "/components/webp-image/index",
+    "t-tabs": "tdesign-miniprogram/tabs/tabs",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
+    "t-result": "tdesign-miniprogram/result/result"
+  }
+}

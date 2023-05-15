@@ -25,13 +25,21 @@
                   size="60rpx"
                   color="green"
                 />
+                <span
+                  wx:if="{{subItem.solved}}"
+                  style="margin-top: 10rpx"
+                  >已解决</span>
                 <t-icon
                   wx:if="{{!subItem.solved}}"
                   class="comment"
-                  name="error-circle"
+                  name="help-circle"
                   size="60rpx"
-                  color="red"
+                  color="burlywood"
                 />
+                <span
+                  wx:if="{{!subItem.solved}}"
+                  style="margin-top: 10rpx"
+                  >待解决</span>
                 </view>
               </view>
 						</view>

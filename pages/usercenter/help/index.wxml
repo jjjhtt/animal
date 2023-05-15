@@ -17,7 +17,7 @@
   </view>
 </view>
 <view class="help-page-container">
-  <help-cards
+  <help-cards-censor
     wr-class="tweets-list-container"
     data="{{tweetsList}}"
   />

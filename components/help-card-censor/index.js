@@ -23,7 +23,6 @@ Component({
   methods: {
     onClick(e) {
       let id = e.currentTarget.dataset.item.id;
-
       wx.navigateTo({
         url: `/pages/helppage/helppage?id=${id}`,
       });

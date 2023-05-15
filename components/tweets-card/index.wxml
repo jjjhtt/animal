@@ -22,9 +22,11 @@
 			<view class="card__down">
         <view class="comment-container">
         <span
+        wx:if="{{tweets.censored == 1}}"
         class="commentnum"
         >{{tweets.comments}}</span>
         <t-icon
+          wx:if="{{tweets.censored == 1}}"
           class="comment"
           name="chat"
           size="48rpx"
@@ -32,14 +34,36 @@
         />
         </view>
         <span
+          wx:if="{{tweets.censored == 1}}"
           class="thumbnum"
         >{{tweets.likes}}</span>
 				<t-icon
+          wx:if="{{tweets.censored == 1}}"
 				  class="thumb"
 				  name="heart"
 				  size="48rpx"
 				  color="#1296db"
 				/>
+        <t-icon
+          wx:if="{{tweets.censored == 0}}"
+          name="help-circle"
+          size="45rpx"
+          style="margin-right: -20rpx;"
+          color="burlywood"
+        />
+        <span
+          wx:if="{{tweets.censored == 0}}" 
+          >审核中</span>
+          <t-icon
+            wx:if="{{tweets.censored == 2}}"
+            style="margin-right: -20rpx;"
+            name="error-circle"
+            size="45rpx"
+            color="red"
+          />
+          <span
+            wx:if="{{tweets.censored == 2}}"
+            >审核未通过</span> 
 			</view>
 		</view>
 	</view>
