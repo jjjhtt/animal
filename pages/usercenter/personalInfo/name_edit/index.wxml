@@ -5,6 +5,8 @@
     placeholder="请输入您的昵称"
     label="昵称"
     clearable
+    maxlength="{{10}}"
+    tips="最大输入10个字符"
     bind:clear="clearContent"
   />
   <view class="name-edit__input--desc"> </view>

@@ -39,16 +39,16 @@ function onChooseImage(e) {
           filePath: path,
           name: "image",
           formData: {
-            "type": "help"
+            "type": "tweet"
           },
           header: {
             'content-type': 'multipart/form-data',
             'authorization': wx.getStorageSync('token')
           },
           success (res){
-            console.log(res.data);
+            //console.log(res.data);
             let p = JSON.parse(res.data);
-            console.log(p.body.imagePath);
+            //console.log(p.body.imagePath);
             addNewImageUrl(p.body.imagePath);
             resolve(res)
           },

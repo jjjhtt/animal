@@ -22,8 +22,8 @@
 }
 
 .user-center-card__header__name {
-  font-size: 70rpx;
-  line-height: 48rpx;
+  font-size: 65rpx;
+  line-height: 60rpx;
   color: #333;
   font-weight: bold;
   margin-left: 80rpx;

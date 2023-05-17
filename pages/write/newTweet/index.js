@@ -70,6 +70,7 @@ Page({
       });
       return;
     }
+    let that = this
     wx.request({
       url: config.domain + '/tweet/create',
       data: {
@@ -77,7 +78,7 @@ Page({
         "title": this.data.title,
         "content": this.data.content,
         "images": this.data.imageUrls,
-        "labels": this.data.obtnArry
+        "tags": this.data.obtnArry
       },
       method: 'POST',
       header: {
@@ -85,7 +86,7 @@ Page({
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
-        console.log(res);
+        console.log(that.data.obtnArry);
         if (res.data.code === 0) {
           Toast({
             context: this,
@@ -101,6 +102,7 @@ Page({
             })
           }, 1000)
         } else {
+          console.log(res)
           Toast({
             context: this,
             message: res.data.message,
@@ -108,6 +110,13 @@ Page({
           });
         }
       },
+      fail(err) {
+        Toast({
+          context: this,
+          message: "发帖失败",
+        });
+        console.log(err)
+      }
     });
   },
   chooseImage: ctr.onChooseImage,
@@ -141,12 +150,12 @@ Page({
       inputValue: this.data.inputValue
     });
     var obtnArry = this.data.obtnArry;
-    var newData = { num: obtnArry.length, name: this.data.inputValue, selected: false };
+    var newData = this.data.inputValue;
     obtnArry.push(newData);//实质是添加lists数组内容，使for循环多一次
     this.setData({
       obtnArry,
     })
-    console.log(this.data.inputValue)
+    //console.log(this.data.inputValue)
   },
 //取消按钮
   onCancel(){

@@ -55,8 +55,8 @@
           <view class='delete'>
           <t-icon name="close" bindtap='clickDeleteLabel' data-idx="{{index}}"></t-icon>
           </view>
-          <view class='label_view' data-value="{{item.name}}" data-index="{{index}}">
-            {{item.name}}
+          <view class='label_view' data-value="{{item}}" data-index="{{index}}">
+            {{item}}
           </view>
         </view>
         <t-popup visible="{{ show }}" bind:close="onClose" close-on-overlay-click="{{true}}" show-overlay="false"
