@@ -28,7 +28,8 @@
     "pages/usercenter/messages/messages",
     "pages/usercenter/messages/message/message",
     "pages/write/map/index",
-    "pages/write/map/chooseAnimal/index"
+    "pages/write/map/chooseAnimal/index",
+    "pages/usercenter/adoption/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

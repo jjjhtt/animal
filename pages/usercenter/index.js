@@ -85,12 +85,12 @@ Page({
       },
       success: (res)=> {
         if (res.data.code === 0) {
-          console.log(res);
+          //console.log(res);
           this.setData({
             MessageNum: res.data.body.num
           })
         } else {
-          console.log(res);
+          //console.log(res);
           Toast({
             context: this,
             selector: '#t-toast',
@@ -111,7 +111,7 @@ Page({
       res => {
         menuData?.[0].forEach((v) => {
         });
-        console.log(res);
+        //console.log(res);
         this.setData({
           userInfo: res,
           menuData,
@@ -142,6 +142,10 @@ Page({
       }
       case 'myMessage': {
         wx.navigateTo({ url: '/pages/usercenter/messages/messages' });
+        break;
+      }
+      case 'myAdoption': {
+        wx.navigateTo({ url: '/pages/usercenter/adoption/index' });
         break;
       }
       case 'exit': {

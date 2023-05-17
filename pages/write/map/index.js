@@ -214,7 +214,10 @@ Page({
 			if (event.markerId === markers[i].id) {
         this.setData({
           markerCallbackTxt: markers[i].callout.content,
+<<<<<<< Updated upstream
           locationId: markers[i].id
+=======
+>>>>>>> Stashed changes
         })
 			}
 		}
@@ -264,6 +267,7 @@ Page({
   },
 
   onClick(e) {
+<<<<<<< Updated upstream
     if(this.data.datetimeText[0]==='点') {
       Toast({
         context: this,
@@ -325,5 +329,7 @@ Page({
         console.log(res)
       }
     })
+=======
+>>>>>>> Stashed changes
   }
 });
