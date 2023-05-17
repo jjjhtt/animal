@@ -151,6 +151,10 @@ Page({
       case 'exit': {
         wx.clearStorageSync();  //清除缓存
         setTimeout(() => {
+          this.getTabBar().updateActive(0);
+          this.getTabBar().setData({
+            selected: 0
+          })
           wx.reLaunch({
             url: '/pages/login/login',
           })
