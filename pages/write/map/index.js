@@ -263,5 +263,73 @@ Page({
   },
 
   onClick(e) {
+<<<<<<< HEAD
+    if(this.data.datetimeText[0]==='点') {
+      Toast({
+        context: this,
+        context: this,
+        selector: '#t-toast',
+        message: '请先选择时间！',
+        theme: 'error',
+        direction: 'column'
+      })
+      return
+    }
+    if(this.data.markerCallbackTxt[0] === '点') {
+      Toast({
+        context: this,
+        context: this,
+        selector: '#t-toast',
+        message: '请先选择地点！',
+        theme: 'error',
+        direction: 'column'
+      })
+      return
+    }
+    if(this.data.animalID == 0) {
+      Toast({
+        context: this,
+        context: this,
+        selector: '#t-toast',
+        message: '请先选择动物！',
+        theme: 'error',
+        direction: 'column'
+      })
+      return
+    }
+    console.log(wx.getStorageSync('userId'))
+    console.log(this.data.animalID)
+    console.log(this.data.locationId)
+    console.log(this.data.datetimeText)
+    wx.request({
+      url: config.domain + '/animal/track/update',
+      method: 'POST',
+      data: {
+        "userId": wx.getStorageSync('userId'),
+        "animalId": this.data.animalID,
+        "location": this.data.locationId,
+        "time": this.data.datetimeText,
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'authorization': wx.getStorageSync('token')
+      },
+      success(res) {
+        Toast({
+          context: this,
+          context: this,
+          selector: '#t-toast',
+          message: '上传成功',
+          theme: 'success',
+          direction: 'column'
+        })
+        console.log(res)
+      },
+      fail(res) {
+        console.log(res)
+      }
+    })
+=======
+>>>>>>> e2842e3d4a067779e707c37ffe49dd9d375f8739
   }
 });
