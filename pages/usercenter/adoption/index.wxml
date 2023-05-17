@@ -15,7 +15,7 @@
       t-class="t-class-cell"
       t-class-title="t-class-title"
       t-class-note="t-class-note"
-      title="审核状态"
+      title="申请状态"
       note="未审核"
     />
     <t-cell
@@ -23,7 +23,7 @@
       t-class="t-class-cell"
       t-class-title="t-class-title"
       t-class-note="t-class-note"
-      title="审核状态"
+      title="申请状态"
       note="通过"
     />
     <t-cell

@@ -9,7 +9,9 @@
   </swiper>
   <view class="realpagetext" style="border-bottom:0px">
         <text user-select style="font-weight: bold;font-size: large;">{{content_title}}</text>
+        <view class="content">
         <text user-select>{{contenttext}}</text>
+        </view>
   </view>
   <view class="buttonBox">
     <view wx:if="{{!adopted}}" catchtap="handleAdopt" class="account-btn" hover-class="hover-btn"> 我要领养 </view>

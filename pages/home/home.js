@@ -58,6 +58,7 @@ Page({
     this.setData({
       nowkey: e.detail.value
     });
+    //console.log(this.data.nowkey);
     this.loadtweetsList(true);
   },
 
