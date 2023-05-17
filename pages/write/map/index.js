@@ -214,10 +214,6 @@ Page({
 			if (event.markerId === markers[i].id) {
         this.setData({
           markerCallbackTxt: markers[i].callout.content,
-<<<<<<< Updated upstream
-          locationId: markers[i].id
-=======
->>>>>>> Stashed changes
         })
 			}
 		}
@@ -267,69 +263,5 @@ Page({
   },
 
   onClick(e) {
-<<<<<<< Updated upstream
-    if(this.data.datetimeText[0]==='点') {
-      Toast({
-        context: this,
-        context: this,
-        selector: '#t-toast',
-        message: '请先选择时间！',
-        theme: 'error',
-        direction: 'column'
-      })
-      return
-    }
-    if(this.data.markerCallbackTxt[0] === '点') {
-      Toast({
-        context: this,
-        context: this,
-        selector: '#t-toast',
-        message: '请先选择地点！',
-        theme: 'error',
-        direction: 'column'
-      })
-      return
-    }
-    if(this.data.animalID == 0) {
-      Toast({
-        context: this,
-        context: this,
-        selector: '#t-toast',
-        message: '请先选择动物！',
-        theme: 'error',
-        direction: 'column'
-      })
-      return
-    }
-    wx.request({
-      url: config.domain + '/animal/track/update',
-      method: 'POST',
-      data: {
-        "userId": wx.getStorageSync('userId'),
-        "animalId": this.data.animalID,
-        "location": this.data.locationId,
-        "time": this.data.datetimeText,
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'authorization': wx.getStorageSync('token')
-      },
-      success(res) {
-        Toast({
-          context: this,
-          context: this,
-          selector: '#t-toast',
-          message: '上传成功',
-          theme: 'success',
-          direction: 'column'
-        })
-        console.log(res)
-      },
-      fail(res) {
-        console.log(res)
-      }
-    })
-=======
->>>>>>> Stashed changes
   }
 });
