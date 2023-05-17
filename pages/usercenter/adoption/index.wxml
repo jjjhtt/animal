@@ -1,0 +1,39 @@
+<view wx:for="{{list}}" wx:for-item="item" wx:for-index="index">
+  <t-collapse defaultValue="{{[0]}}" expandMutex expandIcon>
+  <t-collapse-panel header="{{item.animalName}}" value="{{0}}" header-left-icon="{{domain+item.avatar}}">
+    <t-cell-group>
+    <t-cell
+      wx:if="{{item.censored}}"
+      t-class="t-class-cell"
+      t-class-title="t-class-title"
+      t-class-note="t-class-note"
+      title="审核状态"
+      note="已审核"
+    />
+    <t-cell
+      wx:if="{{!item.censored}}"
+      t-class="t-class-cell"
+      t-class-title="t-class-title"
+      t-class-note="t-class-note"
+      title="审核状态"
+      note="未审核"
+    />
+    <t-cell
+      t-class="t-class-cell"
+      t-class-title="t-class-title"
+      t-class-note="t-class-note"
+      title="申请时间"
+      note="{{item.time}}"
+    />
+    <t-cell
+      t-class="t-class-cell"
+      t-class-title="t-class-title"
+      t-class-note="t-class-note"
+      title="申请理由"
+      description="{{item.reason}}"
+    />
+  </t-cell-group>
+  </t-collapse-panel>
+</t-collapse>
+</view>
+<t-toast id="t-toast" />

@@ -13,7 +13,7 @@ export function fetchUserCenter() {
       },
       success(res) {
         if (res.data.code === 0) {
-          console.log(res);
+          //console.log(res);
           resolve(res.data.body);
         } else {
           //console.log(res);

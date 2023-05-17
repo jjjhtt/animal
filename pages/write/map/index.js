@@ -214,7 +214,6 @@ Page({
 			if (event.markerId === markers[i].id) {
         this.setData({
           markerCallbackTxt: markers[i].callout.content,
-          locationId: markers[i].id
         })
 			}
 		}
@@ -264,6 +263,7 @@ Page({
   },
 
   onClick(e) {
+<<<<<<< HEAD
     if(this.data.datetimeText[0]==='点') {
       Toast({
         context: this,
@@ -329,5 +329,7 @@ Page({
         console.log(res)
       }
     })
+=======
+>>>>>>> e2842e3d4a067779e707c37ffe49dd9d375f8739
   }
 });
