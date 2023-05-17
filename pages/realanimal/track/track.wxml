@@ -16,8 +16,11 @@
         </map>
 			</view>
       <view class="feature-container pl20">
-      <view>
+      <view wx:if="{{times.length > 0}}">
         <t-cell class="mb-16" title="选择时间" arrow hover note="{{nowTime}}" bind:click="onPicker" />
+      </view>
+      <view wx:if="{{times.length == 0}}">
+        <t-cell class="mb-16" title="该动物暂无轨迹"/>
       </view>
     </view>
     </view>

@@ -297,6 +297,10 @@ Page({
       })
       return
     }
+    console.log(wx.getStorageSync('userId'))
+    console.log(this.data.animalID)
+    console.log(this.data.locationId)
+    console.log(this.data.datetimeText)
     wx.request({
       url: config.domain + '/animal/track/update',
       method: 'POST',

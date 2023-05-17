@@ -24,7 +24,7 @@ Page({
   },
   goTrack() {
     wx.navigateTo({
-      url: './track/track?id=${id}',
+      url: `./track/track?id=${this.data.animalid}`,
     });
   },
   onLoad: function(options) {
