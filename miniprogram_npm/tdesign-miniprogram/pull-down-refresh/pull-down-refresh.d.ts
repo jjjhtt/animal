@@ -6,7 +6,6 @@ export default class PullDownRefresh extends SuperComponent {
         pageY: number;
     } | null;
     isPulling: boolean;
-    maxBarHeight: number;
     loadingBarHeight: number;
     maxRefreshAnimateTimeFlag: number;
     closingAnimateTimeFlag: number;
@@ -31,8 +30,6 @@ export default class PullDownRefresh extends SuperComponent {
     };
     observers: {
         value(val: any): void;
-        maxBarHeight(val: any): void;
-        loadingBarHeight(val: any): void;
     };
     methods: {
         onScrollToBottom(): void;
@@ -41,10 +38,8 @@ export default class PullDownRefresh extends SuperComponent {
         onTouchStart(e: WechatMiniprogram.Component.TrivialInstance): void;
         onTouchMove(e: WechatMiniprogram.Component.TrivialInstance): void;
         onTouchEnd(e: WechatMiniprogram.Component.TrivialInstance): void;
-        toRpx(v: number | string): number;
-        toPx(v: number): number;
-        setRefreshBarHeight(barHeight: number): Promise<unknown>;
-        close(): void;
+        doRefresh(): void;
+        setRefreshBarHeight(value: number): Promise<unknown>;
         setScrollTop(scrollTop: number): void;
         scrollToTop(): void;
     };

@@ -25,7 +25,13 @@ let Tabs = class Tabs extends SuperComponent {
     constructor() {
         super(...arguments);
         this.behaviors = [touch];
-        this.externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`, `${prefix}-class-track`];
+        this.externalClasses = [
+            `${prefix}-class`,
+            `${prefix}-class-item`,
+            `${prefix}-class-active`,
+            `${prefix}-class-track`,
+            `${prefix}-class-content`,
+        ];
         this.relations = {
             '../tab-panel/tab-panel': {
                 type: 'descendant',
@@ -62,8 +68,6 @@ let Tabs = class Tabs extends SuperComponent {
             tabs: [],
             currentIndex: -1,
             trackStyle: '',
-            isScrollX: true,
-            direction: 'X',
             offset: 0,
             tabID: '',
             placement: 'top',
@@ -85,6 +89,12 @@ let Tabs = class Tabs extends SuperComponent {
             },
         };
         this.methods = {
+            onScroll(e) {
+                const { scrollLeft } = e.detail;
+                this.setData({
+                    offset: scrollLeft,
+                });
+            },
             updateTabs(cb) {
                 const { children } = this;
                 const tabs = children.map((child) => child.data);
@@ -153,7 +163,7 @@ let Tabs = class Tabs extends SuperComponent {
                     const { children } = this;
                     if (!children)
                         return;
-                    const { currentIndex, isScrollX, direction } = this.data;
+                    const { currentIndex } = this.data;
                     if (currentIndex <= -1)
                         return;
                     try {
@@ -166,10 +176,10 @@ let Tabs = class Tabs extends SuperComponent {
                         let totalSize = 0;
                         res.forEach((item) => {
                             if (count < currentIndex) {
-                                distance += isScrollX ? item.width : item.height;
+                                distance += item.width;
                                 count += 1;
                             }
-                            totalSize += isScrollX ? item.width : item.height;
+                            totalSize += item.width;
                         });
                         if (this.containerWidth) {
                             const offset = this.calcScrollOffset(this.containerWidth, rect.left, rect.width, this.data.offset);
@@ -178,18 +188,14 @@ let Tabs = class Tabs extends SuperComponent {
                                 offset: Math.min(Math.max(offset, 0), maxOffset),
                             });
                         }
-                        if (isScrollX && this.data.theme === 'line') {
+                        if (this.data.theme === 'line') {
                             const trackLineWidth = yield this.getTrackSize();
                             distance += (rect.width - trackLineWidth) / 2;
                         }
-                        let trackStyle = `-webkit-transform: translate${direction}(${distance}px);
-          transform: translate${direction}(${distance}px);
-        `;
-                        if (!isScrollX) {
-                            trackStyle += `height: ${rect.height}px;`;
-                        }
                         this.setData({
-                            trackStyle,
+                            trackStyle: `-webkit-transform: translateX(${distance}px);
+            transform: translateX(${distance}px);
+          `,
                         });
                     }
                     catch (err) {

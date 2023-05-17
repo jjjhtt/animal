@@ -37,10 +37,9 @@ export interface TdPickerProps {
         type: BooleanConstructor;
         value?: boolean;
     };
-}
-export declare type PickerColumn = PickerColumnItem[];
-export interface PickerColumnItem {
-    label: string;
-    value: string;
+    popupProps: {
+        type: object;
+        value?: {};
+    };
 }
 export declare type PickerValue = string | number;

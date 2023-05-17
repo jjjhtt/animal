@@ -91,6 +91,9 @@ let Stepper = class Stepper extends SuperComponent {
         this.triggerEvent('focus', { value });
     }
     inputHandle(e) {
+        if (e.detail.value === '') {
+            return;
+        }
         const value = this.changeValue(e);
         this.triggerEvent('input', { value });
     }

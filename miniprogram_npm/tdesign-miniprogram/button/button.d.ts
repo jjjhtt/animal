@@ -15,7 +15,7 @@ export default class Button extends SuperComponent {
         classPrefix: string;
     };
     observers: {
-        'theme, size, plain, block, shape, disabled, loading'(): void;
+        'theme, size, plain, block, shape, disabled, loading, variant'(): void;
         icon(icon: any): void;
     };
     lifetimes: {

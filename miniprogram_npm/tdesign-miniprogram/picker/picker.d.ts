@@ -15,6 +15,8 @@ export default class Picker extends SuperComponent {
         classPrefix: string;
         labelAlias: string;
         valueAlias: string;
+        defaultPopUpProps: {};
+        defaultPopUpzIndex: number;
     };
     methods: {
         updateChildren(): void;

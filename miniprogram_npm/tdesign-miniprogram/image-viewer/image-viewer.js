@@ -23,6 +23,7 @@ let ImageViewer = class ImageViewer extends SuperComponent {
             windowWidth: 0,
             swiperStyle: {},
             imagesStyle: {},
+            maskTop: 0,
         };
         this.options = {
             multipleSlots: true,
@@ -51,6 +52,17 @@ let ImageViewer = class ImageViewer extends SuperComponent {
             },
         };
         this.methods = {
+            calcMaskTop() {
+                if (this.data.usingCustomNavbar) {
+                    const rect = (wx === null || wx === void 0 ? void 0 : wx.getMenuButtonBoundingClientRect()) || null;
+                    const { statusBarHeight } = wx.getSystemInfoSync();
+                    if (rect && statusBarHeight) {
+                        this.setData({
+                            maskTop: rect.top - statusBarHeight + rect.bottom,
+                        });
+                    }
+                }
+            },
             saveScreenSize() {
                 const { windowHeight, windowWidth } = wx.getSystemInfoSync();
                 this.setData({
@@ -121,6 +133,7 @@ let ImageViewer = class ImageViewer extends SuperComponent {
     }
     ready() {
         this.saveScreenSize();
+        this.calcMaskTop();
     }
 };
 ImageViewer = __decorate([

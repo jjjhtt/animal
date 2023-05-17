@@ -64,6 +64,7 @@ export default class DropdownMenuItem extends SuperComponent {
         labelAlias: string;
         valueAlias: string;
         computedLabel: string;
+        firstCheckedValue: string;
     };
     relations: RelationsOptions;
     controlledProps: {

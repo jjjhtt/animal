@@ -1,8 +1,4 @@
 export interface TdLoadingProps {
-    style?: {
-        type: StringConstructor;
-        value?: string;
-    };
     delay?: {
         type: NumberConstructor;
         value?: number;
@@ -53,6 +49,6 @@ export interface TdLoadingProps {
     };
     theme?: {
         type: StringConstructor;
-        value?: 'circular' | 'spinner' | 'bar' | 'error' | 'dots';
+        value?: 'circular' | 'spinner' | 'dots';
     };
 }

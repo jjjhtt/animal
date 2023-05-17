@@ -92,6 +92,9 @@ let Swiper = class Swiper extends SuperComponent {
                 });
                 this.triggerEvent('change', { current: nextPos, source });
             },
+            onImageLoad(e) {
+                this.triggerEvent('image-load', { index: e.target.dataset.custom });
+            },
         };
     }
 };

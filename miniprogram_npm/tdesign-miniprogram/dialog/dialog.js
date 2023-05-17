@@ -63,6 +63,9 @@ let Dialog = class Dialog extends SuperComponent {
                     else if (btn && typeof btn === 'object') {
                         rect[`_${key}`] = Object.assign(Object.assign({}, base), btn);
                     }
+                    else {
+                        rect[`_${key}`] = null;
+                    }
                 });
                 this.setData(Object.assign({}, rect));
             },

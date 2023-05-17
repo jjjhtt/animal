@@ -103,6 +103,9 @@ let Slider = class Slider extends SuperComponent {
         };
     }
     triggerValue(value) {
+        if (this.preval === value)
+            return;
+        this.preval = value;
         this._trigger('change', {
             value: trimValue(value, this.properties),
         });
@@ -181,9 +184,8 @@ let Slider = class Slider extends SuperComponent {
     }
     stepValue(value) {
         const { step, min, max } = this.properties;
-        if (Number(step) < 1 || Number(step) > Number(max) - Number(min))
-            return value;
-        const closestStep = trimSingleValue(Math.round(value / Number(step)) * Number(step), Number(min), Number(max));
+        const decimal = String(step).indexOf('.') > -1 ? String(step).length - String(step).indexOf('.') - 1 : 0;
+        const closestStep = trimSingleValue(Number((Math.round(value / Number(step)) * Number(step)).toFixed(decimal)), Number(min), Number(max));
         return closestStep;
     }
     onSingleLineTap(e) {
@@ -207,7 +209,7 @@ let Slider = class Slider extends SuperComponent {
             value = Number(max);
         }
         else {
-            value = Math.round((currentLeft / maxRange) * (Number(max) - Number(min)) + Number(min));
+            value = (currentLeft / maxRange) * (Number(max) - Number(min)) + Number(min);
         }
         return this.stepValue(value);
     }
@@ -244,6 +246,9 @@ let Slider = class Slider extends SuperComponent {
                 this.triggerValue([this.data._value[0], this.stepValue(rightValue)]);
             }
         });
+    }
+    onTouchStart(e) {
+        this.triggerEvent('dragstart', { e });
     }
     onTouchMoveLeft(e) {
         const { disabled } = this.properties;
@@ -293,7 +298,9 @@ let Slider = class Slider extends SuperComponent {
             });
         }
     }
-    onTouchEnd() { }
+    onTouchEnd(e) {
+        this.triggerEvent('dragend', { e });
+    }
 };
 Slider = __decorate([
     wxComponent()

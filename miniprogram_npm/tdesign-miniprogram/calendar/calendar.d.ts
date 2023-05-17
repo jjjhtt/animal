@@ -21,9 +21,11 @@ export default class Calendar extends SuperComponent {
         event: string;
     }[];
     lifetimes: {
+        created(): void;
         ready(): void;
     };
     observers: {
+        type(v: any): void;
         confirmBtn(v: any): void;
         'firstDayOfWeek,minDate,maxDate'(firstDayOfWeek: any, minDate: any, maxDate: any): void;
         value(v: any): void;

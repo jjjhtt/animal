@@ -25,6 +25,10 @@ const props = {
         type: String,
         value: 'line',
     },
+    sequence: {
+        type: String,
+        value: 'positive',
+    },
     theme: {
         type: String,
         value: 'default',

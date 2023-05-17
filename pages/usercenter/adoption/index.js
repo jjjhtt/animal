@@ -31,6 +31,12 @@ Page({
           this.setData({
             list: res.data.body.adoptions
           })
+          for (let k = 0; k < this.data.list.length; k++) {
+            this.data.list[k].time = this.data.list[k].time.replace('T', ' ')
+            this.setData({
+              list: this.data.list
+            });
+          }
         } else {
           console.log(res);
           Toast({

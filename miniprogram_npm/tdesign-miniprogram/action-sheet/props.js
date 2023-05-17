@@ -34,5 +34,9 @@ const props = {
         type: Boolean,
         value: false,
     },
+    popupProps: {
+        type: Object,
+        value: {},
+    },
 };
 export default props;

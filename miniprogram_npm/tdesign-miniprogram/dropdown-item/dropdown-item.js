@@ -37,6 +37,7 @@ let DropdownMenuItem = class DropdownMenuItem extends SuperComponent {
             labelAlias: 'label',
             valueAlias: 'value',
             computedLabel: '',
+            firstCheckedValue: '',
         };
         this.relations = {
             '../dropdown-menu/dropdown-menu': {
@@ -119,6 +120,12 @@ let DropdownMenuItem = class DropdownMenuItem extends SuperComponent {
                 if (!this.data.multiple) {
                     this.closeDropdown();
                 }
+                else {
+                    const firstChecked = this.data.options.find((item) => value.includes(item.value));
+                    if (firstChecked) {
+                        this.data.firstCheckedValue = firstChecked.value;
+                    }
+                }
             },
             handleMaskClick() {
                 var _a;
@@ -133,6 +140,7 @@ let DropdownMenuItem = class DropdownMenuItem extends SuperComponent {
             handleConfirm() {
                 this._trigger('confirm', { value: this.data.value });
                 this.closeDropdown();
+                this.setData({ firstCheckedValue: this.data.firstCheckedValue });
             },
             onLeaved() {
                 this.setData({ wrapperVisible: false });

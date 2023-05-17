@@ -41,13 +41,16 @@ let Picker = class Picker extends SuperComponent {
             classPrefix: name,
             labelAlias: 'label',
             valueAlias: 'value',
+            defaultPopUpProps: {},
+            defaultPopUpzIndex: 11500,
         };
         this.methods = {
             updateChildren() {
                 const { value } = this.properties;
                 this.$children.forEach((child, index) => {
+                    var _a;
                     child.setData({
-                        value: (value === null || value === void 0 ? void 0 : value[index]) || '',
+                        value: (_a = value === null || value === void 0 ? void 0 : value[index]) !== null && _a !== void 0 ? _a : '',
                     });
                     child.update();
                 });

@@ -15,7 +15,7 @@ const props = {
     },
     format: {
         type: String,
-        value: '',
+        value: 'YYYY-MM-DD HH:mm:ss',
     },
     header: {
         type: Boolean,
@@ -32,6 +32,9 @@ const props = {
     start: {
         type: null,
     },
+    steps: {
+        type: Object,
+    },
     title: {
         type: String,
         value: '',
@@ -46,6 +49,10 @@ const props = {
     visible: {
         type: Boolean,
         value: false,
+    },
+    popupProps: {
+        type: Object,
+        value: {},
     },
 };
 export default props;

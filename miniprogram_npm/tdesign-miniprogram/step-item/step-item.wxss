@@ -188,7 +188,8 @@
 .t-steps-item__line--horizontal.t-steps-item__line--dot {
   top: calc(var(--td-step-item-dot-size, 16rpx) / 2);
 }
-.t-steps-item__line--finish {
+.t-steps-item__line--finish,
+.t-steps-item__line--reverse.t-steps-item__line--process {
   background-color: var(--td-step-item-finish-line-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)));
 }
 .t-steps-item__line--vertical {

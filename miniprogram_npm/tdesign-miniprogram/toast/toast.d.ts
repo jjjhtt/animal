@@ -15,7 +15,12 @@ export default class Toast extends SuperComponent {
         typeMapIcon: string;
     };
     properties: import("./type").TdToastProps;
-    detached(): void;
+    lifetimes: {
+        detached(): void;
+    };
+    pageLifetimes: {
+        hide(): void;
+    };
     methods: {
         show(options: ToastOptionsType): void;
         hide(): void;

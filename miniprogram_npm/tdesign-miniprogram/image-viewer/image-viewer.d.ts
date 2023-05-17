@@ -2,14 +2,17 @@ import { SuperComponent } from '../common/src/index';
 export default class ImageViewer extends SuperComponent {
     externalClasses: string[];
     properties: {
-        style?: {
+        backgroundColor?: {
             type: StringConstructor;
             value?: string;
         };
-        backgroundColor?: {
-            type: StringConstructor;
-            optionalTypes: NumberConstructor[];
-            value?: string | number;
+        closeBtn?: {
+            type: null;
+            value?: string | boolean | object;
+        };
+        deleteBtn?: {
+            type: null;
+            value?: string | boolean | object;
         };
         images?: {
             type: ArrayConstructor;
@@ -17,19 +20,15 @@ export default class ImageViewer extends SuperComponent {
         };
         initialIndex?: {
             type: NumberConstructor;
-            value?: number;
+            value?: Number;
         };
         showIndex?: {
             type: BooleanConstructor;
             value?: boolean;
         };
-        deleteBtn?: {
-            type: null;
-            value?: string | boolean | object;
-        };
-        closeBtn?: {
-            type: null;
-            value?: string | boolean | object;
+        usingCustomNavbar?: {
+            type: BooleanConstructor;
+            value?: boolean;
         };
         visible?: {
             type: BooleanConstructor;
@@ -48,6 +47,7 @@ export default class ImageViewer extends SuperComponent {
         windowWidth: number;
         swiperStyle: {};
         imagesStyle: {};
+        maskTop: number;
     };
     options: {
         multipleSlots: boolean;
@@ -63,6 +63,7 @@ export default class ImageViewer extends SuperComponent {
         deleteBtn(v: any): void;
     };
     methods: {
+        calcMaskTop(): void;
         saveScreenSize(): void;
         calcImageDisplayStyle(imageWidth: any, imageHeight: any): {
             styleObj: {

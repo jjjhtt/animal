@@ -26,7 +26,7 @@ let Button = class Button extends SuperComponent {
             classPrefix: name,
         };
         this.observers = {
-            'theme, size, plain, block, shape, disabled, loading'() {
+            'theme, size, plain, block, shape, disabled, loading, variant'() {
                 this.setClass();
             },
             icon(icon) {

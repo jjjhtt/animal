@@ -13,10 +13,6 @@ export default class Loading extends SuperComponent {
         multipleSlots: boolean;
     };
     properties: {
-        style?: {
-            type: StringConstructor;
-            value?: string;
-        };
         delay?: {
             type: NumberConstructor;
             value?: number;
@@ -67,7 +63,7 @@ export default class Loading extends SuperComponent {
         };
         theme?: {
             type: StringConstructor;
-            value?: "error" | "circular" | "spinner" | "bar" | "dots";
+            value?: "circular" | "spinner" | "dots";
         };
     };
     timer: any;

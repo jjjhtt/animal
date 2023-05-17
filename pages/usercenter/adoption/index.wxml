@@ -3,12 +3,12 @@
   <t-collapse-panel header="{{item.animalName}}" value="{{0}}" header-left-icon="{{domain+item.avatar}}">
     <t-cell-group>
     <t-cell
-      wx:if="{{item.censored}}"
+      wx:if="{{item.censored == 2}}"
       t-class="t-class-cell"
       t-class-title="t-class-title"
       t-class-note="t-class-note"
-      title="审核状态"
-      note="已审核"
+      title="申请状态"
+      note="未通过"
     />
     <t-cell
       wx:if="{{!item.censored}}"
@@ -17,6 +17,14 @@
       t-class-note="t-class-note"
       title="审核状态"
       note="未审核"
+    />
+    <t-cell
+      wx:if="{{item.censored == 1}}"
+      t-class="t-class-cell"
+      t-class-title="t-class-title"
+      t-class-note="t-class-note"
+      title="审核状态"
+      note="通过"
     />
     <t-cell
       t-class="t-class-cell"

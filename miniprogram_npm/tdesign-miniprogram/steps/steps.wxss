@@ -38,3 +38,9 @@
 .t-steps--vertical {
   flex-direction: column;
 }
+.t-steps--reverse {
+  flex-direction: row-reverse;
+}
+.t-steps--vertical.t-steps--reverse {
+  flex-direction: column-reverse;
+}

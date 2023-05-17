@@ -8,10 +8,6 @@ export interface TdSwiperProps {
         type: NumberConstructor;
         value?: number;
     };
-    style?: {
-        type: StringConstructor;
-        value?: string;
-    };
     direction?: {
         type: StringConstructor;
         value?: 'horizontal' | 'vertical';
@@ -42,7 +38,7 @@ export interface TdSwiperProps {
     };
     list?: {
         type: ArrayConstructor;
-        value?: string[];
+        value?: string[] | SwiperList[];
     };
     loop?: {
         type: BooleanConstructor;
@@ -68,4 +64,8 @@ export interface TdSwiperProps {
         type: BooleanConstructor;
         value?: boolean;
     };
+}
+export interface SwiperList {
+    value: string;
+    ariaLabel: string;
 }

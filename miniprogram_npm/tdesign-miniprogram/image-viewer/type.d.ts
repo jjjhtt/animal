@@ -1,12 +1,15 @@
 export interface TdImageViewerProps {
-    style?: {
+    backgroundColor?: {
         type: StringConstructor;
         value?: string;
     };
-    backgroundColor?: {
-        type: StringConstructor;
-        optionalTypes: Array<NumberConstructor>;
-        value?: string | number;
+    closeBtn?: {
+        type: null;
+        value?: string | boolean | object;
+    };
+    deleteBtn?: {
+        type: null;
+        value?: string | boolean | object;
     };
     images?: {
         type: ArrayConstructor;
@@ -14,19 +17,15 @@ export interface TdImageViewerProps {
     };
     initialIndex?: {
         type: NumberConstructor;
-        value?: number;
+        value?: Number;
     };
     showIndex?: {
         type: BooleanConstructor;
         value?: boolean;
     };
-    deleteBtn?: {
-        type: null;
-        value?: boolean | string | object;
-    };
-    closeBtn?: {
-        type: null;
-        value?: boolean | string | object;
+    usingCustomNavbar?: {
+        type: BooleanConstructor;
+        value?: boolean;
     };
     visible?: {
         type: BooleanConstructor;

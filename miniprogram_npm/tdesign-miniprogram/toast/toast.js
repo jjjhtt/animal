@@ -26,6 +26,16 @@ let Toast = class Toast extends SuperComponent {
             typeMapIcon: '',
         };
         this.properties = props;
+        this.lifetimes = {
+            detached() {
+                this.destroyed();
+            },
+        };
+        this.pageLifetimes = {
+            hide() {
+                this.hide();
+            },
+        };
         this.methods = {
             show(options) {
                 if (this.hideTimer)
@@ -70,9 +80,6 @@ let Toast = class Toast extends SuperComponent {
             },
             loop() { },
         };
-    }
-    detached() {
-        this.destroyed();
     }
 };
 Toast = __decorate([

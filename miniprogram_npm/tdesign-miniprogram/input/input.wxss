@@ -57,6 +57,7 @@
 }
 .t-input--layout-vertical {
   flex-direction: column;
+  align-items: start;
 }
 .t-input__wrap--prefix {
   display: flex;
@@ -72,6 +73,7 @@
   line-height: 48rpx;
   color: var(--td-input-label-text-color, var(--td-font-gray-1, rgba(0, 0, 0, 0.9)));
   margin-right: var(--td-spacer-2, 32rpx);
+  word-wrap: break-word;
 }
 .t-input--layout-vertical .t-input__label:not(:empty) {
   font-size: var(--td-font-size-base, 28rpx);
@@ -87,6 +89,7 @@
   margin-right: var(--td-spacer-2, 32rpx);
 }
 .t-input__wrap {
+  width: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

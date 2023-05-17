@@ -130,11 +130,13 @@ let DateTimePicker = class DateTimePicker extends SuperComponent {
                 return columnOptions;
             },
             getOptionByType(type) {
-                const { locale } = this.data;
+                var _a;
+                const { locale, steps } = this.data;
                 const options = [];
                 const minEdge = this.getOptionEdge('min', type);
                 const maxEdge = this.getOptionEdge('max', type);
-                for (let i = minEdge; i <= maxEdge; i += 1) {
+                const step = (_a = steps === null || steps === void 0 ? void 0 : steps[type]) !== null && _a !== void 0 ? _a : 1;
+                for (let i = minEdge; i <= maxEdge; i += step) {
                     const label = type === 'month' ? i + 1 : i;
                     options.push({
                         value: `${i}`,

@@ -45,11 +45,8 @@ let Upload = class Upload extends SuperComponent {
             },
         ];
         this.observers = {
-            files(files) {
-                this.handleLimit(files, this.data.max);
-            },
-            max(max) {
-                this.handleLimit(this.data.customFiles, max);
+            'files, max'(files, max) {
+                this.handleLimit(files, max);
             },
             gridConfig() {
                 this.updateGrid();
@@ -161,19 +158,12 @@ let Upload = class Upload extends SuperComponent {
         });
     }
     handleLimit(customFiles, max) {
-        while (max !== 0 && customFiles.length - max > 0) {
-            customFiles.pop();
+        if (max === 0) {
+            max = 20;
         }
-        const proofs = [];
-        customFiles.forEach((item) => {
-            if (item.type !== 'video') {
-                proofs.push(item.url);
-            }
-        });
         this.setData({
-            customFiles,
-            proofs,
-            customLimit: max === 0 ? Number.MAX_SAFE_INTEGER : max - customFiles.length,
+            customFiles: customFiles.length > max ? customFiles.slice(0, max) : customFiles,
+            customLimit: max - customFiles.length,
         });
     }
     triggerSuccessEvent(files) {

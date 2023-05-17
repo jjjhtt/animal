@@ -35,6 +35,10 @@ export interface TdDateTimePickerProps {
         type: null;
         value?: string | number;
     };
+    steps?: {
+        type: ObjectConstructor;
+        value?: object;
+    };
     title?: {
         type: StringConstructor;
         value?: string;
@@ -50,6 +54,10 @@ export interface TdDateTimePickerProps {
     visible?: {
         type: BooleanConstructor;
         value?: boolean;
+    };
+    popupProps: {
+        type: Object;
+        value: {};
     };
 }
 export declare type DateTimePickerMode = TimeModeValues | Array<TimeModeValues>;

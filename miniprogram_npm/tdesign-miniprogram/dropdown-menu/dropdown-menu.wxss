@@ -47,6 +47,9 @@
   right: 0;
   transform: scaleY(0.5);
 }
+.t-dropdown-menu:after {
+  height: var(--td-dropdown-menu-border-width, 1px);
+}
 .t-dropdown-menu__item {
   display: flex;
   flex: 1;

@@ -1,16 +1,19 @@
 import { LoadingProps } from '../loading/index';
 export interface TdPullDownRefreshProps {
-    style?: {
-        type: StringConstructor;
-        value?: string;
+    enableBackToTop?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
+    enablePassive?: {
+        type: BooleanConstructor;
+        value?: boolean;
     };
     externalClasses?: {
         type: ArrayConstructor;
         value?: ['t-class', 't-class-loading', 't-class-text', 't-class-indicator'];
     };
     loadingBarHeight?: {
-        type: StringConstructor;
-        optionalTypes: Array<NumberConstructor>;
+        type: null;
         value?: string | number;
     };
     loadingProps?: {
@@ -21,14 +24,25 @@ export interface TdPullDownRefreshProps {
         type: ArrayConstructor;
         value?: string[];
     };
+    lowerThreshold?: {
+        type: null;
+        value?: string | number;
+    };
     maxBarHeight?: {
-        type: StringConstructor;
-        optionalTypes: Array<NumberConstructor>;
+        type: null;
         value?: string | number;
     };
     refreshTimeout?: {
         type: NumberConstructor;
         value?: number;
+    };
+    scrollIntoView?: {
+        type: StringConstructor;
+        value?: string;
+    };
+    upperThreshold?: {
+        type: null;
+        value?: string | number;
     };
     value?: {
         type: BooleanConstructor;

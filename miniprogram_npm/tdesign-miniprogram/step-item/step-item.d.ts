@@ -14,9 +14,18 @@ export default class StepItem extends SuperComponent {
         curStatus: string;
         layout: string;
         isLastChild: boolean;
+        sequence: string;
     };
     methods: {
-        updateStatus(current: any, currentStatus: any, index: any, theme: any, layout: any, steps: any): void;
+        updateStatus({ current, currentStatus, index, theme, layout, items, sequence }: {
+            current: any;
+            currentStatus: any;
+            index: any;
+            theme: any;
+            layout: any;
+            items: any;
+            sequence: any;
+        }): void;
         onTap(): void;
     };
 }

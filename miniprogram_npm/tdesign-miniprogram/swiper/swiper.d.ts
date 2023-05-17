@@ -23,5 +23,6 @@ export default class Swiper extends SuperComponent {
         onChange(e: any): void;
         onNavBtnChange(e: any): void;
         doNavBtnChange(dir: any, source: any): void;
+        onImageLoad(e: any): void;
     };
 }
