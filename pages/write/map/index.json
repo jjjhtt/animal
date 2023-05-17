@@ -1,6 +1,8 @@
 {
+  "component": true,
   "usingComponents": {
-    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker"
+    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
+    "t-toast": "tdesign-miniprogram/toast/toast"
   },
   "navigationBarTitleText": "上传轨迹"
 }

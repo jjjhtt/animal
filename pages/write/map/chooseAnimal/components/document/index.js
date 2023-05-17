@@ -26,6 +26,8 @@ Component({
       let name = e.currentTarget.dataset.item.name;
       var pages = getCurrentPages(); //当前页面
       var beforePage = pages[pages.length - 2]; //前一页
+      console.log(name)
+      console.log(id)
       beforePage.setData({
         animalName: name,
         animalID: id,
