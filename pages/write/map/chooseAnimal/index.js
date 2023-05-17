@@ -1,5 +1,6 @@
 import { getCategoryList } from '../../../../services/document/fetchCategoryList';
 import {config} from '../../../../config/index'
+import Toast, { hideToast } from 'tdesign-miniprogram/toast/index';
 Page({
   data: {
     /*tabList: [{
@@ -75,6 +76,14 @@ Page({
             path: path
           })
           //console.log(this.data.path)
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            duration: -1,
+            theme: 'loading',
+            message: '正在识别中',
+            direction: 'column',
+          });
           wx.uploadFile({
             url: config.domain + '/image/upload', 
             filePath: path,
@@ -101,6 +110,10 @@ Page({
                   'authorization': wx.getStorageSync('token')
                 },
                 success: (res) =>{
+                  hideToast({
+                    context: this,
+                    selector: '#t-toast',
+                  });
                   //console.log(res);
                   if (res.data.code === 0) {
                     console.log(res);
@@ -127,7 +140,12 @@ Page({
                 },
               });
             },
-            fail: (err) => reject(err),
+            fail: (err) => {
+              hideToast({
+                context: this,
+                selector: '#t-toast',
+              });
+              reject(err)},
           })
         },
         fail: (err) => reject(err),
