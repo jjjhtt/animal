@@ -81,8 +81,10 @@ Page({
       },
       success: (res)=> {
         if (res.data.code === 0) {
-          console.log(res);
           this.data.msgList.splice(this.data.index, 1)
+          this.setData({
+            msgList: this.data.msgList
+          })
           Toast({
             context: this,
             selector: '#t-toast',
@@ -111,13 +113,16 @@ Page({
     this.setData({
       index: index
     })
+    var mh = this.selectComponent('#cell0').app.globalData.navBarHeight
+    + this.selectComponent('#cell0').app.globalData.menuHeight
+    console.log(mh)
     var position = {
       width: wx.getSystemInfoSync().windowWidth,
       height: 80,
       top: 40,
       left: 0,
       right: wx.getSystemInfoSync().windowWidth,
-      bottom: 87 + index * 44,
+      bottom: mh * index + mh / 2,
       id: 'cell' + index
     }
     this.data.popover.onDisplay(position);
