@@ -18,7 +18,7 @@ export function getCategoryList(pageIndex = 0, match = '') {
       success(res) {
         if (res.data.code === 0) {
           //console.log('aaa')
-          //console.log(res);
+          console.log(res);
           resolve(res.data.body.animals);
         } else {
           //console.log('bbb')
