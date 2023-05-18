@@ -168,6 +168,11 @@ Page({
     try {
       const result = await getCategoryList(pageIndex, this.data.match);
       if (result === null) {
+        if (fresh) {
+          this.setData({
+            list: []
+          })
+        }
         this.setData({ tweetsListLoadStatus: 2 });
         return;
       }
