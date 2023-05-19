@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    confirmBtn: { content: '确定', variant: 'base' },
+    showConfirm: false,
     labaSrc: "../../../images/laba2.png",
     msgList: [
     ],
@@ -68,7 +70,7 @@ Page({
   },
   delete: function(e) {
     console.log(this.data.msgList[this.data.index].id)
-    this.data.popover.onHide();
+    // this.data.popover.onHide();
     wx.request({
       url: config.domain + '/user/message/delete',
       method: 'POST',
@@ -91,6 +93,7 @@ Page({
             message: '删除成功',
             theme: 'success',
           });
+          this.setData({showConfirm: false });
         } else {
           console.log(res);
           Toast({
@@ -111,21 +114,25 @@ Page({
     var currentTarget = e.currentTarget
     var {index} = currentTarget.dataset
     this.setData({
-      index: index
+      index: index,
+      showConfirm: true
     })
-    var mh = this.selectComponent('#cell0').app.globalData.navBarHeight
-    + this.selectComponent('#cell0').app.globalData.menuHeight
-    console.log(mh)
-    var position = {
-      width: wx.getSystemInfoSync().windowWidth,
-      height: 80,
-      top: 40,
-      left: 0,
-      right: wx.getSystemInfoSync().windowWidth,
-      bottom: mh * index + mh / 2,
-      id: 'cell' + index
-    }
-    this.data.popover.onDisplay(position);
+    // var mh = this.selectComponent('#cell0').app.globalData.navBarHeight
+    // + this.selectComponent('#cell0').app.globalData.menuHeight
+    // console.log(mh)
+    // var position = {
+    //   width: wx.getSystemInfoSync().windowWidth,
+    //   height: 80,
+    //   top: 40,
+    //   left: 0,
+    //   right: wx.getSystemInfoSync().windowWidth,
+    //   bottom: mh * index + mh / 2,
+    //   id: 'cell' + index
+    // }
+    // this.data.popover.onDisplay(position);
+  },
+  closeDialog() {
+    this.setData({showConfirm: false });
   },
   onClickMessage({currentTarget}) {
     var {index} = currentTarget.dataset
