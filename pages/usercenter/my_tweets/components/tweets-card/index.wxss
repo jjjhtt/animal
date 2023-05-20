@@ -3,7 +3,6 @@
   font-size: 24rpx;
   border-radius: 0 0 16rpx 16rpx;
   border-bottom: none;
-  box-shadow: 5rpx 5rpx 5rpx 5rpx #ececec
 }
 
 .tweets-card__main {
@@ -48,6 +47,7 @@
   padding: 16rpx 24rpx 18rpx;
   flex-direction: column;
   width: 293rpx;
+  height: 128rpx;
 }
 
 .tweets-card__upper {

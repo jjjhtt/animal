@@ -61,17 +61,6 @@ page {
 .help-page-container .tab.order-nav .order-nav-item.scroll-width {
   min-width: 165rpx;
 }
-.help-page-container .tab .order-nav-item.active {
-  color: #1296db !important;
-}
-
-.help-page-container .tab .bottom-line {
-  border-radius: 4rpx;
-}
-
-.help-page-container .tab .order-nav-item.active .bottom-line {
-  background-color: #1296db !important;
-}
 
 .help-page-container .tabs-external__item {
   /* color: #666 !important; */

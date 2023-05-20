@@ -21,7 +21,7 @@
   border-radius: 8rpx;
   padding-top: 28rpx;
   margin-top: -24rpx;
-  margin-bottom: 30rpx;
+  padding-bottom: 30rpx;
   display: flex;
   flex-wrap: wrap;
 }
@@ -32,7 +32,7 @@
   flex-direction: column;
   margin-top: 24rpx;
   width: 100%;
-  border: 1rpx solid black;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #ececec;
   background-color: white;
 }
 

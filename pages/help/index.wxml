@@ -41,5 +41,6 @@
     data="{{tweetsList}}"
   />
   <load-more list-is-empty="{{!tweetsList.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
-  <t-toast id="t-toast" />
 </view>
+
+<t-toast id="t-toast" />

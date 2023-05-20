@@ -70,15 +70,29 @@ Page({
     try {
       const nextList = await fetchTweetsList(pageIndex, this.data.match);
       //console.log(nextList);
+      if (nextList === null) {
+        if (fresh) {
+          this.setData({
+            tweetsList: []
+          })
+        }
+        this.setData({ tweetsListLoadStatus: 2 });
+        return;
+      }
+      if (nextList.length < 10) {
+        this.setData({ 
+          tweetsListLoadStatus: 2,
+          tweetsList: nextList,
+        });
+        return;
+      }
       this.setData({
         tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),
         tweetsListLoadStatus: 0,
       });
 
       this.tweetListPagination.index = pageIndex;
-      if (JSON.stringify(nextList) == '{}') {
-        this.setData({ tweetsListLoadStatus: 2 });
-      }
+
       //console.log(this.data.tweetsList);
     } catch (err) {
       console.log(err);

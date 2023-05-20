@@ -1,0 +1,19 @@
+<view class="tweets-list-wrap wr-class" id="{{independentID}}">
+	<block wx:for="{{tweetsList}}" wx:for-item="item" wx:key="index">
+		<tweets-card
+		  data="{{item}}"
+		  thresholds="{{thresholds}}"
+		  class="tweets-card-inside"
+		  data-index="{{index}}"
+      data-id="{{item.id}}"
+      bindlongpress="onLongPress"
+		/>
+	</block>
+</view>
+
+<popover id='popover'>
+  <popover-item bindtap='delete' hasline>删除</popover-item>
+  <popover-item bindtap='cancel' hasline>取消</popover-item>
+</popover>
+
+<t-toast id="t-toast" />

@@ -95,6 +95,13 @@ Page({
         this.setData({ tweetsListLoadStatus: 2 });
         return;
       }
+      if (nextList.length < 10) {
+        this.setData({ 
+          tweetsListLoadStatus: 2,
+          tweetsList: nextList,
+        });
+        return;
+      }
       //console.log(nextList);
       this.setData({
         tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),

@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "tweets-card": "../tweets-card/index",
+        "popover": "/components/popover",
+        "popover-item": "/components/popover-item",
+        "t-toast": "tdesign-miniprogram/toast/toast"
+    }
+}

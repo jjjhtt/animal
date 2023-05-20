@@ -11,7 +11,7 @@
     "t-toast": "tdesign-miniprogram/toast/toast",
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
-    "tweets-list": "/components/tweets-list/index",
+    "tweets-list": "./components/tweets-list/index",
     "load-more": "/components/load-more/index"
   }
 }

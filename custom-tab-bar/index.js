@@ -7,7 +7,8 @@ import {
 
 Component({
   data: {
-    show: true
+    show: true,
+    "selectedColor": "#1296db",
   },
   // 通过 storeBindingsBehavior 来实现自动绑定
   behaviors: [storeBindingsBehavior],
@@ -17,7 +18,7 @@ Component({
     //属性 指定要绑定的字段数据
     fields: {
       active: "active", //左侧为组件中属性的名字 右侧为Store中属性的名字
-      menulist: "menulist"
+      menulist: "menulist",
     },
     //方法 指定要绑定的方法
     actions: {
