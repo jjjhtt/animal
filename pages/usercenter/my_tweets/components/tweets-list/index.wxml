@@ -11,9 +11,13 @@
 	</block>
 </view>
 
-<popover id='popover'>
-  <popover-item bindtap='delete' hasline>删除</popover-item>
-  <popover-item bindtap='cancel' hasline>取消</popover-item>
-</popover>
+<t-dialog
+  visible="{{showConfirm}}"
+  content="确定删除该帖吗？"
+  confirm-btn="{{ confirmBtn }}"
+  cancel-btn="取消"
+  bind:confirm="delete"
+  bind:cancel="closeDialog"
+/>
 
 <t-toast id="t-toast" />

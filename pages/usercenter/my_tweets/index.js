@@ -76,8 +76,13 @@ Page({
     }
 
     try {
-      const nextList = await fetchTweetsList(pageIndex, this.data.nowkey, this.data.match);
+      const nextList = await fetchTweetsList(pageIndex, this.data.match);
       if (nextList === null) {
+        if (fresh) {
+          this.setData({
+            tweetsList: []
+          })
+        }
         this.setData({ tweetsListLoadStatus: 2 });
         return;
       }

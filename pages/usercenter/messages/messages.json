@@ -7,7 +7,6 @@
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-badge": "tdesign-miniprogram/badge/badge",
-    "popover": "/components/popover",
-    "popover-item": "/components/popover-item"
+    "t-dialog": "tdesign-miniprogram/dialog/dialog"
   }
 }

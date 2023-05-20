@@ -8,9 +8,13 @@ Component({
       type: Array,
       value: [],
     },
-    popover: null,
     id: -1,
     index: -1
+  },
+
+  data: {
+    confirmBtn: { content: '确定', variant: 'base' },
+    showConfirm: false,
   },
 
   lifetimes: {
@@ -30,13 +34,7 @@ Component({
       this.triggerEvent('thumb', { ...e.detail, index });
     },
 
-    cancel: function(e) {
-      this.data.popover.onHide();
-    },
-
     delete: function(e) {
-      this.data.popover.onHide();
-      console.log(this.properties.id)
       let that = this
       wx.request({
         url: config.domain + '/tweet/delete',
@@ -51,9 +49,10 @@ Component({
         },
         success: (res)=> {
           if (res.data.code === 0) {
-            console.log(res);
-            that.properties.tweetsList.splice(that.properties.index, 1)
-            console.log(that.properties.tweetsList)
+            //console.log(res);
+            //that.properties.tweetsList.splice(that.properties.index, 1)
+            //console.log(that.properties.tweetsList)
+            this.setData({showConfirm: false });
             Toast({
               context: this,
               selector: '#t-toast',
@@ -83,34 +82,17 @@ Component({
       var {id} = currentTarget.dataset
       this.setData({
         id: id,
-        index: index
+        index: index,
+        showConfirm: true
       })
-      if (index % 2 == 0) {
-        var position = {
-          width: wx.getSystemInfoSync().windowWidth/2,
-          height: 80,
-          top: 170,
-          left: 0,
-          right: wx.getSystemInfoSync().windowWidth,
-        }
-      } else {
-        var position = {
-          width: wx.getSystemInfoSync().windowWidth*3/2,
-          height: 80,
-          top: 170,
-          left: 0,
-          right: wx.getSystemInfoSync().windowWidth,
-        }
-      }
-      this.data.popover.onDisplay(position);
+    },
+
+    closeDialog() {
+      this.setData({showConfirm: false });
     },
 
     init() {
-      this.setData({
-        popover: this.selectComponent('#popover')
-      })
+
     },
-
-
   },
 });

@@ -214,6 +214,7 @@ Page({
 			if (event.markerId === markers[i].id) {
         this.setData({
           markerCallbackTxt: markers[i].callout.content,
+          locationId: markers[i].id,
         })
 			}
 		}
