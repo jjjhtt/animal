@@ -45,10 +45,11 @@
                 <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
                 <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
               </view>
-              <view class="commentline"></view>
+              <view wx:if="{{index + 1 != commentlist.length}}" class="commentline"></view>
             </view>
-      </view>
-      </view>
+          </view>
+        </view>
+        <t-divider wx:if="{{index + 1 == commentlist.length}}" content="再滑也没有了喵~" style="clear: both;padding-top: 15px;" />
       </block>
     </view>
   </view>

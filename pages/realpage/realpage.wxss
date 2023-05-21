@@ -94,8 +94,7 @@
   margin-top: 10px;
   overflow: hidden;
   clear: both;
-  margin-bottom: 10px;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+  /*border-bottom: 1px solid rgba(128, 128, 128, 0.5);*/
 }
 .replyBox {
   margin: 10px;
@@ -123,4 +122,11 @@
   margin-right: 10px;
   flex:0.35;
   padding-top: 3px;
+}
+.helpCommentBox {
+  box-shadow: 0px 0px 6px black;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: rgba(230,238,232,0.60);
+  border-radius: 8px;
 }
