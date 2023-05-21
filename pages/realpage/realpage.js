@@ -274,7 +274,9 @@ Page({
       },
       success(res) {
         if (res.data.code == 0) {
-          self.setData({commentlist: res.data.body.comments})
+          self.setData({
+            commentlist: res.data.body.comments == null ? [] : res.data.body.comments
+          })
         } else {
           Toast({
             context: this,

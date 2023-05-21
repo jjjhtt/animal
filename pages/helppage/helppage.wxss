@@ -62,6 +62,7 @@
   margin-bottom: 10px;
   line-height: 20px;
   overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 .commentDate {
   font-size: 12px;
@@ -96,6 +97,7 @@
   font-size: large;
   font-weight: bold;
   margin: 10px;
+  margin-top: 30px;
 }
 .error-text {
   font-size: 25rpx;

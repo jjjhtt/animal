@@ -42,7 +42,7 @@
   <!--问题描述-->
   <view class="qcontent">
     <view style="font-size: x-large;margin-bottom: 10px;"><text user-select> {{qtitle}} </text></view>
-    <text user-select>{{qcontent}}</text>
+    <text style="white-space: pre-wrap;" user-select>{{qcontent}}</text>
   </view>
   <!--官方回复-->
   <view wx:if="{{officialReplyList.length != 0}}" class="bestAnsBox">
