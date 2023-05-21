@@ -1,5 +1,6 @@
 import Toast from 'tdesign-miniprogram/toast/index';
-import {config} from '../../config/index'
+import {config} from '../../config/index';
+import { fetchTweetsList } from '../../services/tweet/fetchTweets';
 Page({
   data: {
       imgUrls: '',
@@ -14,8 +15,16 @@ Page({
       contenttext: '',
       adopted: false,
       showTextAndTitleWithInput: false,
-      adoptReason: ''
+      adoptReason: '',
+      tweetsList: [],
+      tweetsListLoadStatus: 0
   },
+
+  tweetListPagination: {
+    index: 0,
+    num: 8,
+  },
+
   handleAdopt() {
     this.setData({
       showTextAndTitleWithInput: true
@@ -101,6 +110,8 @@ Page({
             adopted: res.data.body.adopted,
             imgUrls: res.data.body.avatar == null ? [] : res.data.body.avatar
           })
+          wx.stopPullDownRefresh();
+          self.loadtweetsList(true);
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
         }
@@ -109,5 +120,51 @@ Page({
     setTimeout(() => {
       wx.hideNavigationBarLoading()
     }, 2000);
+  },
+
+  onPullDownRefresh() {
+    wx.stopPullDownRefresh();
+    this.loadtweetsList(true);
+  },
+
+  onReachBottom() {
+    if (this.data.tweetsListLoadStatus === 0) {
+      this.loadtweetsList();
+    }
+  },
+
+  async loadtweetsList(fresh = false) {
+    if (fresh) {
+      wx.pageScrollTo({
+        scrollTop: 0,
+      });
+    }
+    this.setData({ tweetsListLoadStatus: 1 });
+    let pageIndex = this.tweetListPagination.index + 1;
+    if (fresh) {
+      this.tweetListPagination.index = 0;
+      pageIndex = 0;
+    }
+    try {
+      const nextList = await fetchTweetsList(pageIndex, '热度', '#'.concat(this.data.content_title));
+      //console.log(nextList);
+      if (nextList === null) {
+        if (fresh) {
+          this.setData({
+            tweetsList: []
+          })
+        }
+        this.setData({ tweetsListLoadStatus: 2 });
+        return;
+      }
+      this.setData({
+        tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),
+        tweetsListLoadStatus: 0,
+      });
+      this.tweetListPagination.index = pageIndex;
+    } catch (err) {
+      //console.log(err);
+      this.setData({ tweetsListLoadStatus: 3 });
+    }
   }
 })

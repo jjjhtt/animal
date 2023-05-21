@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "动物档案",
-  "component": true,
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "t-search": "tdesign-miniprogram/search/search",
     "t-loading": "tdesign-miniprogram/loading/loading",
@@ -11,6 +12,7 @@
     "tweets-list": "/components/tweets-list/index",
     "t-button": "tdesign-miniprogram/button/button",
     "t-input": "tdesign-miniprogram/input/input",
-    "t-dialog": "tdesign-miniprogram/dialog/dialog"
+    "t-dialog": "tdesign-miniprogram/dialog/dialog",
+    "load-more": "/components/load-more/index"
   }
 }

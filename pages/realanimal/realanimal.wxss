@@ -1,5 +1,6 @@
 /* pages/realnimal/realanimal.wxss */
 @import '../realpage/realpage.wxss';
+
 .account-btn {
   width: 192rpx;
   height: 80rpx;
@@ -50,4 +51,9 @@
 .placeholder {
   color: rgba(0, 0, 0, 0.4);
   line-height: 96rpx;
+}
+
+.tweets-list-container {
+  margin-left: 15rpx;
+  margin-right: 15rpx;
 }

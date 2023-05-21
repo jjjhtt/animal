@@ -18,6 +18,11 @@
     <view wx:if="{{adopted}}" class="account-btn" style="background-color:gray">已被领养</view>
     <view catchtap="goTrack" class="account-btn" hover-class="hover-btn"> 动物轨迹 </view>
   </view>
+  <tweets-list
+    wr-class="tweets-list-container"
+    tweetsList="{{tweetsList}}"
+  />
+  <load-more list-is-empty="{{!tweetsList.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
 </view>
 <t-toast id="t-toast" />
 <t-dialog
