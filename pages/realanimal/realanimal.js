@@ -23,6 +23,7 @@ Page({
     
   },
   goTrack() {
+    let id = this.data.animalId
     wx.navigateTo({
       url: `./track/track?id=${this.data.animalid}`,
     });

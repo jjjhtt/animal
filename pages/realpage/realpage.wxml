@@ -23,26 +23,33 @@
         <view class="realpage_tag" wx:for="{{tags}}" wx:key="index"> #{{item}} </view>
         <view class="realpage_data">{{data}}</view>
   </view>
-  <view class="realpage_comment">
-    <view style="font-size:small;color: black;margin-bottom: 15px;">共 {{commentnum}} 条评论</view>
-    <view wx:for="{{commentlist}}"  wx:key="index">
-      <view style="display: flex; width: 100%; margin-bottom: 10px; ">
-        <view style="flex: 1;"><image src="https://anith2.2022martu1.cn{{item.avatar}}" mode="widthFix" style="width: 48rpx; border-radius: 45%;" /></view>
-        <view style="flex:10;padding-left: 5px;">
-          <view style="font-size:medium;color: gray;">{{item.username}}</view>
-          <view style="border-bottom: 1px solid rgba(128, 128, 128, 0.3);padding-top: 5px;padding-bottom: 10px;font-size: smaller;">{{item.content}}
-          <view style="font-size: 12px; color: rgba(0, 0, 0, 0.5);margin-top: 5px;">{{item.time}}</view>
-          </view>
-        </view>
-        <view style="flex: 1;width: 25px;">
-          <view wx:if="{{uid == item.userId}}" bindtap="deleteComment" data-id="{{index}}"><t-icon name="close" size="48rpx"/></view>
-          <view bindtap="monitorlike" data-id="{{index}}">
-            <view wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
-            <view wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
-            <view style="text-align:center;font-size: xx-small; clear: both;"> {{item.likeNum}}</view>
-          </view>
-        </view>
+  <view class="replyBox">
+    <view class="allReplyBox"> 共{{commentnum}}条回复 </view>
+    <view class="noReply" wx:if="{{commentlist.length == 0}}"> 还没有回复哦！ </view>
+    <view>
+      <block wx:for="{{commentlist}}" wx:key="index">
+        <view class="helpCommentBox">
+          <view class="commentBoxTop">
+            <view class="commentImgBox">
+              <image src="https://anith2.2022martu1.cn{{item.avatar}}" mode="widthFix" style="width: 100%;border-radius: 45%;" />
+            </view>
+            <view class="commentDetailBox">
+              <view style="font-size: medium;color: gray;"> 
+                {{item.username}} 
+                <view wx:if="{{uid == item.userId}}" bindtap="deleteComment" data-id="{{index}}" style="float: right;"><t-icon name="close" size="48rpx"/></view>
+              </view>
+              <view class="commentText"> {{item.content}} </view>
+              <view>
+                <view class="commentDate">{{item.time}}</view>
+                <view class="likef">{{item.likeNum}}</view>
+                <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
+                <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
+              </view>
+              <view class="commentline"></view>
+            </view>
       </view>
+      </view>
+      </block>
     </view>
   </view>
   <!--底部-->

@@ -292,7 +292,7 @@ Page({
     self = this
     try {
       const sp = await getContent(this.data.tweetid);
-      console.log(sp)
+      //console.log(sp)
       this.setData({
         imgUrls: sp.images == null ? [] : sp.images, 
         imgUrl: sp.avatar == null ? [] : 'https://anith2.2022martu1.cn' + sp.avatar,

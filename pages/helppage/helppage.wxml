@@ -46,6 +46,7 @@
   </view>
   <!--官方回复-->
   <view wx:if="{{officialReplyList.length != 0}}" class="bestAnsBox">
+    <view class="allReplyBox"> 共{{commentnum}}条回复 </view>
     <view class="bsetAnsBox1">官方回复</view>
     <view>
       <block wx:for="{{officialReplyList}}" wx:key="index">
@@ -75,7 +76,6 @@
   </view>
   <!--回复-->
   <view class="replyBox">
-    <view class="allReplyBox"> 共{{commentnum}}条回复 </view>
     <view class="noReply" wx:if="{{replylist.length == 0}}"> 还没有回复哦！ </view>
     <view>
       <block wx:for="{{replylist}}" wx:key="index">

@@ -239,7 +239,6 @@ Page({
       },
       success(res) {
         if (res.data.code == 0) {
-          console.log(res)
           let sp = res.data.body
           self.setData({
             tuid:sp.userId,
@@ -274,7 +273,6 @@ Page({
       },
       success(res) {
         if (res.data.code == 0) {
-          console.log(res)
           self.setData({commentlist: res.data.body.comments})
         } else {
           Toast({

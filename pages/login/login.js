@@ -86,6 +86,10 @@ Page({
       method: 'POST',
       success:function(res) {
         if (res.data.code == 0) {
+          self.setData({
+              email: '',
+              pw: ''
+          })
           Toast({
             context: this,
             selector: '#t-toast',
@@ -107,6 +111,7 @@ Page({
           self.setData({
             errormessage: res.data.message,
             type: 'error',
+            pw: '',
             show: true
           })
           timer = setTimeout(() => {
@@ -114,10 +119,6 @@ Page({
             }, 2000)
         }
       }
-    })
-    this.setData({
-        email: '',
-        pw: ''
     })
     },
     methods: {

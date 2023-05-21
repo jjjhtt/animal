@@ -8,7 +8,7 @@
     z-index: 999;
     position: absolute;
     right: 30rpx;
-    top:200rpx;
+    top:220rpx;
     width: 70rpx;
     height: 35rpx;
     line-height: 35rpx;
@@ -54,5 +54,67 @@
   }
   .realPageIcon {
     margin-top: 1px;
+    margin-left: 5px;
+    float: left;
     font-size:large;
   }
+  
+.commentBoxTop {
+  display: flex;
+  margin: 5px;
+}
+.commentImgBox {
+  padding-top: 6px;
+  flex:1;
+}
+.commentDetailBox {
+  flex:9;
+  display: block;
+  padding-left: 10px;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+.commentText {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  line-height: 20px;
+  overflow-wrap: break-word;
+}
+.commentDate {
+  font-size: 12px;
+  padding-top: 5px;
+  float: left;
+  color: rgba(0, 0, 0, 0.5);
+}
+.likef {
+  float: right;
+  height: 25px;
+  padding-bottom: 5px;
+}
+.commentline {
+  margin-top: 10px;
+  overflow: hidden;
+  clear: both;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+}
+.replyBox {
+  margin: 10px;
+  padding-bottom: 40px;
+}
+.allReplyBox {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: small;
+}
+.noReply {
+  width: 100%;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+  margin: 10px;
+}
+.error-text {
+  font-size: 25rpx;
+  font-weight: 400;
+}
