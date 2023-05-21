@@ -54,7 +54,7 @@
   }
   .realPageIcon {
     margin-top: 1px;
-    margin-left: 5px;
+    margin-left: 3px;
     float: left;
     font-size:large;
   }

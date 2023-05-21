@@ -67,7 +67,7 @@
                 <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
                 <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
               </view>
-              <view class="commentline"></view>
+              <view wx:if="{{index + 1 != officialReplyList.length}}" class="commentline"></view>
             </view>
       </view>
       </view>
@@ -127,14 +127,14 @@
     <view wx:if="{{inputnow}}" style="margin-right: 10px;flex:0.15" bindtap="sendtext">发送</view>
     <view wx:if="{{!inputnow}}" style="flex: 1; text-align: center;padding-right: 10px;">
         <view style="display: flex; justify-content: center;">
-            <view style="flex: 1;" bindtap="likeTweet">
-              <view wx:if="{{!hasLiked}}" style="float: left;"><t-icon name="heart"  size="48rpx"/></view>
-              <view wx:if="{{hasLiked}}" style="float: left;"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
+            <view style="flex: 1;display: flex;flex-direction: row;" bindtap="likeTweet">
+              <view wx:if="{{!hasLiked}}" style="flex: 1;"><t-icon name="heart"  size="48rpx"/></view>
+              <view wx:if="{{hasLiked}}" style="flex: 1;"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
               <view class="realPageIcon">{{likecount}}</view>
             </view>
-            <view style="flex: 1;" bindtap="starTweet">
-              <view wx:if="{{!hasStarred}}" style="float: left;"><t-icon name="star"  size="48rpx"/></view>
-              <view wx:if="{{hasStarred}}" style="float: left;"><t-icon name="star-filled" color="yellow" size="48rpx"/></view>
+            <view style="flex: 1; display: flex;" bindtap="starTweet">
+              <view wx:if="{{!hasStarred}}" style="flex: 1;"><t-icon name="star"  size="48rpx"/></view>
+              <view wx:if="{{hasStarred}}" style="flex: 1;"><t-icon name="star-filled" color="yellow" size="48rpx"/></view>
               <view class="realPageIcon">{{collectcount}}</view>
             </view>
         </view>
