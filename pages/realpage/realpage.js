@@ -32,7 +32,8 @@ Page({
       hasLiked: false,
       hasStarred: false,
       swiperHeight: 0, //轮播图高度,
-      domain: config.domain
+      domain: config.domain,
+      autoWidth: 200, //底部对话框宽度
   },
   commentListPagination: {
     index: 0,
@@ -75,7 +76,7 @@ Page({
     console(this.data.inputText)
   },
   inputBindFocus(e) {
-      this.setData({inputBottom:e.detail.height, inputnow:true})
+      this.setData({inputBottom:e.detail.height, inputnow:true, autoWidth:280})
   },
   deleteComment(e) {
     let i = e.currentTarget.dataset.id
@@ -110,7 +111,7 @@ Page({
     })
   },
   inputBindBlur() {
-      this.setData({inputBottom:0, inputnow:false})
+      this.setData({inputBottom:0, inputnow:false, autoWidth:200})
   },
   sendtext: function() {
     wx.request({

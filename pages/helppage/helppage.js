@@ -38,6 +38,7 @@ Page({
     collectcount: 0,
     show: false, //页面展示控制
     showWarnConfirm: false,
+    autoWidth: 200, //底部输入框宽度
   },
   replyListPagination: {
     index: 0,
@@ -145,10 +146,10 @@ Page({
       this.setData({inputText:e.detail.value})
   },
   inputBindFocus(e) {
-      this.setData({inputBottom:e.detail.height, inputnow:true})
+      this.setData({inputBottom:e.detail.height, inputnow:true, autoWidth:280})
   },
   inputBindBlur() {
-      this.setData({inputBottom:0, inputnow:false})
+      this.setData({inputBottom:0, inputnow:false, autoWidth:200})
   },
   monitorlike: function(e) {
     var self = this

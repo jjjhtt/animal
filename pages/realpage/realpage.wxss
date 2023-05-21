@@ -31,8 +31,8 @@
   .bottom-input {
     flex: 1;
     margin-left: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
   .realpage_comment {
     margin: 10px;
@@ -54,8 +54,6 @@
   }
   .realPageIcon {
     margin-top: 1px;
-    margin-left: 3px;
-    float: left;
     font-size:large;
   }
   
@@ -117,4 +115,10 @@
 .error-text {
   font-size: 25rpx;
   font-weight: 400;
+}
+.send-button {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex:0.35;
+  padding-top: 3px;
 }
