@@ -2,6 +2,13 @@ import {config} from "../../config/index"
 
 export function fetchTweetsList(pageIndex = 0, match = '') {
   return new Promise((resolve) => {
+    let tag = ''
+    let m = ''
+    if (match.charAt(0) == '#') {
+      tag = match.substring(1)
+    } else {
+      m = match
+    }
     wx.request({
       url: config.domain + '/user/selfHelp',
       method: 'POST',
@@ -9,7 +16,8 @@ export function fetchTweetsList(pageIndex = 0, match = '') {
         "userId": wx.getStorageSync('userId'),
         "pageNum": 10,
         "page": pageIndex,
-        "context": match
+        "context": m,
+        "tag": tag
       },
       header: {
         'content-type': 'application/json', // 默认值
