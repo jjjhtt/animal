@@ -31,7 +31,13 @@
     "pages/write/map/chooseAnimal/index",
     "pages/usercenter/adoption/index",
     "pages/home/search/index",
-    "pages/home/result/index"
+    "pages/home/result/index",
+    "pages/animal/search/index",
+    "pages/help/search/index",
+    "pages/help/result/index",
+    "pages/usercenter/my_tweets/result/index",
+    "pages/usercenter/help/result/index",
+    "pages/usercenter/collection/result/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

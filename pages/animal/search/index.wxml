@@ -4,10 +4,9 @@
       t-class-input="t-search__input"
       t-class-input-container="t-search__input-container"
       placeholder="请输入关键词"
-      disabled="true"
       leftIcon=""
+      focus="true"
       bind:submit="submitHandle"
-      bindtap="onClick"
     >
       <t-icon slot="left-icon"  name="search" size="40rpx" color="#bbb" />
     </t-search>
@@ -17,5 +16,7 @@
   <document
     category="{{list}}"
   />
+  <view class="noTweet" wx:if="{{list.length == 0}}">{{notice}}</view>
   <load-more list-is-empty="{{!list.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
 </view>
+<t-toast id="t-toast" />

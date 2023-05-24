@@ -1,10 +1,13 @@
-import { getCategoryList } from '../../services/document/fetchCategoryList';
+import { getCategoryList } from '../../../services/document/fetchCategoryList';
+import Toast from 'tdesign-miniprogram/toast/index';
+
 Page({
   data: {
     list: [],
     nowkey: 0,
     match: '',
-    tweetsListLoadStatus: 0
+    tweetsListLoadStatus: 0,
+    notice: ''
   },
 
   tweetListPagination: {
@@ -12,16 +15,18 @@ Page({
   },
 
   submitHandle(e) {
+    if (e.detail.value == '') {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: "请输入关键词",
+      });
+      return
+    }
     this.setData({
       match: e.detail.value
     });
     this.init(true);
-  },
-
-  onClick() {
-    wx.navigateTo({
-      url: './search/index',
-    })
   },
 
   onShow() {
@@ -31,7 +36,10 @@ Page({
     
   },
   onLoad() {
-    this.init(true);
+    //this.init(true);
+    this.setData({
+      notice: '请输入关键词搜索'
+    })
   },
 
   onReTry() {
@@ -66,6 +74,9 @@ Page({
         if (fresh) {
           this.setData({
             list: []
+          })
+          this.setData({
+            notice: '暂无相关动物'
           })
         }
         this.setData({ tweetsListLoadStatus: 2 });

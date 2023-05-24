@@ -1,4 +1,4 @@
-import { fetchTweetsList } from '../../../services/tweet/fetchTweets';
+import { fetchTweetsList } from '../../../services/help/fetchTweets';
 import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
@@ -31,9 +31,6 @@ Page({
   onUnload() {
     wx.navigateBack({
       delta: 2,
-      success: (res) => {},
-      fail: (res) => {},
-      complete: (res) => {},
     })
   },
 
@@ -56,24 +53,22 @@ Page({
   },
 
   init() {
-    this.loadHomePage();
+    this.loadHelpPage();
   },
 
-  loadHomePage() {
+  loadHelpPage() {
     wx.stopPullDownRefresh();
 
     this.setData({
       pageLoading: false,
     });
     this.loadtweetsList(true);
-
   },
 
   tabChangeHandle(e) {
     this.setData({
       nowkey: e.detail.value
     });
-    //console.log(this.data.nowkey);
     this.loadtweetsList(true);
   },
 
@@ -89,7 +84,7 @@ Page({
     this.setData({
       match: e.detail.value
     });
-    var l = wx.getStorageSync('tweet_history')
+    var l = wx.getStorageSync('help_history')
     if (l.indexOf(this.data.match) != -1) {
       l.splice(l.indexOf(this.data.match), 1)
     }
@@ -97,7 +92,7 @@ Page({
     if (l.length == 21) {
       l.splice(20, 1)
     }
-    wx.setStorageSync('tweet_history', l)
+    wx.setStorageSync('help_history', l)
     this.loadtweetsList(true);
   },
 
@@ -114,12 +109,12 @@ Page({
     this.setData({ tweetsListLoadStatus: 1 });
     let pageIndex = this.tweetListPagination.index + 1;
     if (fresh) {
-      this.tweetListPagination.index = 0;
       pageIndex = 0;
     }
+
     try {
-      const nextList = await fetchTweetsList(pageIndex, this.data.nowkey, this.data.match);
-      //console.log(nextList);
+      //console.log(pageIndex);
+      const nextList = await fetchTweetsList(pageIndex, this.data.match, this.data.nowkey);
       if (nextList === null) {
         if (fresh) {
           this.setData({
@@ -129,13 +124,23 @@ Page({
         this.setData({ tweetsListLoadStatus: 2 });
         return;
       }
+      if (nextList.length < 10) {
+        this.setData({ 
+          tweetsListLoadStatus: 2,
+          tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),
+        });
+        return;
+      }
+      //console.log(nextList);
       this.setData({
         tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),
         tweetsListLoadStatus: 0,
       });
+
       this.tweetListPagination.index = pageIndex;
+      //console.log(this.data.tweetsList);
     } catch (err) {
-      //console.log(err);
+      console.log(err);
       this.setData({ tweetsListLoadStatus: 3 });
     }
   },

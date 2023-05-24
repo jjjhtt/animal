@@ -33,3 +33,13 @@
 </view>
 <view class="footer__version" wx:if="{{versionNo !== ''}}">当前版本 {{versionNo}}</view>
 <t-toast id="t-toast" />
+
+<t-dialog
+  visible="{{showConfirm}}"
+  content="确定退出登录吗？"
+  confirm-btn="确认"
+  cancel-btn="取消"
+  bind:confirm="confirm"
+  bind:cancel="cancel"
+  z-index="99999"
+/>

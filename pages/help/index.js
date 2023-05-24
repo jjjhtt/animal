@@ -60,6 +60,12 @@ Page({
     this.loadtweetsList(true);
   },
 
+  onClick() {
+    wx.navigateTo({
+      url: './search/index',
+    })
+  },
+
   submitHandle(e) {
     this.setData({
       match: e.detail.value

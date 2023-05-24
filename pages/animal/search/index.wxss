@@ -13,9 +13,16 @@
   color: rgb(116, 116, 116) !important;
 }
 
+.noTweet {
+  width: 100%;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+  margin: 10px;
+  margin-top: 30px;
+}
 
 page {
   min-height: none;
   background: white;
-  padding-bottom: calc(env(safe-area-inset-bottom) + 96rpx);
 }

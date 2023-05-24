@@ -1,22 +1,21 @@
-import { fetchTweetsList } from '../../../services/tweet/fetchTweets';
+import { fetchTweetsList } from '../../../../services/usercenter/fetchStarTweets';
 import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
     tabList: [{
-      text: '热度排序',
-      key: '热度',
+      text: '普通帖',
+      key: 0,
     },
     {
-      text: '时间排序',
-      key: '时间',
+      text: '求助帖',
+      key: 1,
     }],
     tweetsList: [],
     tweetsListLoadStatus: 0,
     pageLoading: false,
-    nowkey: '热度',
+    nowkey: 0,
     match: '',
-    value: ''
   },
 
   tweetListPagination: {
@@ -25,24 +24,13 @@ Page({
   },
 
   onShow() {
-    
+    //this.init();
   },
 
-  onUnload() {
-    wx.navigateBack({
-      delta: 2,
-      success: (res) => {},
-      fail: (res) => {},
-      complete: (res) => {},
-    })
-  },
-
-  onLoad(options) {
+  onLoad() {
     this.setData({
-      match: options.match,
-      value: options.match
+      notice: '请输入关键词搜索'
     })
-    this.init();
   },
 
   onReachBottom() {
@@ -73,7 +61,9 @@ Page({
     this.setData({
       nowkey: e.detail.value
     });
-    //console.log(this.data.nowkey);
+    this.setData({
+      tweetsList: [],
+    })
     this.loadtweetsList(true);
   },
 
@@ -89,15 +79,6 @@ Page({
     this.setData({
       match: e.detail.value
     });
-    var l = wx.getStorageSync('tweet_history')
-    if (l.indexOf(this.data.match) != -1) {
-      l.splice(l.indexOf(this.data.match), 1)
-    }
-    l.unshift(this.data.match)
-    if (l.length == 21) {
-      l.splice(20, 1)
-    }
-    wx.setStorageSync('tweet_history', l)
     this.loadtweetsList(true);
   },
 
@@ -117,6 +98,7 @@ Page({
       this.tweetListPagination.index = 0;
       pageIndex = 0;
     }
+
     try {
       const nextList = await fetchTweetsList(pageIndex, this.data.nowkey, this.data.match);
       //console.log(nextList);
@@ -125,10 +107,14 @@ Page({
           this.setData({
             tweetsList: []
           })
+          this.setData({
+            notice: '未找到相关结果'
+          })
         }
         this.setData({ tweetsListLoadStatus: 2 });
         return;
       }
+      console.log(nextList);
       this.setData({
         tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),
         tweetsListLoadStatus: 0,

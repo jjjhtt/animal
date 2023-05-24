@@ -50,6 +50,7 @@ const getDefaultData = () => ({
   menuData,
   versionNo: 'alpha',
   MessageNum: 1,
+  showConfirm: false
 });
 
 Page({
@@ -149,16 +150,9 @@ Page({
         break;
       }
       case 'exit': {
-        wx.clearStorageSync();  //清除缓存
-        setTimeout(() => {
-          this.getTabBar().updateActive(0);
-          this.getTabBar().setData({
-            selected: 0
-          })
-          wx.reLaunch({
-            url: '/pages/login/login',
-          })
-        }, 500)
+        this.setData({
+          showConfirm: true
+        })
       }
 
       default: {
@@ -166,4 +160,21 @@ Page({
       }
     }
   },
+
+  cancel() {
+    this.setData({
+      showConfirm: false
+    })
+  },
+
+  confirm() {
+    wx.clearStorageSync();  //清除缓存
+    this.getTabBar().updateActive(0);
+    this.getTabBar().setData({
+      selected: 0
+    })
+    wx.reLaunch({
+      url: '/pages/login/login',
+    })
+  }
 });

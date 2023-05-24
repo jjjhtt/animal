@@ -51,6 +51,12 @@ Page({
     this.loadtweetsList(true);
   },
 
+  click() {
+    wx.navigateTo({
+      url: './result/index',
+    })
+  },
+
   onReTry() {
     this.loadtweetsList();
   },
