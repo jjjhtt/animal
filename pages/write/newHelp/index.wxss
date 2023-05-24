@@ -138,7 +138,7 @@
  }
 
  .head {
-  height: 150rpx;
+  height: 180rpx;
 }
 
 .determine_button{
@@ -232,4 +232,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.head_input {
+  padding-left: 30rpx;
 }

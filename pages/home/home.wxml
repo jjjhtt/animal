@@ -8,8 +8,10 @@
       t-class-input-container="t-search__input-container"
       placeholder="请输入关键词"
       value="{{value}}"
+      disabled="true"
       leftIcon=""
       bind:submit="submitHandle"
+      bind:tap="clickHandle"
     >
       <t-icon slot="left-icon"  name="search" size="40rpx" color="#bbb" />
     </t-search>
@@ -22,7 +24,7 @@
       t-class-active="tabs-external__active"
       t-class-item="tabs-external__item"
       defaultValue="{{'热度'}}"
-      space-evenly="{{false}}"
+      space-evenly="{{true}}"
       bind:change="tabChangeHandle"
     >
       <t-tab-panel

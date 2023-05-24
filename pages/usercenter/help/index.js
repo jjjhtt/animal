@@ -82,7 +82,7 @@ Page({
       if (nextList.length < 10) {
         this.setData({ 
           tweetsListLoadStatus: 2,
-          tweetsList: nextList,
+          tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),
         });
         return;
       }

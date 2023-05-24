@@ -1,4 +1,5 @@
-import { fetchTweetsList } from '../../services/tweet/fetchTweets';
+import { fetchTweetsList } from '../../../services/tweet/fetchTweets';
+import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
@@ -15,6 +16,7 @@ Page({
     pageLoading: false,
     nowkey: '热度',
     match: '',
+    value: ''
   },
 
   tweetListPagination: {
@@ -26,7 +28,20 @@ Page({
     
   },
 
-  onLoad() {
+  onUnload() {
+    wx.navigateBack({
+      delta: 2,
+      success: (res) => {},
+      fail: (res) => {},
+      complete: (res) => {},
+    })
+  },
+
+  onLoad(options) {
+    this.setData({
+      match: options.match,
+      value: options.match
+    })
     this.init();
   },
 
@@ -63,9 +78,26 @@ Page({
   },
 
   submitHandle(e) {
+    if (e.detail.value == '') {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: "请输入关键词",
+      });
+      return
+    }
     this.setData({
       match: e.detail.value
     });
+    var l = wx.getStorageSync('tweet_history')
+    if (l.indexOf(this.data.match) != -1) {
+      l.splice(l.indexOf(this.data.match), 1)
+    }
+    l.unshift(this.data.match)
+    if (l.length == 21) {
+      l.splice(20, 1)
+    }
+    wx.setStorageSync('tweet_history', l)
     this.loadtweetsList(true);
   },
 

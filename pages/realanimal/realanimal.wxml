@@ -22,6 +22,7 @@
     wr-class="tweets-list-container"
     tweetsList="{{tweetsList}}"
   />
+  <view class="noTweet" wx:if="{{tweetsList.length == 0}}"> 暂无此动物相关帖子 </view>
   <load-more list-is-empty="{{!tweetsList.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
 </view>
 <t-toast id="t-toast" />

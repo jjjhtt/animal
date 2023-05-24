@@ -1,0 +1,21 @@
+<view class="home-page-header">
+  <view class="search" >
+    <t-search
+      t-class-input="t-search__input"
+      t-class-input-container="t-search__input-container"
+      placeholder="请输入关键词"
+      value="{{value}}"
+      leftIcon=""
+      focus="true"
+      bind:submit="submitHandle"
+    >
+      <t-icon slot="left-icon"  name="search" size="40rpx" color="#bbb" />
+    </t-search>
+  </view>
+</view>
+<text class="popular-header">历史搜索</text>
+<view class="popular-item">
+  <t-tag wx:for="{{list}}" wx:for-index="subIndex" wx:key="subIndex" wx:for-item="subItem" max-width="{{130}}" variant="dark" data-index="{{subIndex}}" data-tag="{{subItem}}" class="margin-16" bind:close="handleClose" closable bindtap="onClickTag">{{subItem}}</t-tag>
+</view>
+<t-toast id="t-toast" />
+

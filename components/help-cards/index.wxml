@@ -10,6 +10,14 @@
 						  bindtap="onClick"
 						  data-item="{{subItem}}"
 						>
+              <view class="item-header">
+                <view class="avatar">
+                  <t-avatar class="avatar-example" image="https://anith2.2022martu1.cn{{subItem.avatar}}" size="small"/>
+                </view>
+                <view class="name">
+                  {{subItem.username}}
+                </view>
+              </view> 
 							<view class="flex help-cards-normal-item-container-item-title">
 								{{subItem.title}}
 							</view>
