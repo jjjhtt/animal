@@ -4,7 +4,7 @@
     bindlongpress="onLongPressMessage"
     id='cell{{item.index}}'>
       <view class="avatar" slot="left-icon">
-        <image src="{{labaSrc}}" style="width: 96rpx; height: 96rpx;" />
+        <image src="{{labaSrc}}" style="width: 80rpx; height: 80rpx;" />
       </view>
       <t-badge wx:if="{{!item.read}}" slot="note" dot />
     </t-cell>

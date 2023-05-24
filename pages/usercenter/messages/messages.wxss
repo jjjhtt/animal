@@ -1,7 +1,7 @@
 /* pages/usercenter/message/message.wxss */
 .avatar {
-  width: 96rpx;
-  height: 96rpx;
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
-  overflow:auto;
+  overflow:hidden
 }
