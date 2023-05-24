@@ -147,7 +147,7 @@
 <t-toast id="t-toast" />
 <t-dialog
   visible="{{showWarnConfirm}}"
-  content="确认要改变解决状态吗？"
+  content="要改变解决状态了喵~"
   confirm-btn="{{ { content: '确认', variant: 'base' } }}"
   cancel-btn="取消"
   bind:confirm="closeDialog"
