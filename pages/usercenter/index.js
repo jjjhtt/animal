@@ -150,8 +150,13 @@ Page({
         break;
       }
       case 'exit': {
-        this.setData({
-          showConfirm: true
+        wx.clearStorageSync();  //清除缓存
+        this.getTabBar().updateActive(0);
+        this.getTabBar().setData({
+          selected: 0
+        })
+        wx.reLaunch({
+          url: '/pages/login/login',
         })
       }
 
