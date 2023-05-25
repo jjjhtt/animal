@@ -225,7 +225,7 @@ Page({
     this.setData({
       datetime: new Date().getTime(),
       start: newday,
-      end: this.data.datetime
+      end: new Date().getTime()
     })
     const { mode } = e?.currentTarget?.dataset;
     this.setData({
