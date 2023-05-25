@@ -1,18 +1,6 @@
 import { getCategoryList } from '../../services/document/fetchCategoryList';
 Page({
   data: {
-    /*tabList: [{
-      text: '猫',
-      key: 0,
-    },
-    {
-      text: '狗',
-      key: 1,
-    },
-    {
-      text: '鸟',
-      key: 2,
-    }],*/
     list: [],
     nowkey: 0,
     match: '',
@@ -30,12 +18,11 @@ Page({
     this.init(true);
   },
 
-  /*tabChangeHandle(e) {
-    this.setData({
-      nowkey: e.detail.value
-    });
-    this.init();
-  },*/
+  onClick() {
+    wx.navigateTo({
+      url: './search/index',
+    })
+  },
 
   onShow() {
     

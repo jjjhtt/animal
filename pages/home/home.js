@@ -69,6 +69,12 @@ Page({
     this.loadtweetsList(true);
   },
 
+  clickHandle() {
+    wx.navigateTo({
+      url: './search/index',
+    })
+  },
+
   onReTry() {
     this.loadtweetsList();
   },

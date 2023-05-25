@@ -1,0 +1,28 @@
+.animal-page-header {
+  display: block;
+  padding: 0 24rpx;
+}
+
+.animal-page-header .t-search__input-container {
+  border-radius: 32rpx !important;
+  height: 64rpx !important;
+}
+
+.animal-page-header .t-search__input {
+  font-size: 28rpx !important;
+  color: rgb(116, 116, 116) !important;
+}
+
+.noTweet {
+  width: 100%;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+  margin: 10px;
+  margin-top: 30px;
+}
+
+page {
+  min-height: none;
+  background: white;
+}

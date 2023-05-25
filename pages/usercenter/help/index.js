@@ -51,6 +51,12 @@ Page({
     this.loadtweetsList(true);
   },
 
+  click() {
+    wx.navigateTo({
+      url: './result/index',
+    })
+  },
+
   onReTry() {
     this.loadtweetsList();
   },
@@ -82,7 +88,7 @@ Page({
       if (nextList.length < 10) {
         this.setData({ 
           tweetsListLoadStatus: 2,
-          tweetsList: nextList,
+          tweetsList: fresh ? nextList : this.data.tweetsList.concat(nextList),
         });
         return;
       }

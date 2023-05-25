@@ -1,4 +1,5 @@
 import {config} from '.././../../config/index'
+import Toast from 'tdesign-miniprogram/toast/index';
 
 var view = undefined
 function setup(v) {
@@ -31,9 +32,6 @@ function onChooseImage(e) {
       success: (res) => {
         console.log(res);
         const path = res.tempFiles[0].tempFilePath;
-        if (res.tempFiles[0].tempFilePath.length > 0) {
-          addNewImage(res.tempFiles[0].tempFilePath)
-        }
         wx.uploadFile({
           url: config.domain + '/image/upload', 
           filePath: path,
@@ -49,7 +47,16 @@ function onChooseImage(e) {
             //console.log(res.data);
             let p = JSON.parse(res.data);
             //console.log(p.body.imagePath);
-            addNewImageUrl(p.body.imagePath);
+            if (p.code == 1) {
+              Toast({
+                message: "图片大小超过1MB",
+              });
+            } else {
+              if (path.length > 0) {
+                addNewImage(path)
+              }
+              addNewImageUrl(p.body.imagePath);
+            }
             resolve(res)
           },
           fail: (err) => reject(err),

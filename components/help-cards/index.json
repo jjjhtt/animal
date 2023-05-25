@@ -5,6 +5,7 @@
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
-    "t-result": "tdesign-miniprogram/result/result"
+    "t-result": "tdesign-miniprogram/result/result",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar"
   }
 }

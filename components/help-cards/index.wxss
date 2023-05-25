@@ -27,13 +27,30 @@
 }
 
 .help-cards-normal-item-container-item {
-  height: 150rpx;
+  height: 250rpx;
   display: flex;
   flex-direction: column;
   margin-top: 24rpx;
   width: 100%;
   background-color: white;
   box-shadow: 5rpx 5rpx 5rpx 5rpx #ececec
+}
+
+.item-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar {
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  flex: 1
+}
+
+.name {
+  flex: 7;
+  font-size: 35rpx;
+  line-height: 0%;
 }
 
 .help-cards-normal-item-container-item-title {

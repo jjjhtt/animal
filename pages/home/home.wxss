@@ -32,45 +32,8 @@ page {
   color: rgb(116, 116, 116) !important;
 }
 
-.home-page-header .swiper-wrap {
-  margin-top: 20rpx;
-}
-
-.home-page-header .t-image__swiper {
-  width: 100%;
-  height: 300rpx;
-  border-radius: 10rpx;
-}
-
 .home-page-container .t-tabs {
   background-color: white;
-}
-
-.home-page-container .t-tabs .t-tabs-nav {
-  background-color: transparent;
-  line-height: 80rpx;
-  font-size: 28rpx;
-  color: #333;
-}
-
-.home-page-container .t-tabs .t-tabs-scroll {
-  border: none !important;
-}
-
-/* 半个字 */
-.home-page-container .tab.order-nav .order-nav-item.scroll-width {
-  min-width: 165rpx;
-}
-.home-page-container .tab .order-nav-item.active {
-  color: #1296db !important;
-}
-
-.home-page-container .tab .bottom-line {
-  border-radius: 4rpx;
-}
-
-.home-page-container .tab .order-nav-item.active .bottom-line {
-  background-color: #1296db !important;
 }
 
 .home-page-container .tabs-external__item {
@@ -81,13 +44,6 @@ page {
 .home-page-container .tabs-external__active {
   color: #333333 !important;
   font-size: 32rpx;
-}
-
-.home-page-container .tabs-external__track {
-  /* background-color: #fa4126 !important; */
-  height: 6rpx !important;
-  border-radius: 4rpx !important;
-  width: 48rpx !important;
 }
 
 .t-tabs.t-tabs--top .t-tabs__item,

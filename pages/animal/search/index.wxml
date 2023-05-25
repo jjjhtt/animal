@@ -1,0 +1,22 @@
+<view class="animal-page-header">
+  <view class="search" >
+    <t-search
+      t-class-input="t-search__input"
+      t-class-input-container="t-search__input-container"
+      placeholder="请输入关键词"
+      leftIcon=""
+      focus="true"
+      bind:submit="submitHandle"
+    >
+      <t-icon slot="left-icon"  name="search" size="40rpx" color="#bbb" />
+    </t-search>
+  </view>
+</view>
+<view class="wrap">
+  <document
+    category="{{list}}"
+  />
+  <view class="noTweet" wx:if="{{list.length == 0}}">{{notice}}</view>
+  <load-more list-is-empty="{{!list.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
+</view>
+<t-toast id="t-toast" />

@@ -12,7 +12,7 @@
         disableDefaultPadding="{{true}}"
         indicator
       />
-      <text class="text-input__label">正文内容</text>
+      <text class="head_input">正文内容</text>
       <t-textarea
         t-class="text-input"
         placeholder="请输入正文"

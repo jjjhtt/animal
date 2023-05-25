@@ -1,3 +1,8 @@
+.animal-page-header {
+  display: block;
+  padding: 0 24rpx;
+}
+
 .animal-page-header .t-search__input-container {
   border-radius: 32rpx !important;
   height: 64rpx !important;
@@ -7,6 +12,7 @@
   font-size: 28rpx !important;
   color: rgb(116, 116, 116) !important;
 }
+
 
 page {
   min-height: none;

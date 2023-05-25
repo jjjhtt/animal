@@ -60,35 +60,42 @@ Page({
     this.setData({ adoptReason:e.detail.value })
   },
   closeDialog(res) {
+    this.setData({ 
+      showTextAndTitleWithInput: false,
+      //adoptReason: ''
+    });
+  },
+
+  confirm() {
     self = this
-    if(res.type == 'confirm') {
-      wx.request({
-        url: config.domain + '/animal/adopt/apply',
-        method: 'POST',
-        data: {
-          "userId":wx.getStorageSync('userId'),
-          "animalId": this.data.animalid,
-          "reason": this.data.adoptReason
-        },
-        header: {
-          'content-type': 'application/json', // 默认值
-          'authorization': wx.getStorageSync('token')
-        },
-        success(res) {
-          self.setData({adoptReason: ''})
-          if (res.data.code == 0) {
-          } else {
-            Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
-          }
+    wx.request({
+      url: config.domain + '/animal/adopt/apply',
+      method: 'POST',
+      data: {
+        "userId":wx.getStorageSync('userId'),
+        "animalId": this.data.animalid,
+        "reason": this.data.adoptReason
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'authorization': wx.getStorageSync('token')
+      },
+      success(res) {
+        self.setData({adoptReason: ''})
+        if (res.data.code == 0) {
+          Toast({context: this,selector: '#t-toast',message: "申请成功",theme: 'success',});
+        } else {
+          Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
         }
-      })
-    }
+      }
+    })
     
     this.setData({ 
       showTextAndTitleWithInput: false,
       //adoptReason: ''
     });
   },
+
   getdata: function(aniID) {
     self = this
     wx.request({

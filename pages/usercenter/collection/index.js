@@ -74,6 +74,12 @@ Page({
     this.loadtweetsList();
   },
 
+  click() {
+    wx.navigateTo({
+      url: './result/index',
+    })
+  },
+
   async loadtweetsList(fresh = false) {
     if (fresh) {
       wx.pageScrollTo({
@@ -89,7 +95,7 @@ Page({
 
     try {
       const nextList = await fetchTweetsList(pageIndex, this.data.nowkey, this.data.match);
-      console.log(nextList);
+      //console.log(nextList);
       if (nextList === null) {
         if (fresh) {
           this.setData({

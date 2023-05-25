@@ -22,6 +22,7 @@
     wr-class="tweets-list-container"
     tweetsList="{{tweetsList}}"
   />
+  <view class="noTweet" wx:if="{{tweetsList.length == 0}}"> 暂无此动物相关帖子 </view>
   <load-more list-is-empty="{{!tweetsList.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
 </view>
 <t-toast id="t-toast" />
@@ -29,11 +30,9 @@
   visible="{{showTextAndTitleWithInput}}"
   title="领养理由"
   content="审核通过前仅能填写一次，请谨慎填写"
-  confirm-btn="确定"
-  cancel-btn="取消"
-  bind:confirm="closeDialog"
-  bind:cancel="closeDialog"
 >
+  <t-button slot="confirm-btn" disabled="{{!adoptReason}}" theme="primary" catchtap="confirm" style="margin-left: 10rpx; margin-right: 20rpx; margin-bottom: 20rpx;">确定</t-button>
+  <t-button slot="cancel-btn" catchtap="closeDialog" style="margin-left: 20rpx; margin-right: 10rpx; margin-bottom: 20rpx;">取消</t-button>
   <t-input
     borderless
     class="dialog-input"

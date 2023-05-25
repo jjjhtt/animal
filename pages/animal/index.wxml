@@ -4,8 +4,10 @@
       t-class-input="t-search__input"
       t-class-input-container="t-search__input-container"
       placeholder="请输入关键词"
+      disabled="true"
       leftIcon=""
       bind:submit="submitHandle"
+      bindtap="onClick"
     >
       <t-icon slot="left-icon"  name="search" size="40rpx" color="#bbb" />
     </t-search>

@@ -9,8 +9,8 @@
       placeholder="请输入关键词"
       value="{{value}}"
       leftIcon=""
-      bind:blur="blurHandle"
-      bind:submit="submitHandle"
+      disabled="true"
+      bindtap="click"
     >
       <t-icon slot="left-icon"  name="search" size="40rpx" color="#bbb" />
     </t-search>
