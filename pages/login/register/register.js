@@ -15,6 +15,12 @@ Page({
         sendWaiting: false,
         waitTime: 60
     },
+    inputCode(e) {
+      let pw = e.detail.value.replace(/[^\w_@.!]/g,'');
+      this.setData({
+        pw,
+      })
+    },
     returnlogin: function() {
         wx.redirectTo({ url: '../login', })
     },
@@ -25,16 +31,25 @@ Page({
         this.setData({ email: e.detail.value })
     },
     getma: function(e) {
-      this.setData({ ma: e.detail.value })
+      let ma = e.detail.value.replace(/[^\w_@.!]/g,'');
+      this.setData({ ma })
     },
     getphone: function(e) {
       this.setData({ phone: e.detail.value })
     },
     getpw: function(e) {
-        this.setData({ pw: e.detail.value })
+      let pw = e.detail.value.replace(/[^\w_@.!]/g,'');
+      this.setData({
+        pw,
+      })
+      //this.setData({ pw: e.detail.value })
     },
     getpw2: function(e) {
-        this.setData({ pw2: e.detail.value })
+      let pw2 = e.detail.value.replace(/[^\w_@.!]/g,'');
+      this.setData({
+        pw2,
+      })
+      //this.setData({ pw2: e.detail.value })
     },
     requestma: util.throttle(function (e) {
       var inter = setInterval(function() {

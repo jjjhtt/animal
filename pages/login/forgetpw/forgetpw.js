@@ -66,7 +66,8 @@ Page({
       this.setData({ email: e.detail.value })
   },
   getma: function(e) {
-    this.setData({ ma: e.detail.value })
+    let ma = e.detail.value.replace(/[^\w_@.!]/g,'');
+    this.setData({ ma })
   },
   requestma: util.throttle(function (e) {
     var inter = setInterval(function() {

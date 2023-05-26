@@ -62,7 +62,8 @@ Page({
       this.setData({ email: e.detail.value })
   },
   getpw: function(e) {
-      this.setData({ pw: e.detail.value })
+    let pw = e.detail.value.replace(/[^\w_@.!]/g,'');
+    this.setData({ pw })
   },
   gore: function() {
     wx.navigateTo({
