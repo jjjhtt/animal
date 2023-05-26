@@ -6,7 +6,7 @@
         size="large"
         mode="aspectFill"
         class="user-center-card__header__avatar"
-        image="{{domain+userInfo.avatarUrl || defaultAvatarUrl}}"
+        image="{{userInfo.avatarUrl || defaultAvatarUrl}}"
       />
       <view class="user-center-card__header__name">{{userInfo.username || '微信用户'}}</view>
     </view>

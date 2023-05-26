@@ -8,7 +8,7 @@
       arrow
       t-class-left="order-group__left"
     >
-      <t-image slot="note" src="{{domain+personInfo.avatarUrl}}" t-class="avatarUrl" mode="aspectFill" />
+      <t-image slot="note" src="{{personInfo.avatarUrl}}" t-class="avatarUrl" mode="aspectFill" />
     </t-cell>
     <t-cell
       title="昵称"

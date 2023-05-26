@@ -28,6 +28,9 @@ Page({
       this.setData({
         personInfo: res,
       });
+      this.setData ({
+        'personInfo.avatarUrl': this.data.domain+this.data.personInfo.avatarUrl
+      });
     });
   },
   onClickCell({ currentTarget }) {
@@ -79,6 +82,8 @@ Page({
     
   },
   async toModifyAvatar() {
+    let that = this;
+    let path = ''
     try {
       const tempFilePath = await new Promise((resolve, reject) => {
         wx.chooseMedia({
@@ -88,65 +93,80 @@ Page({
           mediaType: ['image'],
           success: (res) => {
             console.log(res);
-            const path = res.tempFiles[0].tempFilePath;
-            this.setData({
-              'personInfo.avatarUrl': path,
-            })
-            var pages = getCurrentPages();
-            var prevPage = pages[pages.length - 2];
-            prevPage.setData({
-                'userInfo.avatarUrl': path,
-            })
-            wx.uploadFile({
-              url: config.domain + '/image/upload', 
-              filePath: path,
-              name: "image",
-              formData: {
-                "type": "user"
-              },
-              header: {
-                'content-type': 'multipart/form-data',
-                'authorization': wx.getStorageSync('token')
-              },
-              success (res){
-                console.log(res);
-                let p = JSON.parse(res.data);
-                //console.log(p.body.imagePath);
-                wx.request({
-                  url: config.domain + '/user/modify',
-                  data: {
-                      "userId": wx.getStorageSync('userId'),
-                      "username": "",
-                      "password": "",
-                      "passwordConfirm": "",
-                      "phone": "",
-                      "bio": "",
-                      "avatar": p.body.imagePath
+            wx.cropImage({ 
+              src: res.tempFiles[0].tempFilePath, // 图片路径 
+              cropScale: '1:1', // 裁剪比例 
+              success: (res)=>{ 
+                path = res.tempFilePath;
+                wx.uploadFile({
+                  url: config.domain + '/image/upload', 
+                  filePath: res.tempFilePath,
+                  name: "image",
+                  formData: {
+                    "type": "user"
                   },
                   header: {
                     'content-type': 'multipart/form-data',
                     'authorization': wx.getStorageSync('token')
                   },
-                  success(res) {
+                  success (res){
                     console.log(res);
-                    if (res.data.code === 0) {
+                    let p = JSON.parse(res.data);
+                    //console.log(p.body.imagePath);
+                    if (p.code == 1) {
                       Toast({
-                        context: this,
-                        selector: '#t-toast',
-                        message: "修改成功",
-                        theme: 'success',
+                        message: "图片大小超过10MB",
                       });
-                      resolve(res);
-                    } else {
-                      //console.log(res.data.message);
-                      Toast({
-                        context: this,
-                        message: res.data.message,
-                        theme: 'error',
-                      });
+                      resolve(res)
+                      return
                     }
-                  },
-                  fail: (err) => reject(err),
+                    var pages = getCurrentPages();
+                    var prevPage = pages[pages.length - 2];
+                    prevPage.setData({
+                      'userInfo.avatarUrl': path,
+                    })
+                    that.setData({
+                      'personInfo.avatarUrl': path,
+                    })
+                    wx.request({
+                      url: config.domain + '/user/modify',
+                      data: {
+                          "userId": wx.getStorageSync('userId'),
+                          "username": "",
+                          "password": "",
+                          "passwordConfirm": "",
+                          "phone": "",
+                          "bio": "",
+                          "avatar": p.body.imagePath
+                      },
+                      method: "POST",
+                      header: {
+                        'content-type': 'application/json',
+                        'authorization': wx.getStorageSync('token')
+                      },
+                      success(res) {
+                        console.log(res);
+                        if (res.data.code === 0) {
+                          Toast({
+                            context: this,
+                            selector: '#t-toast',
+                            message: "修改成功",
+                            theme: 'success',
+                          });
+                          that.onShow();
+                          resolve(res);
+                        } else {
+                          //console.log(res.data.message);
+                          Toast({
+                            context: this,
+                            message: res.data.message,
+                            theme: 'error',
+                          });
+                        }
+                      },
+                      fail: (err) => reject(err),
+                    })
+                  }
                 })
               }
             })
@@ -155,13 +175,7 @@ Page({
         });
       });
     } catch (error) {
-      console.log(error);
-      Toast({
-        context: this,
-        selector: '#t-toast',
-        message: error.errMsg || error.msg || '修改头像出错了',
-        theme: 'error',
-      });
+      //console.log(error);
     }
   },
 });
