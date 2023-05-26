@@ -13,13 +13,13 @@
         <input class="login_einput" placeholder="请输入验证码" bindinput="getma" value="{{ma}}" />
       </view>
       <view style="flex: 1;">
-        <button style="width: 80%;margin-top: 15px;background-color: #00BFFF;color: white;font-size:smaller" bindtap="requestma">发送验证码</button>
+        <button style="width: 80%;margin-top: 15px;background-color: {{sendColor}};color: white;font-size:smaller" bindtap="requestma" disabled="{{sendWaiting}}">{{sendTime}}</button>
       </view>
     </view>
-    <view class="login_inputbox">
+    <!--<view class="login_inputbox">
         <image src="../../../images/phone.jpeg" mode="widthFix" style="width: 48rpx;" />
         <input class="login_einput" placeholder="请输入手机号" bindinput="getphone" value="{{phone}}" />
-    </view>
+    </view>-->
     <view class="login_inputbox">
         <image src="../../../images/password.jpeg" mode="widthFix" style="width: 48rpx;" />
         <input class="login_einput" placeholder="请输入密码" bindinput="getpw" value="{{pw}}" />

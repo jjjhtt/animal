@@ -87,59 +87,66 @@ Page({
             prevPage.setData({
                 'userInfo.avatarUrl': path,
             })
-            wx.uploadFile({
-              url: config.domain + '/image/upload', 
-              filePath: path,
-              name: "image",
-              formData: {
-                "type": "user"
-              },
-              header: {
-                'content-type': 'multipart/form-data',
-                'authorization': wx.getStorageSync('token')
-              },
-              success (res){
-                console.log(res.data);
-                let p = JSON.parse(res.data);
-                console.log(p.body.imagePath);
-                wx.request({
-                  url: config.domain + '/user/modify',
-                  data: {
-                      "userId": wx.getStorageSync('userId'),
-                      "username": "",
-                      "password": "",
-                      "passwordConfirm": "",
-                      "phone": "",
-                      "bio": "",
-                      "avatar": p.body.imagePath
+            console.log('aaa')
+            wx.cropImage({
+              src: path, // 图片路径
+              cropScale: '1:1', // 裁剪比例
+              success: (res)=>{
+                wx.uploadFile({
+                  url: config.domain + '/image/upload', 
+                  filePath: res.tempFilePath,
+                  name: "image",
+                  formData: {
+                    "type": "user"
                   },
-                  method: 'POST',
                   header: {
-                    'content-type': 'application/json', // 默认值
+                    'content-type': 'multipart/form-data',
                     'authorization': wx.getStorageSync('token')
                   },
-                  success(res) {
-                    //console.log(res);
-                    if (res.data.code === 0) {
-                      Toast({
-                        context: this,
-                        selector: '#t-toast',
-                        message: "修改成功",
-                        theme: 'success',
-                      });
-                      resolve(res);
-                    } else {
-                      console.log(res.data.message);
-                      Toast({
-                        context: this,
-                        message: res.data.message,
-                        theme: 'error',
-                      });
-                    }
+                  success (res){
+                    console.log(res.data);
+                    let p = JSON.parse(res.data);
+                    console.log(p.body.imagePath);
+                    wx.request({
+                      url: config.domain + '/user/modify',
+                      data: {
+                          "userId": wx.getStorageSync('userId'),
+                          "username": "",
+                          "password": "",
+                          "passwordConfirm": "",
+                          "phone": "",
+                          "bio": "",
+                          "avatar": p.body.imagePath
+                      },
+                      method: 'POST',
+                      header: {
+                        'content-type': 'application/json', // 默认值
+                        'authorization': wx.getStorageSync('token')
+                      },
+                      success(res) {
+                        //console.log(res);
+                        if (res.data.code === 0) {
+                          Toast({
+                            context: this,
+                            selector: '#t-toast',
+                            message: "修改成功",
+                            theme: 'success',
+                          });
+                          resolve(res);
+                        } else {
+                          console.log(res.data.message);
+                          Toast({
+                            context: this,
+                            message: res.data.message,
+                            theme: 'error',
+                          });
+                        }
+                      },
+                    });
                   },
-                });
-              },
-              fail: (err) => reject(err),
+                  fail: (err) => reject(err),
+                })
+              }
             })
           },
           fail: (err) => reject(err),

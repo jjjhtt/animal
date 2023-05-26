@@ -1,10 +1,15 @@
 // pages/login/forgetpw/forgetpw.js
 import {config} from '../../../config/index'
 import Toast from 'tdesign-miniprogram/toast/index'
+var util = require('../../../utils/throttle');
 Page({
   data: {
     email:'',
-    ma: ''
+    ma: '',
+    sendTime: '获取验证码',
+    sendColor: '#00BFFF',
+    sendWaiting: false,
+    waitTime: 60
   },
   /**
    * 生命周期函数--监听页面加载
@@ -61,28 +66,46 @@ Page({
       this.setData({ email: e.detail.value })
   },
   getma: function(e) {
-    this.setData({ ma: e.detail.value })
+    let ma = e.detail.value.replace(/[^\w_@.!]/g,'');
+    this.setData({ ma })
   },
-  requestma: function() {
+  requestma: util.throttle(function (e) {
+    var inter = setInterval(function() {
+      this.setData({
+        sendWaiting: true,
+        sendColor: '#cccccc',
+        sendTime: this.data.waitTime + 's后重发',
+        waitTime: this.data.waitTime - 1
+      });
+      if (this.data.waitTime < 0) {
+        clearInterval(inter)
+        this.setData({
+          sendColor: '#00BFFF',
+          sendTime: '获取验证码',
+          waitTime: 60,
+          sendWaiting: false
+        });
+      }
+    }.bind(this), 1000);
     var self = this
     console.log(this.data.email)
-      wx.request({
-        url: config.domain + '/user/resetPasswordRequest',
-        data: { email: this.data.email },
-        method: 'POST',
-        success: function(res) {
-          Toast({
-            context: this,
-            selector: '#t-toast',
-            message: res.data.message,
-          });
-          if (res.data.code != 0) {
-            self.setData({email:''})
-          }
-          console.log(res)
+    wx.request({
+      url: config.domain + '/user/resetPasswordRequest',
+      data: { email: this.data.email },
+      method: 'POST',
+      success: function(res) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: res.data.message,
+        });
+        if (res.data.code != 0) {
+          self.setData({email:''})
         }
-      })
-  },
+        console.log(res)
+      }
+    })
+  }, 3000),
   returnlogin: function() {
       wx.redirectTo({ url: '../login', })
   },

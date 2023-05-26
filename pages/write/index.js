@@ -73,6 +73,7 @@ Page({
         count: 1,
         sizeType: ['compressed'],
         sourceType: ['album', 'camera'],
+        mediaType: ['image'],
         success: (res) => {
           console.log(res);
           const path = res.tempFiles[0].tempFilePath;
