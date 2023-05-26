@@ -87,7 +87,7 @@ Page({
           password:this.data.pw,
           passwordConfirm: this.data.pw2,
           email: this.data.email,
-          phone: this.data.phone,
+          /*phone: this.data.phone,*/
           verification: this.data.ma },
         method: 'POST',
         success: function(res) {
