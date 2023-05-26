@@ -6,7 +6,7 @@ import {config} from '../../config/index'
 const menuData = [
   [
     {
-      title: '个人资料修改',
+      title: '个人信息',
       type: 'info',
     },
     {

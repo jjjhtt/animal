@@ -8,7 +8,7 @@ Page({
       usrename: '',
       avatarUrl: '',
       bio: '',
-      phone: '',
+      email: ''
     },
     domain: 'https://anith2.2022martu1.cn'
   },
@@ -66,6 +66,15 @@ Page({
       }
     }
   },
+
+  onClickEmail() {
+    Toast({
+      context: this,
+      selector: '#t-toast',
+      message: "邮箱地址不可修改",
+    });
+  },
+
   onClose() {
     
   },
@@ -76,6 +85,7 @@ Page({
           count: 1,
           sizeType: ['compressed'],
           sourceType: ['album', 'camera'],
+          mediaType: ['image'],
           success: (res) => {
             console.log(res);
             const path = res.tempFiles[0].tempFilePath;
@@ -87,62 +97,54 @@ Page({
             prevPage.setData({
                 'userInfo.avatarUrl': path,
             })
-            console.log('aaa')
-            wx.cropImage({
-              src: path, // 图片路径
-              cropScale: '1:1', // 裁剪比例
-              success: (res)=>{
-                wx.uploadFile({
-                  url: config.domain + '/image/upload', 
-                  filePath: res.tempFilePath,
-                  name: "image",
-                  formData: {
-                    "type": "user"
+            wx.uploadFile({
+              url: config.domain + '/image/upload', 
+              filePath: path,
+              name: "image",
+              formData: {
+                "type": "user"
+              },
+              header: {
+                'content-type': 'multipart/form-data',
+                'authorization': wx.getStorageSync('token')
+              },
+              success (res){
+                console.log(res);
+                let p = JSON.parse(res.data);
+                //console.log(p.body.imagePath);
+                wx.request({
+                  url: config.domain + '/user/modify',
+                  data: {
+                      "userId": wx.getStorageSync('userId'),
+                      "username": "",
+                      "password": "",
+                      "passwordConfirm": "",
+                      "phone": "",
+                      "bio": "",
+                      "avatar": p.body.imagePath
                   },
                   header: {
                     'content-type': 'multipart/form-data',
                     'authorization': wx.getStorageSync('token')
                   },
-                  success (res){
-                    console.log(res.data);
-                    let p = JSON.parse(res.data);
-                    console.log(p.body.imagePath);
-                    wx.request({
-                      url: config.domain + '/user/modify',
-                      data: {
-                          "userId": wx.getStorageSync('userId'),
-                          "username": "",
-                          "password": "",
-                          "passwordConfirm": "",
-                          "phone": "",
-                          "bio": "",
-                          "avatar": p.body.imagePath
-                      },
-                      method: 'POST',
-                      header: {
-                        'content-type': 'application/json', // 默认值
-                        'authorization': wx.getStorageSync('token')
-                      },
-                      success(res) {
-                        //console.log(res);
-                        if (res.data.code === 0) {
-                          Toast({
-                            context: this,
-                            selector: '#t-toast',
-                            message: "修改成功",
-                            theme: 'success',
-                          });
-                          resolve(res);
-                        } else {
-                          console.log(res.data.message);
-                          Toast({
-                            context: this,
-                            message: res.data.message,
-                            theme: 'error',
-                          });
-                        }
-                      },
-                    });
+                  success(res) {
+                    console.log(res);
+                    if (res.data.code === 0) {
+                      Toast({
+                        context: this,
+                        selector: '#t-toast',
+                        message: "修改成功",
+                        theme: 'success',
+                      });
+                      resolve(res);
+                    } else {
+                      //console.log(res.data.message);
+                      Toast({
+                        context: this,
+                        message: res.data.message,
+                        theme: 'error',
+                      });
+                    }
                   },
                   fail: (err) => reject(err),
                 })

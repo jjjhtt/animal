@@ -15,6 +15,7 @@ Page({
     pageLoading: false,
     nowkey: '热度',
     match: '',
+    value: ''
   },
 
   tweetListPagination: {

@@ -34,6 +34,7 @@ Page({
       swiperHeight: 0, //轮播图高度,
       domain: config.domain,
       autoWidth: 200, //底部对话框宽度
+      tweetIndex: -1
   },
   commentListPagination: {
     index: 0,
@@ -43,6 +44,7 @@ Page({
     wx.showNavigationBarLoading()
     this.setData({
       tweetid: options.tweetId,
+      tweetIndex: options.index,
       uid: wx.getStorageSync('userId')
     })
     this.getdata()
@@ -175,6 +177,21 @@ Page({
   },
   likeTweet: function(e) {
     var self = this
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2];
+    var i = this.data.tweetIndex
+    var t = prevPage.data.tweetsList[i]
+    if (this.data.hasLiked) {
+      prevPage.setData({
+        [`tweetsList[${i}].isLike`]: false,
+        [`tweetsList[${i}].likes`]: t.likes - 1
+      })
+    } else {
+      prevPage.setData({
+        [`tweetsList[${i}].isLike`]: true,
+        [`tweetsList[${i}].likes`]: t.likes + 1
+      })
+    }
     wx.request({
       url: config.domain + '/tweet/like',
       method: 'POST',

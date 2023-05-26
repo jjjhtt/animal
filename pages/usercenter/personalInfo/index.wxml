@@ -29,22 +29,21 @@
       t-class-left="order-group__left"
     />
     <t-cell
-      title="手机号"
-      arrow
-      note="{{personInfo.phone ? personInfo.phone : '绑定手机号'}}"
-      data-type="phoneNumber"
-      bind:click="onClickCell"
-      t-class="t-cell-class"
-      t-class-left="order-group__left"
-    />
-    <t-cell
-      bordered="{{false}}"
       title="修改密码"
       arrow
       data-type="password"
       bind:click="onClickCell"
       t-class="t-cell-class"
       t-class-left="order-group__left"
+    />
+    <t-cell
+      bordered="{{false}}"
+      title="邮箱地址"
+      note="{{personInfo.email}}"
+      data-type="email"
+      t-class="t-cell-class"
+      t-class-left="order-group__left"
+      bindtap="onClickEmail"
     />
   </t-cell-group>
 </view>

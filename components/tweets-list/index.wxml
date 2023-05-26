@@ -2,6 +2,7 @@
 	<block wx:for="{{tweetsList}}" wx:for-item="item" wx:key="index">
 		<tweets-card
 		  data="{{item}}"
+      index="{{index}}"
 		  thresholds="{{thresholds}}"
 		  class="tweets-card-inside"
 		  data-index="{{index}}"

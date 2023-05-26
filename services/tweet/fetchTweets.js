@@ -25,7 +25,7 @@ export function fetchTweetsList(pageIndex = 0, key = 0, match = '') {
       },
       success(res) {
         if (res.data.code === 0) {
-          //console.log(res);
+          console.log(res);
           resolve(res.data.body.tweets);
         } else {
           console.log(res);

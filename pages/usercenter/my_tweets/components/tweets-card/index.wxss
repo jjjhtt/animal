@@ -3,6 +3,7 @@
   font-size: 24rpx;
   border-radius: 0 0 16rpx 16rpx;
   border-bottom: none;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #ececec
 }
 
 .tweets-card__main {
@@ -47,7 +48,6 @@
   padding: 16rpx 24rpx 18rpx;
   flex-direction: column;
   width: 293rpx;
-  height: 128rpx;
 }
 
 .tweets-card__upper {
@@ -82,25 +82,42 @@
   width: 100%;
   display: flex;
   position: relative;
-  flex-direction: row-reverse;
-  justify-content: flex-start;
-  align-items: bottom;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   line-height: 50rpx;
   margin: 8rpx 0 0 0;
 }
 
 .thumbnum{
+  padding-left: 5rpx;
   font-size: 28rpx;
+  text-align: right;
 }
 
-.comment-container{
+.note {
+  padding-left: 10rpx;
+  font-size: 28rpx;
+  text-align: right;
+}
+
+.left {
   display: flex;
-  flex-direction:row-reverse;
-  align-content: flex-start;
-  right: 0;
-  padding-left: 28rpx;
+  flex-direction: row;
+  width: 0%;
 }
 
-.commentnum{
-  font-size: 28rpx;
+.right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.name {
+  padding-left: 10rpx;
+  font-size: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space:nowrap;
 }

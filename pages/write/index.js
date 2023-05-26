@@ -104,6 +104,17 @@ Page({
               //console.log(res.data);
               let p = JSON.parse(res.data);
               //console.log(p.body.imagePath);
+              if (p.code == 1) {
+                hideToast({
+                  context: this,
+                  selector: '#t-toast',
+                });
+                Toast({
+                  message: "图片大小超过10MB",
+                });
+                resolve(res)
+                return
+              }
               wx.request({
                 url: config.domain + '/animal/ai',
                 data: {

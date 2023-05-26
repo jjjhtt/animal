@@ -9,7 +9,21 @@ Page({
   onLoad() {
 
   },
+
+  isAlphaNumeric(str) {
+    return /^[a-zA-Z0-9]+$/.test(str);
+  },
+
   onSubmit() {
+    if (!this.isAlphaNumeric(this.data.passwordValue) || !this.isAlphaNumeric(this.data.passwordConfirm)) {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: "密码只能包含数字或字母",
+        theme: 'fail',
+      });
+      return;
+    }
     wx.request({
       url: config.domain + '/user/modify',
       data: {
@@ -41,6 +55,7 @@ Page({
         } else {
           Toast({
             context: this,
+            selector: '#t-toast',
             message: res.data.message,
             theme: 'error',
           });

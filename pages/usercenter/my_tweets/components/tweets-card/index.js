@@ -17,6 +17,7 @@ Component({
         //console.log(this.data.tweets);
       },
     },
+    index: -1
   },
 
   data: {
@@ -35,9 +36,9 @@ Component({
   methods: {
     clickHandle() {
       wx.navigateTo({
-        url: `/pages/realpage/realpage?tweetId=${this.data.tweets.id}`,
+        url: `/pages/realpage/realpage?tweetId=${this.data.tweets.id}&index=${this.properties.index}`,
       });
-    },  
+    },
 
     init() {
 

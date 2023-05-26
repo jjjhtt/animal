@@ -36,6 +36,11 @@ Component({
 
     delete: function(e) {
       let that = this
+      var list = this.properties.tweetsList;
+      list.splice(this.properties.index, 1)
+      this.setData({
+        tweetsList: list
+      })
       wx.request({
         url: config.domain + '/tweet/delete',
         method: 'POST',

@@ -29,6 +29,7 @@ function onChooseImage(e) {
       count: left,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
+      mediaType: ['image'],
       success: (res) => {
         console.log(res);
         const path = res.tempFiles[0].tempFilePath;
@@ -49,7 +50,7 @@ function onChooseImage(e) {
             //console.log(p.body.imagePath);
             if (p.code == 1) {
               Toast({
-                message: "图片大小超过1MB",
+                message: "图片大小超过10MB",
               });
             } else {
               if (path.length > 0) {

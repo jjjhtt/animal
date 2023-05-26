@@ -3,6 +3,7 @@
 		<tweets-card
 		  data="{{item}}"
 		  thresholds="{{thresholds}}"
+      index="{{index}}"
 		  class="tweets-card-inside"
 		  data-index="{{index}}"
       data-id="{{item.id}}"

@@ -136,6 +136,13 @@ Page({
   },
 //确定按钮，添加数组达到添加标签的作用
   onInputValue(){
+    if (this.data.inputValue.length > 5) {
+      Toast({
+        context: this,
+        message: "超出字数限制",
+      });
+      return;
+    }
     this.setData({ 
       show: false ,
       inputValue: this.data.inputValue
