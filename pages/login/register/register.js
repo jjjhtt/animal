@@ -1,5 +1,6 @@
 import Toast from 'tdesign-miniprogram/toast/index';
 import {config} from '../../../config/index'
+var util = require('../../../utils/throttle');
 Page({
     data: {
         username: '',
@@ -9,6 +10,10 @@ Page({
         pw2: '',
         errormessage: '',
         ma: '',
+        sendTime: '获取验证码',
+        sendColor: '#00BFFF',
+        sendWaiting: false,
+        waitTime: 60
     },
     returnlogin: function() {
         wx.redirectTo({ url: '../login', })
@@ -31,32 +36,93 @@ Page({
     getpw2: function(e) {
         this.setData({ pw2: e.detail.value })
     },
-    requestma: function() {
+    requestma: util.throttle(function (e) {
+      
+      var inter = setInterval(function() {
+        this.setData({
+          sendWaiting: true,
+          sendColor: '#cccccc',
+          sendTime: this.data.waitTime + 's后重发',
+          waitTime: this.data.waitTime - 1
+        });
+        if (this.data.waitTime < 0) {
+          clearInterval(inter)
+          this.setData({
+            sendColor: '#00BFFF',
+            sendTime: '获取验证码',
+            waitTime: 60,
+            sendWaiting: false
+          });
+        }
+      }.bind(this), 1000);
       self = this
       console.log(this.data.email)
-        wx.request({
-          url: config.domain + '/user/registerRequest',
-          data: { email: this.data.email },
-          method: 'POST',
-          success: function(res) {
-            console.log(res)
-            if (res.data.code == 0) {
-              Toast({
-                context: this,
-                selector: '#t-toast',
-                message: res.data.message,
-              });
-            } else {
-              Toast({
-                context: this,
-                selector: '#t-toast',
-                message: res.data.message,
-              });
-              self.setData({email:''})
-            }
+      wx.request({
+        url: config.domain + '/user/registerRequest',
+        data: { email: this.data.email },
+        method: 'POST',
+        success: function(res) {
+          console.log(res)
+          if (res.data.code == 0) {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: res.data.message,
+            });
+          } else {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: res.data.message,
+            });
+            self.setData({email:''})
           }
-        })
-    },
+        }
+      })
+    }, 3000),
+    /*requestma: function() {
+      var inter = setInterval(function() {
+        this.setData({
+          sendWaiting: true,
+          sendColor: '#cccccc',
+          sendTime: this.data.waitTime + 's后重发',
+          waitTime: this.data.waitTime - 1
+        });
+        if (this.data.waitTime < 0) {
+          clearInterval(inter)
+          this.setData({
+            sendColor: '#00BFFF',
+            sendTime: '获取验证码',
+            waitTime: 60,
+            sendWaiting: false
+          });
+        }
+      }.bind(this), 1000);
+      self = this
+      console.log(this.data.email)
+      wx.request({
+        url: config.domain + '/user/registerRequest',
+        data: { email: this.data.email },
+        method: 'POST',
+        success: function(res) {
+          console.log(res)
+          if (res.data.code == 0) {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: res.data.message,
+            });
+          } else {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: res.data.message,
+            });
+            self.setData({email:''})
+          }
+        }
+      })
+    },*/
     postregister: function() {
       self = this
       wx.request({
