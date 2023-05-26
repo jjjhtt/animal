@@ -51,7 +51,8 @@ const getDefaultData = () => ({
   versionNo: 'alpha',
   MessageNum: 1,
   showConfirm: false,
-  domain: 'https://anith2.2022martu1.cn'
+  domain: 'https://anith2.2022martu1.cn',
+  avatar: ''
 });
 
 Page({
@@ -119,7 +120,7 @@ Page({
           menuData,
         });
         this.setData ({
-          'userInfo.avatarUrl': this.data.domain+this.data.userInfo.avatarUrl
+          avatar: this.data.domain+this.data.userInfo.avatarUrl
         });
         wx.stopPullDownRefresh();
       },

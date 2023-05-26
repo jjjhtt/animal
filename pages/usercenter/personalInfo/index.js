@@ -110,7 +110,16 @@ Page({
                     'authorization': wx.getStorageSync('token')
                   },
                   success (res){
-                    console.log(res);
+                    //console.log(res);
+                    var pages = getCurrentPages();
+                    var prevPage = pages[pages.length - 2];
+                    prevPage.setData({
+                      avatar: path,
+                    })
+                    that.setData({
+                      'personInfo.avatarUrl': path,
+                    })
+                    console.log(that.data.personInfo.avatarUrl)
                     let p = JSON.parse(res.data);
                     //console.log(p.body.imagePath);
                     if (p.code == 1) {
@@ -120,14 +129,6 @@ Page({
                       resolve(res)
                       return
                     }
-                    var pages = getCurrentPages();
-                    var prevPage = pages[pages.length - 2];
-                    prevPage.setData({
-                      'userInfo.avatarUrl': path,
-                    })
-                    that.setData({
-                      'personInfo.avatarUrl': path,
-                    })
                     wx.request({
                       url: config.domain + '/user/modify',
                       data: {
