@@ -94,6 +94,7 @@ Page({
             theme: 'success',
           });
           this.setData({showConfirm: false });
+          this.onShow()
         } else {
           console.log(res);
           Toast({
@@ -110,9 +111,9 @@ Page({
     })
   },
   onLongPressMessage: function(e) {
-    console.log(e)
     var currentTarget = e.currentTarget
     var {index} = currentTarget.dataset
+    console.log(index)
     this.setData({
       index: index,
       showConfirm: true
