@@ -6,7 +6,7 @@
     <t-search
       t-class-input="t-search__input"
       t-class-input-container="t-search__input-container"
-      placeholder="请输入关键词"
+      placeholder="请输入关键词或添加#搜索标签"
       value="{{value}}"
       leftIcon=""
       disabled="true"

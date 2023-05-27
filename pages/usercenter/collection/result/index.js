@@ -68,11 +68,19 @@ Page({
   },
 
   submitHandle(e) {
-    if (e.detail.value.trim() == '') {
+    var v = e.detail.value.trim()
+    if (v == '') {
       Toast({
         context: this,
         selector: '#t-toast',
         message: "请输入关键词",
+      });
+      return
+    } else if(v === '#') {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: "请输入有效标签",
       });
       return
     }
@@ -87,6 +95,12 @@ Page({
   },
 
   async loadtweetsList(fresh = false) {
+    if (this.data.match == '' || this.data.match === '#') {
+      this.setData({
+        notice: '请输入关键词搜索'
+      })
+      return
+    }
     if (fresh) {
       wx.pageScrollTo({
         scrollTop: 0,

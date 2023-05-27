@@ -78,11 +78,19 @@ Page({
   },
 
   submitHandle(e) {
-    if (e.detail.value.trim() == '') {
+    var v = e.detail.value.trim()
+    if (v == '') {
       Toast({
         context: this,
         selector: '#t-toast',
         message: "请输入关键词",
+      });
+      return
+    } else if(v === '#') {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: "请输入有效标签",
       });
       return
     }

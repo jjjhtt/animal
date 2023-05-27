@@ -38,7 +38,7 @@
 
 <t-dialog
   visible="{{showConfirm}}"
-  content="退出登录并清除缓存数据"
+  content="退出登录并清除搜索记录"
   confirm-btn="确认"
   cancel-btn="取消"
   bind:confirm="confirm"
