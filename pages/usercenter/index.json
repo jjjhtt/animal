@@ -11,5 +11,5 @@
     "t-badge": "tdesign-miniprogram/badge/badge",
     "t-dialog": "tdesign-miniprogram/dialog/dialog"
   },
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": false
 }
