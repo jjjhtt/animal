@@ -111,16 +111,32 @@ Page({
                   },
                   success (res){
                     //console.log(res);
-                    var pages = getCurrentPages();
-                    var prevPage = pages[pages.length - 2];
-                    prevPage.setData({
-                      avatar: path,
-                    })
-                    that.setData({
-                      'personInfo.avatarUrl': path,
-                    })
-                    console.log(that.data.personInfo.avatarUrl)
                     let p = JSON.parse(res.data);
+                    if (p.code == 7) {
+                      Toast({
+                        message: p.message,
+                        theme: 'error',
+                      });
+                      wx.clearStorageSync();
+                      setTimeout(() => {
+                        wx.reLaunch({
+                          url: '/pages/login/login',
+                        })
+                      }, 1000)
+                      resolve(res)
+                      return
+                    }
+                    if (p.code == 0) {
+                      var pages = getCurrentPages();
+                      var prevPage = pages[pages.length - 2];
+                      prevPage.setData({
+                        avatar: path,
+                      })
+                      that.setData({
+                        'personInfo.avatarUrl': path,
+                      })
+                    }
+                    console.log(that.data.personInfo.avatarUrl)
                     //console.log(p.body.imagePath);
                     if (p.code == 1) {
                       Toast({

@@ -45,14 +45,26 @@ function onChooseImage(e) {
             'authorization': wx.getStorageSync('token')
           },
           success (res){
-            console.log(res.data);
+            console.log(res);
             let p = JSON.parse(res.data);
+            if (p.code == 7) {
+              Toast({
+                message: p.message,
+                theme: 'error',
+              });
+              wx.clearStorageSync();
+              setTimeout(() => {
+                wx.reLaunch({
+                  url: '/pages/login/login',
+                })
+              }, 1000)
+            }
             //console.log(p.body.imagePath);
             if (p.code == 1) {
               Toast({
                 message: "图片大小超过10MB",
               });
-            } else {
+            } else if (p.code != 7) {
               if (path.length > 0) {
                 addNewImage(path)
               }

@@ -100,6 +100,20 @@ Page({
               //console.log(res.data);
               let p = JSON.parse(res.data);
               //console.log(p.body.imagePath);
+              if (p.code == 7) {
+                Toast({
+                  message: p.message,
+                  theme: 'error',
+                });
+                wx.clearStorageSync();
+                setTimeout(() => {
+                  wx.reLaunch({
+                    url: '/pages/login/login',
+                  })
+                }, 1000)
+                resolve(res)
+                return
+              }
               if (p.code == 1) {
                 hideToast({
                   context: this,
