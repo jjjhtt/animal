@@ -41,9 +41,13 @@
 }
 
 .document-normal-item-container-item-title {
-  justify-content: center;
+  text-align: center;
   width: 144rpx;
   font-size: 28rpx;
   color: #666666;
   margin-top: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space:nowrap;
 }
