@@ -19,7 +19,8 @@
         arrow="{{!xitem.icon}}"
         note="{{xitem.tit}}"
         data-type="{{xitem.type}}"
-        bordered="{{false}}"
+        bordered="true"
+        hover="true"
         bind:click="onClickCell"
         t-class="t-cell-padding"
       >
