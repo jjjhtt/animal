@@ -26,7 +26,7 @@
   line-height: 60rpx;
   color: #333;
   font-weight: bold;
-  margin-left: 80rpx;
+  padding-left: 85rpx;
   margin-right: 30rpx;
   height: 75rpx;
   overflow: hidden;

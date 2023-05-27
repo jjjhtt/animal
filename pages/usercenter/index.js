@@ -163,13 +163,8 @@ Page({
         break;
       }
       case 'exit': {
-        wx.clearStorageSync();  //清除缓存
-        this.getTabBar().updateActive(0);
-        this.getTabBar().setData({
-          selected: 0
-        })
-        wx.reLaunch({
-          url: '/pages/login/login',
+        this.setData({
+          showConfirm: true
         })
       }
 
@@ -186,7 +181,11 @@ Page({
   },
 
   confirm() {
+    this.setData({
+      showConfirm: false
+    })
     wx.clearStorageSync();  //清除缓存
+    this.getTabBar().updateActive(0);
     wx.reLaunch({
       url: '/pages/login/login',
     })

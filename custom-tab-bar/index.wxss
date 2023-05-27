@@ -28,11 +28,11 @@
   flex-direction: column;
 }
 
-.tab-bar-item cover-image {
+.tab-bar-item image {
   width: 30px;
   height: 30px;
 }
 
-.tab-bar-item cover-view {
+.tab-bar-item view {
   font-size: 10px;
 }

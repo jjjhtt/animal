@@ -37,10 +37,9 @@
 
 <t-dialog
   visible="{{showConfirm}}"
-  content="确定退出登录吗？"
+  content="退出登录并清除缓存数据"
   confirm-btn="确认"
   cancel-btn="取消"
   bind:confirm="confirm"
   bind:cancel="cancel"
-  z-index="99999"
 />
