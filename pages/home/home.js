@@ -28,6 +28,10 @@ Page({
   },
 
   onLoad() {
+    this.getTabBar().updateActive(0);
+    this.getTabBar().setData({
+      selected: 0
+    })
     this.init();
   },
 

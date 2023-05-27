@@ -1,5 +1,6 @@
 // pages/realanimal/track/track.js
-import {config} from '../../../config/index'
+import {config} from '../../../config/index';
+import Toast from 'tdesign-miniprogram/toast/index';
 Page({
 	data: {
 		allMarker: [{
@@ -299,6 +300,23 @@ Page({
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
+        if (res.data.code != 0){
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: res.data.message,
+            theme: 'error',
+          });
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
+          return
+        }
         console.log(res)
         if(res.data.body.tracks!=null) {
           var tempList = []

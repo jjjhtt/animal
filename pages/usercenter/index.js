@@ -97,9 +97,17 @@ Page({
           Toast({
             context: this,
             selector: '#t-toast',
-            message: res.message,
+            message: res.data.message,
             theme: 'error',
           });
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
         }
       },
       fail: (res)=> {
@@ -179,10 +187,6 @@ Page({
 
   confirm() {
     wx.clearStorageSync();  //清除缓存
-    this.getTabBar().updateActive(0);
-    this.getTabBar().setData({
-      selected: 0
-    })
     wx.reLaunch({
       url: '/pages/login/login',
     })

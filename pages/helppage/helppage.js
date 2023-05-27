@@ -98,6 +98,14 @@ Page({
               message: res.data.message,
               theme: 'error',
             });
+            if (res.data.code == 7) {
+              wx.clearStorageSync();  //清除缓存
+              setTimeout(() => {
+                wx.reLaunch({
+                  url: '/pages/login/login',
+                })
+              }, 1000)
+            }
           }
         }
       })
@@ -178,6 +186,14 @@ Page({
           }
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
         }
       }
     })
@@ -204,6 +220,14 @@ Page({
           Toast({context:this,selector:'#t-toast',message:'删除成功',theme:'success',direction:'column',});
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
         }
       }
     })
@@ -232,6 +256,14 @@ Page({
           });
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
         }
       }
     })
@@ -259,6 +291,14 @@ Page({
           }
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
         }
       }
     })
@@ -285,6 +325,14 @@ Page({
           }
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
         }
       }
     })
@@ -340,6 +388,14 @@ Page({
             message: res.data.message,
             theme: 'error',
           });
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
         }
       }
     })

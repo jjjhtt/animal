@@ -47,6 +47,14 @@ Page({
             message: res.data.message,
             theme: 'error',
           });
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
         }
       },
     });

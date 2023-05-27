@@ -315,14 +315,31 @@ Page({
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
-        Toast({
-          context: this,
-          context: this,
-          selector: '#t-toast',
-          message: '上传成功',
-          theme: 'success',
-          direction: 'column'
-        })
+        if (res.data.code == 0) {
+          Toast({
+            context: this,
+            context: this,
+            selector: '#t-toast',
+            message: '上传成功',
+            theme: 'success',
+            direction: 'column'
+          })
+        } else {
+          Toast({
+            context: this,
+            selector: '#t-toast',
+            message: res.data.message,
+            theme: 'error',
+          });
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
+        }
         console.log(res)
       },
       fail(res) {

@@ -86,6 +86,14 @@ Page({
           Toast({context: this,selector: '#t-toast',message: "申请成功",theme: 'success',});
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
         }
       }
     })
@@ -121,6 +129,14 @@ Page({
           self.loadtweetsList(true);
         } else {
           Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
         }
       }
     })

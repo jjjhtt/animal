@@ -40,3 +40,5 @@
 >
   <t-picker-item options="{{times}}"></t-picker-item>
 </t-picker>
+
+<t-toast id="t-toast" />
