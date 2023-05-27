@@ -1,4 +1,6 @@
 import Toast from 'tdesign-miniprogram/toast/index';
+import { fetchPopular } from '../../../services/help/fetchPopular';
+
 
 Page({
 
@@ -8,14 +10,15 @@ Page({
   data: {
     value: '',
     match: '',
-    list: []
+    popularList: [],
+    historyList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.init()
   },
 
   /**
@@ -32,7 +35,7 @@ Page({
     var l = wx.getStorageSync('help_history')
     if (l.length > 0) {
       this.setData({
-        list: l
+        historyList: l
       })
     }
   },
@@ -62,7 +65,7 @@ Page({
   },
 
   submitHandle(e) {
-    if (e.detail.value == '') {
+    if (e.detail.value.trim() == '') {
       Toast({
         context: this,
         selector: '#t-toast',
@@ -73,14 +76,14 @@ Page({
     this.setData({
       match: e.detail.value
     });
-    var l = this.data.list
+    var l = this.data.historyList
     //console.log(l)
     if (l.indexOf(this.data.match) != -1) {
       l.splice(l.indexOf(this.data.match), 1)
     }
     l.unshift(this.data.match)
-    if (l.length == 21) {
-      l.splice(20, 1)
+    if (l.length == 11) {
+      l.splice(10, 1)
     }
     wx.setStorageSync('help_history', l)
     wx.navigateTo({
@@ -90,9 +93,20 @@ Page({
 
   handleClose(e) {
     var index = e.currentTarget.dataset.index
-    var l = this.data.list
+    var l = this.data.historyList
     l.splice(index, 1)
-    this.setData({list: l})
-    wx.setStorageSync('help_history', this.data.list)
-  }
+    this.setData({historyList: l})
+    wx.setStorageSync('help_history', this.data.historyList)
+  },
+
+  async init() {
+    try {
+      const result = await fetchPopular();
+      this.setData({
+        popularList: result
+      });
+    } catch (error) {
+      console.log("搜索记录出错")
+    }
+  },
 })

@@ -78,7 +78,7 @@ Page({
   },
 
   submitHandle(e) {
-    if (e.detail.value == '') {
+    if (e.detail.value.trim() == '') {
       Toast({
         context: this,
         selector: '#t-toast',
@@ -94,8 +94,8 @@ Page({
       l.splice(l.indexOf(this.data.match), 1)
     }
     l.unshift(this.data.match)
-    if (l.length == 21) {
-      l.splice(20, 1)
+    if (l.length == 11) {
+      l.splice(10, 1)
     }
     wx.setStorageSync('tweet_history', l)
     this.loadtweetsList(true);

@@ -49,28 +49,6 @@
     <view style="height: 30rpx;">
     </view>
 
-    <view class='btn_view'>
-        <text>标签：</text>
-        <view class="card" wx:for="{{obtnArry}}" >
-          <view class='delete'>
-          <t-icon name="close" bindtap='clickDeleteLabel' data-idx="{{index}}"></t-icon>
-          </view>
-          <view class='label_view' data-value="{{item}}" data-index="{{index}}">
-            {{item}}
-          </view>
-        </view>
-        <t-popup visible="{{ show }}" bind:close="onClose" close-on-overlay-click="{{true}}" show-overlay="false"
-        placement="center">
-          <view class="input_view">
-            <text>请输入标签：</text>
-            <input class="input" placeholder="最多输入5个字" maxlength="35" bindinput="bindValue"></input>
-                <t-button style="width: 170rpx;line-height: 30rpx;margin-top: 100rpx;float: left;" catchtap="onInputValue" class="determine_button" 
-                disabled="{{!inputValue}}">确定</t-button>
-                <t-button style="width: 170rpx;line-height: 30rpx;margin-top: 100rpx;float: right;" catchtap="onCancel" class="determine_button1">取消</t-button>
-          </view>
-        </t-popup>
-        <image bindtap='addinput' class="img" src="../../../image/添加1.png" ></image>
-  </view>
   </view>
 
   <view style="height: 100rpx;">

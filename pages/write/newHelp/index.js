@@ -153,13 +153,13 @@ Page({
     }
     this.setData({ 
       show: false ,
-      inputValue: this.data.inputValue
     });
     var obtnArry = this.data.obtnArry;
     var newData = this.data.inputValue;
     obtnArry.push(newData);//实质是添加lists数组内容，使for循环多一次
     this.setData({
       obtnArry,
+      inputValue: ''
     })
     //console.log(this.data.inputValue)
   },

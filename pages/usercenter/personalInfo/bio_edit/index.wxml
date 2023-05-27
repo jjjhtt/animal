@@ -5,8 +5,8 @@
     placeholder="请输入您的个性签名"
     label="个性签名"
     clearable
-    maxlength="{{15}}"
-    tips="最大输入15个字符"
+    maxlength="{{40}}"
+    tips="最大输入40个字符"
     bind:clear="clearContent"
   />
   <view class="bio-edit__input--desc"> </view>

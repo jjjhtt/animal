@@ -64,7 +64,7 @@
         placement="center">
           <view class="input_view">
             <text>请输入标签：</text>
-            <input class="input" placeholder="最多输入5个字" maxlength="35" bindinput="bindValue"></input>
+            <input class="input" placeholder="最多输入5个字" maxlength="35" bindinput="bindValue" value="{{inputValue}}"></input>
                 <t-button style="width: 170rpx;line-height: 30rpx;margin-top: 100rpx;float: left;" catchtap="onInputValue" class="determine_button" 
                 disabled="{{!inputValue}}">确定</t-button>
                 <t-button style="width: 170rpx;line-height: 30rpx;margin-top: 100rpx;float: right;" catchtap="onCancel" class="determine_button1">取消</t-button>

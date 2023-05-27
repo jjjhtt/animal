@@ -127,11 +127,6 @@ Page({
                       return
                     }
                     if (p.code == 0) {
-                      var pages = getCurrentPages();
-                      var prevPage = pages[pages.length - 2];
-                      prevPage.setData({
-                        avatar: path,
-                      })
                       that.setData({
                         'personInfo.avatarUrl': path,
                       })

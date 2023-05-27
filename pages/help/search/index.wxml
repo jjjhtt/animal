@@ -13,9 +13,13 @@
     </t-search>
   </view>
 </view>
+<text class="popular-header">热门搜索</text>
+<view class="popular-item">
+  <t-tag wx:for="{{popularList}}" wx:for-index="subIndex" wx:key="subIndex" wx:for-item="subItem" max-width="{{130}}" variant="dark" data-index="{{subIndex}}" data-tag="{{subItem}}" class="margin-16" bindtap="onClickTag" size="large">{{subItem}}</t-tag>
+</view>
 <text class="popular-header">历史搜索</text>
 <view class="popular-item">
-  <t-tag wx:for="{{list}}" wx:for-index="subIndex" wx:key="subIndex" wx:for-item="subItem" max-width="{{130}}" variant="dark" data-index="{{subIndex}}" data-tag="{{subItem}}" class="margin-16" bind:close="handleClose" closable bindtap="onClickTag">{{subItem}}</t-tag>
+  <t-tag wx:for="{{historyList}}" wx:for-index="subIndex" wx:key="subIndex" wx:for-item="subItem" max-width="{{130}}" variant="dark" data-index="{{subIndex}}" data-tag="{{subItem}}" class="margin-16" bind:close="handleClose" closable bindtap="onClickTag" size="large">{{subItem}}</t-tag>
 </view>
 <t-toast id="t-toast" />
 
