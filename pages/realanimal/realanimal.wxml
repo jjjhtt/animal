@@ -31,7 +31,7 @@
   title="领养理由"
   content="审核通过前仅能填写一次，请谨慎填写"
 >
-  <t-button slot="confirm-btn" disabled="{{!adoptReason}}" theme="primary" catchtap="confirm" style="margin-left: 10rpx; margin-right: 20rpx; margin-bottom: 20rpx;">确定</t-button>
+  <t-button slot="confirm-btn" disabled="{{disabled}}" theme="primary" catchtap="confirm" style="margin-left: 10rpx; margin-right: 20rpx; margin-bottom: 20rpx;">确定</t-button>
   <t-button slot="cancel-btn" catchtap="closeDialog" style="margin-left: 20rpx; margin-right: 10rpx; margin-bottom: 20rpx;">取消</t-button>
   <t-input
     borderless
@@ -41,6 +41,7 @@
     placeholder="请输入领养理由"
     placeholder-class="placeholder"
     bindchange="onReasonInput"
+    bindclear="onClear"
     value="{{adoptReason}}"
   />
 </t-dialog>

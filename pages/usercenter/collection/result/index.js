@@ -68,7 +68,7 @@ Page({
   },
 
   submitHandle(e) {
-    if (e.detail.value == '') {
+    if (e.detail.value.trim() == '') {
       Toast({
         context: this,
         selector: '#t-toast',

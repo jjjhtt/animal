@@ -26,7 +26,8 @@ Page({
     inputValue: "",
     label: [],
     obtnArry: [],
-    imageUrls: []
+    imageUrls: [],
+    disabled: true
   },
 
   /**
@@ -147,13 +148,21 @@ Page({
  
 //实时获取输入框的值
   bindValue(e){
-    this.setData({
-      inputValue: e.detail.value
-    })
+    if (e.detail.value.trim() != '') {
+      this.setData({
+        disabled: false,
+        inputValue: e.detail.value
+      })
+    } else {
+      this.setData({
+        disabled: true,
+        inputValue: e.detail.value
+      })
+    }
   },
 //确定按钮，添加数组达到添加标签的作用
   onInputValue(){
-    if (this.data.inputValue.length > 5) {
+    if (this.data.inputValue.length > 10) {
       Toast({
         context: this,
         message: "超出字数限制",
@@ -174,6 +183,10 @@ Page({
   },
 //取消按钮
   onCancel(){
-    this.setData({ show: false });
+    this.setData({
+       show: false,
+       inputValue: '',
+       disabled: true
+    });
   }
 })

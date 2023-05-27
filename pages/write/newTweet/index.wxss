@@ -196,7 +196,7 @@
   border: 1rpx solid rgb(255, 253, 253);
 }
 .btn_view .img{
-  margin-top: -7rpx;
+  margin-top: 20rpx;
   width: 65rpx;
   height: 65rpx;
 }

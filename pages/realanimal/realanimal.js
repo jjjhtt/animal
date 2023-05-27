@@ -16,6 +16,7 @@ Page({
       adopted: false,
       showTextAndTitleWithInput: false,
       adoptReason: '',
+      disabled: true,
       tweetsList: [],
       tweetsListLoadStatus: 0
   },
@@ -57,7 +58,22 @@ Page({
       this.setData({current: current})
   },
   onReasonInput(e) {
-    this.setData({ adoptReason:e.detail.value })
+    if (e.detail.value.trim() != '') {
+      this.setData({
+        disabled: false,
+        adoptReason:e.detail.value
+      })
+    } else {
+      this.setData({
+        disabled: true,
+        adoptReason:e.detail.value
+      })
+    }
+  },
+  onClear() {
+    this.setData({
+      disabled: true
+    })
   },
   closeDialog(res) {
     this.setData({ 
