@@ -15,8 +15,6 @@
       <t-icon slot="left-icon"  name="search" size="40rpx" color="#bbb" />
     </t-search>
   </view>
-</view>
-<view class="help-page-container">
   <view class="help-page-tabs">
     <t-tabs
       t-class="t-tabs"
@@ -36,6 +34,8 @@
       />
     </t-tabs>
   </view>
+</view>
+<view class="help-page-container">
   <help-cards
     wr-class="tweets-list-container"
     data="{{tweetsList}}"
