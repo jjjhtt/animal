@@ -15,6 +15,9 @@ Page({
     pageLoading: false,
     nowkey: 0,
     match: '',
+    clientHeight: '',
+    triggered: false,
+    top: 0
   },
 
   tweetListPagination: {
@@ -23,10 +26,17 @@ Page({
   },
 
   onShow() {
-    this.init();
+    
   },
 
   onLoad() {
+    const app = getApp()
+    let x = app.globalData.windowHeight
+    let y = app.globalData.windowWidth;
+    this.setData({
+      clientHeight: x * 750 / y -150-16,
+    })
+    this.init();
   },
 
   onReachBottom() {
@@ -37,6 +47,9 @@ Page({
 
   onPullDownRefresh() {
     this.init();
+    this.setData({
+      triggered: false
+    })
   },
 
   init() {
@@ -55,10 +68,9 @@ Page({
 
   tabChangeHandle(e) {
     this.setData({
-      nowkey: e.detail.value
-    });
-    this.setData({
       tweetsList: [],
+      nowkey: e.detail.value,
+      top: 0? 0.01:0
     })
     this.loadtweetsList(true);
   },

@@ -35,17 +35,19 @@
       />
     </t-tabs>
   </view>
-  <tweets-list
-    wx:if="{{nowkey == 0}}"
-    wr-class="tweets-list-container"
-    tweetsList="{{tweetsList}}"
-  />
-  <help-cards
-    wx:if="{{nowkey == 1}}"
-    wr-class="tweets-list-container"
-    data="{{tweetsList}}"
-  />
   <view class="noTweet" wx:if="{{tweetsList.length == 0}}">{{notice}}</view>
-  <load-more list-is-empty="{{!tweetsList.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
-  <t-toast id="t-toast" />
+  <scroll-view scroll-y="true" wx:if="{{tweetsList.length != 0}}" style="height: calc({{clientHeight||200}}rpx);" refresher-enabled="true" refresher-triggered="{{triggered}}"	bindscrolltolower="onReachBottom" bindrefresherrefresh="onPullDownRefresh" refresher-threshold="{{100}}" scroll-top="{{top}}">
+    <tweets-list
+      wx:if="{{nowkey == 0}}"
+      wr-class="tweets-list-container"
+      tweetsList="{{tweetsList}}"
+    />
+    <help-cards
+      wx:if="{{nowkey == 1}}"
+      wr-class="tweets-list-container"
+      data="{{tweetsList}}"
+    />
+    <load-more list-is-empty="{{!tweetsList.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
+    <t-toast id="t-toast" />
+  </scroll-view>
 </view>

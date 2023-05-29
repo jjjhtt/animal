@@ -14,10 +14,12 @@
   </view>
 </view>
 <view class="wrap">
+  <scroll-view scroll-y="true" style="height: calc({{clientHeight||200}}rpx - env(safe-area-inset-bottom));" bindscrolltolower="onReachBottom">
   <document
     category="{{list}}"
   />
   <load-more list-is-empty="{{!list.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
+  </scroll-view>
 </view>
 
 <t-toast id="t-toast" />

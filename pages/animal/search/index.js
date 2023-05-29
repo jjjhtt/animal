@@ -7,7 +7,8 @@ Page({
     nowkey: 0,
     match: '',
     tweetsListLoadStatus: 0,
-    notice: ''
+    notice: '',
+    clientHeight: ''
   },
 
   tweetListPagination: {
@@ -37,6 +38,12 @@ Page({
   },
   onLoad() {
     //this.init(true);
+    const app = getApp()
+    let x = app.globalData.windowHeight
+    let y = app.globalData.windowWidth;
+    this.setData({
+      clientHeight: x * 750 / y - 64 -16 ,
+    })
     this.setData({
       notice: '请输入关键词搜索'
     })

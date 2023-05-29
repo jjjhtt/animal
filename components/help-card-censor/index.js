@@ -2,8 +2,7 @@ Component({
   options: {
     addGlobalClass: true,
   },
-
-  externalClasses: ['custom-class'],
+  externalClasses: ['wr-class'],
 
   properties: {
     data: {

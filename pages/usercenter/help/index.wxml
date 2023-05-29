@@ -17,10 +17,13 @@
   </view>
 </view>
 <view class="help-page-container">
+  <scroll-view scroll-y="true" style="height: calc({{clientHeight||200}}rpx);" refresher-enabled="true" refresher-triggered="{{triggered}}"	bindscrolltolower="onReachBottom" bindrefresherrefresh="onPullDownRefresh" refresher-threshold="{{100}}">
   <help-cards-censor
     wr-class="tweets-list-container"
     data="{{tweetsList}}"
   />
   <load-more list-is-empty="{{!tweetsList.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
-  <t-toast id="t-toast" />
+  </scroll-view>
 </view>
+
+<t-toast id="t-toast" />

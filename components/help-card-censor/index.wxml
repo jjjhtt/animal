@@ -1,4 +1,4 @@
-<view class="help-cards-censor custom-class">
+<view class="help-cards-censor wr-class">
 	<view class="help-cards-censor__right">
 					<view class="help-cards-censor-normal-item-container">
 						<view

@@ -4,7 +4,8 @@ Page({
     list: [],
     nowkey: 0,
     match: '',
-    tweetsListLoadStatus: 0
+    tweetsListLoadStatus: 0,
+    clientHeight: ''
   },
 
   tweetListPagination: {
@@ -31,6 +32,12 @@ Page({
     
   },
   onLoad() {
+    const app = getApp()
+    let x = app.globalData.windowHeight
+    let y = app.globalData.windowWidth;
+    this.setData({
+      clientHeight: x * 750 / y - 64 -96-16 ,
+    })
     this.init(true);
   },
 

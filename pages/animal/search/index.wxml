@@ -13,10 +13,12 @@
   </view>
 </view>
 <view class="wrap">
+  <view class="noTweet" wx:if="{{list.length == 0}}">{{notice}}</view>
+  <scroll-view scroll-y="true" wx:if="{{list.length != 0}}" style="height: calc({{clientHeight||200}}rpx);" bindscrolltolower="onReachBottom">
   <document
     category="{{list}}"
   />
-  <view class="noTweet" wx:if="{{list.length == 0}}">{{notice}}</view>
   <load-more list-is-empty="{{!list.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
+  </scroll-view>
 </view>
 <t-toast id="t-toast" />

@@ -6,6 +6,8 @@ Page({
     tweetsListLoadStatus: 0,
     pageLoading: false,
     match: '',
+    clientHeight: '',
+    triggered: false
   },
 
   tweetListPagination: {
@@ -18,7 +20,12 @@ Page({
   },
 
   onLoad() {
-
+    const app = getApp()
+    let x = app.globalData.windowHeight
+    let y = app.globalData.windowWidth;
+    this.setData({
+      clientHeight: x * 750 / y -16-64,
+    })
   },
 
   onReachBottom() {
@@ -29,6 +36,9 @@ Page({
 
   onPullDownRefresh() {
     this.init();
+    this.setData({
+      triggered: false
+    })
   },
 
   init() {

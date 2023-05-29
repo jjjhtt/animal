@@ -1,6 +1,7 @@
 .animal-page-header {
   display: block;
   padding: 0 24rpx;
+  margin-bottom: 16rpx;
 }
 
 .animal-page-header .t-search__input-container {
@@ -12,6 +13,7 @@
   font-size: 28rpx !important;
   color: rgb(116, 116, 116) !important;
 }
+
 
 .noTweet {
   width: 100%;

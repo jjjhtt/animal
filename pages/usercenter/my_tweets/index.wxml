@@ -17,10 +17,12 @@
   </view>
 </view>
 <view class="home-page-container">
+  <scroll-view scroll-y="true" style="height: calc({{clientHeight||200}}rpx);" refresher-enabled="true" refresher-triggered="{{triggered}}"	bindscrolltolower="onReachBottom" bindrefresherrefresh="onPullDownRefresh" refresher-threshold="{{100}}">
   <tweets-list
     wr-class="tweets-list-container"
     tweetsList="{{tweetsList}}"
   />
   <load-more list-is-empty="{{!tweetsList.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
-  <t-toast id="t-toast" />
+  </scroll-view>
 </view>
+<t-toast id="t-toast" />
