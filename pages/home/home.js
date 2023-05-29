@@ -31,8 +31,9 @@ Page({
   },
 
   onLoad() {
-    let x = wx.getSystemInfoSync().windowHeight;
-    let y = wx.getSystemInfoSync().windowWidth;
+    const app = getApp()
+    let x = app.globalData.windowHeight
+    let y = app.globalData.windowWidth;
     this.setData({
       clientHeight: x * 750 / y - 96 -150-16
     })
