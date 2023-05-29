@@ -48,7 +48,7 @@ const getDefaultData = () => ({
     phoneNumber: '',
   },
   menuData,
-  versionNo: 'alpha',
+  versionNo: 'Stable',
   MessageNum: 1,
   showConfirm: false,
   domain: 'https://anith2.2022martu1.cn',

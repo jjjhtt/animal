@@ -36,11 +36,13 @@
   </view>
 </view>
 <view class="help-page-container">
+  <scroll-view class="scroll" scroll-y="true" style="height: calc({{clientHeight||200}}rpx - env(safe-area-inset-bottom));" refresher-enabled="true" refresher-triggered="{{triggered}}"	bindscrolltolower="onReachBottom" bindrefresherrefresh="onPullDownRefresh" refresher-threshold="{{100}}" scroll-top="{{top}}">
   <help-cards
     wr-class="tweets-list-container"
     data="{{tweetsList}}"
   />
   <load-more list-is-empty="{{!tweetsList.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
+  </scroll-view>
 </view>
 
 <t-toast id="t-toast" />

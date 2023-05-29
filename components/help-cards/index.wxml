@@ -1,4 +1,4 @@
-<view class="help-cards custom-class">
+<view class="help-cards custom-class wr-class">
 	<view class="help-cards__right">
 					<view class="help-cards-normal-item-container">
 						<view

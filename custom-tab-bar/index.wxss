@@ -3,7 +3,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50px;
+  height: 96rpx;
   background: white;
   display: flex;
   padding-bottom: env(safe-area-inset-bottom);
@@ -15,7 +15,7 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 0px;
+  height: 0rpx;
   transform: scaleY(0.5);
 }
 
@@ -29,10 +29,10 @@
 }
 
 .tab-bar-item image {
-  width: 30px;
-  height: 30px;
+  width: 50rpx;
+  height: 50rpx;
 }
 
 .tab-bar-item view {
-  font-size: 10px;
+  font-size: 23rpx;
 }

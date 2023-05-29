@@ -59,6 +59,16 @@ Page({
     this.setData({
       match: tag
     });
+    var l = this.data.historyList
+    //console.log(l)
+    if (l.indexOf(this.data.match) != -1) {
+      l.splice(l.indexOf(this.data.match), 1)
+    }
+    l.unshift(this.data.match)
+    if (l.length == 11) {
+      l.splice(10, 1)
+    }
+    wx.setStorageSync('help_history', l)
     wx.navigateTo({
       url: `/pages/help/result/index?match=${this.data.match}`,
     })

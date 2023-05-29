@@ -28,7 +28,7 @@ page {
 }
 
 .home-page-header .t-search__input {
-  font-size: 28rpx !important;
+  font-size: 26rpx !important;
   color: rgb(116, 116, 116) !important;
 }
 

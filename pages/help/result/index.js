@@ -16,7 +16,10 @@ Page({
     pageLoading: false,
     nowkey: '热度',
     match: '',
-    value: ''
+    value: '',
+    clientHeight: '',
+    triggered: false,
+    top: 0
   },
 
   tweetListPagination: {
@@ -35,6 +38,11 @@ Page({
   },
 
   onLoad(options) {
+    let x = wx.getSystemInfoSync().windowHeight;
+    let y = wx.getSystemInfoSync().windowWidth;
+    this.setData({
+      clientHeight: x * 750 / y -150-16
+    })
     this.setData({
       match: options.match,
       value: options.match
@@ -50,6 +58,9 @@ Page({
 
   onPullDownRefresh() {
     this.init();
+    this.setData({
+      triggered: false
+    })
   },
 
   init() {
@@ -67,7 +78,8 @@ Page({
 
   tabChangeHandle(e) {
     this.setData({
-      nowkey: e.detail.value
+      nowkey: e.detail.value,
+      top: 0? 0.01:0
     });
     this.loadtweetsList(true);
   },

@@ -1,11 +1,10 @@
 import {config} from '../../config/index'
 
 Component({
+  externalClasses: ['wr-class'],
   options: {
     addGlobalClass: true,
   },
-
-  externalClasses: ['custom-class'],
 
   properties: {
     data: {
