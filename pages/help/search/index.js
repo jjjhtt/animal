@@ -69,7 +69,7 @@ Page({
       l.splice(10, 1)
     }
     wx.setStorageSync('help_history', l)
-    wx.navigateTo({
+    wx.redirectTo({
       url: `/pages/help/result/index?match=${this.data.match}`,
     })
   },
@@ -96,7 +96,7 @@ Page({
       l.splice(10, 1)
     }
     wx.setStorageSync('help_history', l)
-    wx.navigateTo({
+    wx.redirectTo({
       url: `/pages/help/result/index?match=${this.data.match}`,
     })
   },

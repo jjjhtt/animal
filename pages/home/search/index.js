@@ -68,7 +68,7 @@ Page({
       l.splice(10, 1)
     }
     wx.setStorageSync('tweet_history', l)
-    wx.navigateTo({
+    wx.redirectTo({
       url: `/pages/home/result/index?match=${this.data.match}`,
     })
   },
@@ -103,7 +103,7 @@ Page({
       l.splice(10, 1)
     }
     wx.setStorageSync('tweet_history', l)
-    wx.navigateTo({
+    wx.redirectTo({
       url: `/pages/home/result/index?match=${this.data.match}`,
     })
   },

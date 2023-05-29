@@ -32,12 +32,7 @@ Page({
   },
 
   onUnload() {
-    wx.navigateBack({
-      delta: 2,
-      success: (res) => {},
-      fail: (res) => {},
-      complete: (res) => {},
-    })
+    
   },
 
   onLoad(options) {
