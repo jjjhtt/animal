@@ -9,6 +9,7 @@
 						  wx:for-item="subItem"
 						  bindtap="onClick"
 						  data-item="{{subItem}}"
+              data-index="{{subIndex}}"
 						>
               <view class="item-header">
                 <view class="avatar">

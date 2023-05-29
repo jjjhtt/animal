@@ -39,6 +39,7 @@ Page({
     show: false, //页面展示控制
     showWarnConfirm: false,
     autoWidth: 200, //底部输入框宽度
+    helpIndex: -1
   },
   replyListPagination: {
     index: 0,
@@ -53,6 +54,7 @@ Page({
       bestAns: true,
       userid: wx.getStorageSync('userId'),
       tweetid: options.id,
+      helpIndex: options.index,
       show: false
     })
     this.getdata()
@@ -77,6 +79,18 @@ Page({
   closeDialog(e) {
     var self = this
     if (e.type == "confirm") {
+      var pages = getCurrentPages();
+      var prevPage = pages[pages.length - 2];
+      var i = this.data.helpIndex
+      if (this.data.solveState) {
+        prevPage.setData({
+          [`tweetsList[${i}].solved`]: false,
+        })
+      } else {
+        prevPage.setData({
+          [`tweetsList[${i}].solved`]: true,
+        })
+      }
       wx.request({
         url: config.domain + '/help/changeStatus',
         method: 'POST',
