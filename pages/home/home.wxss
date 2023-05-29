@@ -32,16 +32,16 @@ page {
   color: rgb(116, 116, 116) !important;
 }
 
-.home-page-container .t-tabs {
+.home-page-header .t-tabs {
   background-color: white;
 }
 
-.home-page-container .tabs-external__item {
+.home-page-header .tabs-external__item {
   /* color: #666 !important; */
   font-size: 28rpx;
 }
 
-.home-page-container .tabs-external__active {
+.home-page-header .tabs-external__active {
   color: #333333 !important;
   font-size: 32rpx;
 }

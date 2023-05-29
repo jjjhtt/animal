@@ -16,8 +16,6 @@
       <t-icon slot="left-icon"  name="search" size="40rpx" color="#bbb" />
     </t-search>
   </view>
-</view>
-<view class="home-page-container">
   <view class="home-page-tabs">
     <t-tabs
       t-class="t-tabs"
@@ -37,6 +35,8 @@
       />
     </t-tabs>
   </view>
+</view>
+<view class="home-page-container">
   <scroll-view scroll-y="true" style="height: calc({{clientHeight||200}}rpx - env(safe-area-inset-bottom));" refresher-enabled="true" refresher-triggered="{{triggered}}"	bindscrolltolower="onReachBottom" bindrefresherrefresh="onPullDownRefresh" refresher-threshold="{{100}}" scroll-top="{{top}}">
   <tweets-list
     wr-class="tweets-list-container"
