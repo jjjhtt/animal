@@ -20,6 +20,7 @@
   <scroll-view scroll-y="true" wx:if="{{tweetsList.length != 0}}" style="height: calc({{clientHeight||200}}rpx);" refresher-enabled="true" refresher-triggered="{{triggered}}"	bindscrolltolower="onReachBottom" bindrefresherrefresh="onPullDownRefresh" refresher-threshold="{{100}}" scroll-top="{{top}}">
   <tweets-list
     wr-class="tweets-list-container"
+    id="tweets"
     tweetsList="{{tweetsList}}"
   />
   <load-more list-is-empty="{{!tweetsList.length}}" status="{{tweetsListLoadStatus}}" bind:retry="onReTry" />
