@@ -7,7 +7,9 @@ Page({
     pageLoading: false,
     match: '',
     clientHeight: '',
-    triggered: false
+    triggered: false,
+    confirmBtn: { content: '确定', variant: 'base' },
+    showConfirm: false
   },
 
   tweetListPagination: {
@@ -43,6 +45,15 @@ Page({
 
   init() {
     this.loadHomePage();
+  },
+
+  delete() {
+    const childComponent = this.selectComponent('#tweets');
+    childComponent.delete();
+  },
+
+  closeDialog() {
+    this.setData({showConfirm: false });
   },
 
   loadHomePage() {

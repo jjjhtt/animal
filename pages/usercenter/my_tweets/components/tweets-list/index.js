@@ -13,8 +13,7 @@ Component({
   },
 
   data: {
-    confirmBtn: { content: '确定', variant: 'base' },
-    showConfirm: false,
+
   },
 
   lifetimes: {
@@ -57,7 +56,9 @@ Component({
             //console.log(res);
             //that.properties.tweetsList.splice(that.properties.index, 1)
             //console.log(that.properties.tweetsList)
-            this.setData({showConfirm: false });
+            var pages = getCurrentPages();
+            var page = pages[pages.length - 1];
+            page.setData({showConfirm: false });
             Toast({
               context: this,
               selector: '#t-toast',
@@ -89,19 +90,20 @@ Component({
     },
 
     onLongPress: function(e) {
-      console.log(e)
+      //console.log(e)
       var currentTarget = e.currentTarget
       var {index} = currentTarget.dataset
       var {id} = currentTarget.dataset
+      var pages = getCurrentPages();
+      var page = pages[pages.length - 1];
+      //console.log(page)
       this.setData({
         id: id,
         index: index,
+      })
+      page.setData({
         showConfirm: true
       })
-    },
-
-    closeDialog() {
-      this.setData({showConfirm: false });
     },
 
     init() {

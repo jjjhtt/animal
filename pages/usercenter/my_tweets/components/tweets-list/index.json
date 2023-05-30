@@ -2,7 +2,6 @@
     "component": true,
     "usingComponents": {
         "tweets-card": "../tweets-card/index",
-        "t-toast": "tdesign-miniprogram/toast/toast",
-        "t-dialog": "tdesign-miniprogram/dialog/dialog"
+        "t-toast": "tdesign-miniprogram/toast/toast"
     }
 }
