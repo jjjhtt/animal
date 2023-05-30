@@ -60,7 +60,7 @@ Component({
             var page = pages[pages.length - 1];
             page.setData({showConfirm: false });
             Toast({
-              context: this,
+              context: page,
               selector: '#t-toast',
               message: '删除成功',
               theme: 'success',
@@ -68,7 +68,7 @@ Component({
           } else {
             console.log(res);
             Toast({
-              context: this,
+              context: page,
               selector: '#t-toast',
               message: res.data.message,
               theme: 'error',
