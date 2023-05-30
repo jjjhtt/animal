@@ -10,7 +10,9 @@ Page({
     value: '',
     notice: '',
     clientHeight: '',
-    triggered: false
+    triggered: false,
+    confirmBtn: { content: '确定', variant: 'base' },
+    showConfirm: false
   },
 
   tweetListPagination: {
@@ -30,6 +32,15 @@ Page({
       clientHeight: x * 750 / y -16-64,
       notice: '请输入关键词搜索'
     })
+  },
+
+  delete() {
+    const childComponent = this.selectComponent('#tweets');
+    childComponent.delete();
+  },
+
+  closeDialog() {
+    this.setData({showConfirm: false });
   },
 
   onReachBottom() {
