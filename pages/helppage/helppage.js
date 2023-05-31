@@ -63,11 +63,14 @@ Page({
     var winWid = wx.getSystemInfoSync().windowWidth;      //获取当前屏幕的宽度
     var imgh=e.detail.height;　　　　　　　　　　　　　　　 //图片高度
     var imgw=e.detail.width;
+    var swiperh = winWid * imgh / imgw;
     var swiperH = winWid * imgh / imgw + "px"　           //等比设置swiper的高度。  
     //即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度  -->  swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
-    this.setData({
-      swiperHeight: swiperH		//设置swiper高度
-    })
+    if(swiperh > this.data.swiperHeight) {
+      this.setData({
+        swiperHeight: swiperH		//设置swiper高度
+      })
+    }
   },
   changeState() {
     this.setData({solveState : !this.data.solveState})
