@@ -53,7 +53,7 @@
         <view class="helpCommentBox">
           <view class="commentBoxTop">
             <view class="commentImgBox">
-              <image src="../../images/li.jpg" mode="widthFix" style="width: 58rpx;border-radius: 45%;" />
+              <image src="https://anith2.2022martu1.cn{{item.avatar}}" mode="widthFix" style="width: 58rpx;border-radius: 45%;" />
             </view>
             <view class="commentDetailBox">
               <view style="font-size: medium;color: gray;"> 
