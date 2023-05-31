@@ -103,7 +103,7 @@ Page({
             success: (res) =>{
               //console.log(res.data);
               let p = JSON.parse(res.data);
-              //console.log(p.body.imagePath);
+              console.log(p.body.imagePath);
               if (p.code == 7) {
                 Toast({
                   message: p.message,

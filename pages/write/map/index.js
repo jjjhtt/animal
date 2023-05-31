@@ -223,7 +223,6 @@ Page({
   showPicker(e) {
     var newday = new Date().getTime() - 1 * 24 * 60 * 60 * 1000;
     this.setData({
-      datetime: new Date().getTime(),
       start: newday,
       end: new Date().getTime()
     })
