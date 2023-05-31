@@ -407,7 +407,7 @@ Page({
               self.setData({ officialReplyList: res.data.body.comments.splice(0,i) })
               self.setData({replylist: res.data.body.comments})
               break;
-            } else if (i = res.data.body.comments.length - 1) {
+            } else if (i == res.data.body.comments.length - 1) {
               self.setData({officialReplyList:res.data.body.comments})
             }
           }
