@@ -64,8 +64,8 @@
               <view>
                 <view class="commentDate">{{item.time}}</view>
                 <view class="likef">{{item.likeNum}}</view>
-                <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
-                <view class="likef" bindtap="monitorlike" data-id="{{index}}" wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
+                <view class="likef" bindtap="monitorlikef" data-id="{{index}}" wx:if="{{item.isLike == false}}"><t-icon name="heart"  size="48rpx"/></view>
+                <view class="likef" bindtap="monitorlikef" data-id="{{index}}" wx:if="{{item.isLike == true}}"><t-icon name="heart-filled" color="red" size="48rpx"/></view>
               </view>
               <view class="commentline"></view>
             </view>

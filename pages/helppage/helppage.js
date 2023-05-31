@@ -215,6 +215,45 @@ Page({
       }
     })
   },
+  monitorlikef: function(e) {
+    var self = this
+    let i = e.currentTarget.dataset.id
+    const changelike = `officialReplyList[${i}].likeNum`
+    const changeislike = "officialReplyList[" + i + "].isLike"
+    wx.request({
+      url: config.domain + '/comment/like',
+      method: 'POST',
+      data: {
+        "userId": wx.getStorageSync('userId'),
+	      "commentId": this.data.officialReplyList[i].id
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'authorization': wx.getStorageSync('token')
+      },
+      success(res) {
+        if (res.data.code == 0) {
+          if (res.data.body.isLike == true) {
+            let like = self.data.officialReplyList[i].likeNum + 1
+            self.setData({[changelike]:like, [changeislike]: res.data.body.isLike})
+          } else {
+            let like = self.data.officialReplyList[i].likeNum - 1
+            self.setData({[changelike]:like, [changeislike]: res.data.body.isLike})
+          }
+        } else {
+          Toast({context: this,selector: '#t-toast',message: res.data.message,theme: 'error',});
+          if (res.data.code == 7) {
+            wx.clearStorageSync();
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
+            }, 1000)
+          }
+        }
+      }
+    })
+  },
   deleteComment(e) {
     let i = e.currentTarget.dataset.id
     wx.request({
