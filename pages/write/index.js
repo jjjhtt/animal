@@ -80,7 +80,7 @@ Page({
           this.setData({
             path: path
           })
-          //console.log(this.data.path)
+          console.log(this.data.path)
           Toast({
             context: this,
             selector: '#t-toast',
@@ -144,7 +144,7 @@ Page({
                     context: this,
                     selector: '#t-toast',
                   });
-                  //console.log(res);
+                  console.log(res);
                   if (res.data.code === 0) {
                     console.log(res);
                     this.setData({
