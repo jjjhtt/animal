@@ -17,7 +17,8 @@ Page({
     match: '',
     clientHeight: '',
     triggered: false,
-    top: 0
+    top: 0,
+    isStar: true
   },
 
   tweetListPagination: {

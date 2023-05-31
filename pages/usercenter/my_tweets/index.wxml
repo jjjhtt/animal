@@ -17,7 +17,8 @@
   </view>
 </view>
 <view class="home-page-container">
-  <scroll-view scroll-y="true" style="height: calc({{clientHeight||200}}rpx);" refresher-enabled="true" refresher-triggered="{{triggered}}"	bindscrolltolower="onReachBottom" bindrefresherrefresh="onPullDownRefresh" refresher-threshold="{{100}}">
+  <view class="noTweet" wx:if="{{tweetsList.length == 0}}">快去发表你的第一个帖子吧</view>
+  <scroll-view scroll-y="true" wx:if="{{tweetsList.length != 0}}" style="height: calc({{clientHeight||200}}rpx);" refresher-enabled="true" refresher-triggered="{{triggered}}"	bindscrolltolower="onReachBottom" bindrefresherrefresh="onPullDownRefresh" refresher-threshold="{{100}}">
   <tweets-list
     wr-class="tweets-list-container"
     id="tweets"

@@ -17,7 +17,8 @@
   </view>
 </view>
 <view class="help-page-container">
-  <scroll-view scroll-y="true" style="height: calc({{clientHeight||200}}rpx);" refresher-enabled="true" refresher-triggered="{{triggered}}"	bindscrolltolower="onReachBottom" bindrefresherrefresh="onPullDownRefresh" refresher-threshold="{{100}}">
+  <view class="noTweet" wx:if="{{tweetsList.length == 0}}">你还没有发表过求助哦</view>
+  <scroll-view scroll-y="true" wx:if="{{tweetsList.length != 0}}" style="height: calc({{clientHeight||200}}rpx);" refresher-enabled="true" refresher-triggered="{{triggered}}"	bindscrolltolower="onReachBottom" bindrefresherrefresh="onPullDownRefresh" refresher-threshold="{{100}}">
   <help-cards-censor
     wr-class="tweets-list-container"
     data="{{tweetsList}}"
