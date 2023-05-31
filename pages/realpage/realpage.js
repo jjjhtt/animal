@@ -250,6 +250,16 @@ Page({
   },
   starTweet: function(e) {
     var self = this
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2];
+    var i = this.data.tweetIndex
+    var t = prevPage.data.tweetsList
+    if (prevPage.data.isStar) {
+      t.splice(i, 1)
+      prevPage.setData({
+        tweetsList: t
+      })
+    }
     wx.request({
       url: config.domain + '/tweet/star',
       method: 'POST',

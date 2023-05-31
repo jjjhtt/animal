@@ -324,6 +324,15 @@ Page({
             theme: 'success',
             direction: 'column'
           })
+          setTimeout(() => {
+            //wx.redirectTo({url:'../realpage/realpage'  })//删
+            wx.navigateBack({
+              delta: 1,
+              success: (res) => {},
+              fail: (res) => {},
+              complete: (res) => {},
+            })
+          }, 1000)
         } else {
           Toast({
             context: this,
