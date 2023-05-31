@@ -2,7 +2,7 @@
   <view wx:if="{{imgUrls.length != 0}}" class="dots" style="top: 40rpx;">{{current+1}}/{{imgUrls.length}}</view>
   <swiper bindchange="monitorCurrent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" current="{{current}}" style="height: {{swiperHeight}};">
 	<block wx:for="{{imgUrls}}" wx:key="index">
-        <swiper-item>
+        <swiper-item style="display: flex;justify-content: center;flex-direction: column;">
           <image style="width: 100%;" mode="widthFix" bindload="computeImgHeight" src="https://anith2.2022martu1.cn{{item}}"/>
         </swiper-item>
 	</block>

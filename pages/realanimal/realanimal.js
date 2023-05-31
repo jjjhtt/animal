@@ -49,9 +49,10 @@ Page({
     var imgw=e.detail.width;
     var swiperH = winWid * imgh / imgw + "px"　           //等比设置swiper的高度。  
     //即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度  -->  swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
+    /*
     this.setData({
       swiperHeight: swiperH		//设置swiper高度
-    })
+    })*/
   },
   monitorCurrent: function(e) {
       let current = e.detail.current;
@@ -135,6 +136,18 @@ Page({
       success(res) {
         console.log(res)
         if (res.data.code == 0) {
+          wx.getImageInfo({
+            src:'https://anith2.2022martu1.cn' + res.data.body.maxHeightImage,
+            success:function(RES) {
+              var winWid = wx.getSystemInfoSync().windowWidth;
+              var imgh=RES.height;
+              var imgw = RES.width;
+              var swiperH = winWid * imgh / imgw + "px";
+              self.setData({
+                swiperHeight: swiperH		//设置swiper高度
+              })
+            }
+          })
           self.setData({
             content_title: res.data.body.name,
             contenttext: res.data.body.intro,
