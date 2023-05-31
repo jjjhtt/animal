@@ -12,7 +12,7 @@ function onUnload() {
 
 // images
 function onChooseImage(e) {
-  var left = 9 - view.data.images.length
+  var left = view.data.images.length >= 9? 0: 1
   /*wx.chooseMedia({
     count: left,
     sizeType: ['compressed'],
