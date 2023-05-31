@@ -70,6 +70,28 @@ Page({
     this.setData({ ma })
   },
   requestma: util.throttle(function (e) {
+    var self = this
+    console.log(this.data.email)
+    wx.request({
+      url: config.domain + '/user/resetPasswordRequest',
+      data: { email: this.data.email },
+      method: 'POST',
+      success: function(res) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: res.data.message,
+        });
+        if(res.data.code == 0) {
+          self.realrequest()
+        }
+        if (res.data.code != 0) {
+          self.setData({email:''})
+        }
+      }
+    })
+  }, 1000),
+  realrequest: util.throttle(function (e) {
     var inter = setInterval(function() {
       this.setData({
         sendWaiting: true,
@@ -87,24 +109,6 @@ Page({
         });
       }
     }.bind(this), 1000);
-    var self = this
-    console.log(this.data.email)
-    wx.request({
-      url: config.domain + '/user/resetPasswordRequest',
-      data: { email: this.data.email },
-      method: 'POST',
-      success: function(res) {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: res.data.message,
-        });
-        if (res.data.code != 0) {
-          self.setData({email:''})
-        }
-        console.log(res)
-      }
-    })
   }, 3000),
   returnlogin: function() {
       wx.redirectTo({ url: '../login', })
