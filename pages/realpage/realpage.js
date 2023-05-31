@@ -56,12 +56,12 @@ Page({
     var swiperh = winWid * imgh / imgw;
     var swiperH = winWid * imgh / imgw + "px";　           //等比设置swiper的高度。  
     //即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度  -->  swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
-    console.log(swiperH)
-    if(swiperh > this.data.swiperHeight) {
+    console.log(imgh)
+    /*if(swiperh > this.data.swiperHeight) {
       this.setData({
         swiperHeight: swiperH		//设置swiper高度
       })
-    }
+    }*/
   },
   onReachBottom() {
     if (this.data.commentlistLoadStatus == 0) {
@@ -312,6 +312,18 @@ Page({
       success(res) {
         if (res.data.code == 0) {
           let sp = res.data.body
+          wx.getImageInfo({
+            src:'https://anith2.2022martu1.cn' + sp.maxHeightImage,
+            success:function(res) {
+              var winWid = wx.getSystemInfoSync().windowWidth;
+              var imgh=res.height;
+              var imgw = res.width;
+              var swiperH = winWid * imgh / imgw + "px";
+              self.setData({
+                swiperHeight: swiperH		//设置swiper高度
+              })
+            }
+          })
           self.setData({
             tuid:sp.userId,
             imgUrls: sp.images == null ? [] : sp.images,
