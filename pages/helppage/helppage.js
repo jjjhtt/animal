@@ -400,12 +400,15 @@ Page({
         'authorization': wx.getStorageSync('token')
       },
       success(res) {
+        console.log(res)
         if (res.data.code == 0 && res.data.body.comments != null) {
           for (let i = 0; i < res.data.body.comments.length; i++) {
             if (res.data.body.comments[i].isAdmin == false) {
               self.setData({ officialReplyList: res.data.body.comments.splice(0,i) })
               self.setData({replylist: res.data.body.comments})
               break;
+            } else if (i = res.data.body.comments.length - 1) {
+              self.setData({officialReplyList:res.data.body.comments})
             }
           }
         } else if(res.data.code != 0) {
