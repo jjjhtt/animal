@@ -156,9 +156,11 @@ Page({
                     })
                     resolve(res);
                   } else if (res.data.code === 3){
-                    this.setData({
-                      name: '无匹配',
-                    })
+                    Toast({
+                      context: this,
+                      message: '无匹配动物',
+                      theme: 'error',
+                    });
                   } else {
                     console.log(res.data.message);
                     Toast({
