@@ -52,6 +52,32 @@ Page({
       //this.setData({ pw2: e.detail.value })
     },
     requestma: util.throttle(function (e) {
+      self = this
+      wx.request({
+        url: config.domain + '/user/registerRequest',
+        data: { email: this.data.email },
+        method: 'POST',
+        success: function(res) {
+          console.log(res)
+          if (res.data.code == 0) {
+            self.realrequest()
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: res.data.message,
+            });
+          } else {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: res.data.message,
+            });
+            self.setData({email:''})
+          }
+        }
+      })
+    }, 1000),
+    realrequest: util.throttle(function (e) {
       var inter = setInterval(function() {
         this.setData({
           sendWaiting: true,
@@ -69,30 +95,6 @@ Page({
           });
         }
       }.bind(this), 1000);
-      self = this
-      console.log(this.data.email)
-      wx.request({
-        url: config.domain + '/user/registerRequest',
-        data: { email: this.data.email },
-        method: 'POST',
-        success: function(res) {
-          console.log(res)
-          if (res.data.code == 0) {
-            Toast({
-              context: this,
-              selector: '#t-toast',
-              message: res.data.message,
-            });
-          } else {
-            Toast({
-              context: this,
-              selector: '#t-toast',
-              message: res.data.message,
-            });
-            self.setData({email:''})
-          }
-        }
-      })
     }, 3000),
     postregister: function() {
       self = this
