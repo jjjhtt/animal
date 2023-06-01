@@ -1,3 +1,5 @@
+<view class="noTweet" wx:if="{{list == 0}}">无领养记录</view>
+
 <view wx:for="{{list}}" wx:for-item="item" wx:for-index="index">
   <t-collapse defaultValue="{{[0]}}" expandMutex expandIcon>
   <t-collapse-panel header="{{item.animalName}}" value="{{0}}" header-left-icon="{{domain+item.avatar}}">

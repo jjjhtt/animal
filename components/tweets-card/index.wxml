@@ -10,7 +10,7 @@
 			  t-class="tweets-card__img"
 			  src="{{domain+tweets.image }}"
 			  mode="aspectFill"
-			  lazy-load
+			  lazy="true"
 			/>
 		</view>
 		<view class="tweets-card__body">

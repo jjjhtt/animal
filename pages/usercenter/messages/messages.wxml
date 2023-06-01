@@ -1,3 +1,5 @@
+<view class="noTweet" wx:if="{{msgList == 0}}">没有消息记录</view>
+
 <view wx:for="{{msgList}}" wx:for-item="item" wx:for-index="index">
   <t-cell-group>
     <t-cell title="系统通知" description="{{item.info}}" hover bind:click="onClickMessage" data-index="{{item.index}}" arrow
