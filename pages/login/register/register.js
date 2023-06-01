@@ -119,8 +119,36 @@ Page({
             });
             setTimeout(() => {
               wx.navigateBack()
+              self.setData({
+                username: '',
+                email: '',
+                phone: '',
+                pw: '',
+                pw2: '',
+                ma: ''
+              })
               }, 2000)
           } else {
+            console.log('code: ' + res.data.code)
+            switch (res.data.code) {
+              case 11:
+              case 12:
+              case 13:
+                self.setData({ username:'' })
+                break;
+              case 14:
+              case 15:
+              case 16:
+                self.setData({ pw:'',pw2:'' })
+                break;
+              case 8:
+                self.setData({ email:'' })
+                break;
+              case 9:
+              case 10:
+                self.setData({ ma:'' })
+                break;
+            }
             Toast({
               context: this,
               selector: '#t-toast',
@@ -129,14 +157,7 @@ Page({
               direction: 'column',
             });
           }
-          self.setData({
-            username: '',
-            email: '',
-            phone: '',
-            pw: '',
-            pw2: '',
-            ma: ''
-          })
+          
         }
       })
     }
