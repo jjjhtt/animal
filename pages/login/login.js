@@ -109,6 +109,10 @@ Page({
               clearTimeout(timer) 
               timer = undefined
           }
+          var temp = res.data.code
+          if(temp == 4 || temp == 5 || temp == 6 || temp == 7) {
+            self.setData({email:''})
+          }
           self.setData({
             errormessage: res.data.message,
             type: 'error',
