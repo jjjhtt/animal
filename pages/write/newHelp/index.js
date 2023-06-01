@@ -63,6 +63,13 @@ Page({
       });
       return;
     }
+    if (this.data.imageUrls == 0) {
+      Toast({
+        context: this,
+        message: "请至少添加一张图片",
+      });
+      return;
+    }
     wx.request({
       url: config.domain + '/help/create',
       data: {
